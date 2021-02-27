@@ -4,7 +4,7 @@ AMQ stuff I make because i'm bored
 # Rotation background CSS generator
 
 ## What it does
-Get an URL link automatically for all the files in the directory
+Get an URL link automatically for all the files in the directory and generate CSS code necessary to add to Elodie's script
 
 ## Usage
 ### Requirement
