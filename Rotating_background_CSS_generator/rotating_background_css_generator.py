@@ -1,7 +1,8 @@
-from os import getcwd, listdir
-from requests import post
-from base64 import b64encode
-from json import dump, load
+import subprocess, os
+import requests
+import base64
+import json
+import PySimpleGUI as sg
 
 """Config"""
 rotation_time = 45  # seconds
@@ -14,7 +15,7 @@ saved_url_path = "saved_url.json"
 
 def get_image(img_path):
     with open(img_path, "rb") as image_file:
-        encoded_img = b64encode(image_file.read())
+        encoded_img = base64.b64encode(image_file.read())
     return encoded_img
 
 
@@ -23,7 +24,7 @@ def imgbb_api_call(img):
     payload = {"key": key, "image": img}
 
     try:
-        return post("https://api.imgbb.com/1/upload", data=payload)
+        return requests.post("https://api.imgbb.com/1/upload", data=payload)
     except:
         print("Can't reach API")
 
@@ -32,8 +33,8 @@ def upload_images_and_get_url():
 
     urls = []
 
-    path = getcwd() + "/"
-    for filename in listdir(path):
+    path = os.getcwd() + "/"
+    for filename in os.listdir(path):
         print("Working on " + filename)
         flag = False
         for extension in accepted_extension:
@@ -49,7 +50,7 @@ def upload_images_and_get_url():
 def get_already_done_urls():
 
     with open(saved_url_path) as json_file:
-        urls = load(json_file)
+        urls = json.load(json_file)
 
     return urls
 
@@ -57,7 +58,7 @@ def get_already_done_urls():
 def save_already_done_urls(urls):
 
     with open(saved_url_path, "w") as outfile:
-        dump(urls, outfile)
+        json.dump(urls, outfile)
 
 
 def generate_keyframes(urls):
@@ -113,4 +114,4 @@ def process():
 
 if __name__ == "__main__":
 
-    process
+    process()
