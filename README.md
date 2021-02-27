@@ -15,7 +15,7 @@ If you don't or you don't know, download the .exe
 #### First time
 - Create a directory with rotating_background_css_generator.exe(.py) and every image files you want as background in it
 - double click rotating_background_css_generator, it will:
-	- Upload every images to ImgBB: https://imgbb.com/ | This part may take some time if you have a lot of files / a bad connection
+	- Upload every images to ImgBB: https://imgbb.com/ | This part may take some time if you have a lot of files / a bad connection, and it runs in the background, don't worry, it should eventually do something
 	- Save the URLs in a file named "saved_url.json"
 	- Generate CSS code in a file named "CSS_code.txt"
 - Remove the images you just uploaded from the directory, copy the content of "CSS_code.txt" and add it to Elodie's script (Elodie script: https://userstyles.org/styles/179263/elodie-s-amq-script-v8-4-2), just put it under the "root" part for example :shrug:
