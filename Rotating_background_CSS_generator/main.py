@@ -2,6 +2,7 @@ import subprocess, os
 import requests
 import base64
 import json
+import PySimpleGUI as sg
 
 """Config"""
 rotation_time = 45  # seconds
@@ -85,29 +86,49 @@ def generate_CSS_code(urls):
         if url not in urls:
             urls.append(url)
 
-    CSS_code = (
-        "body {\n   height: 100%;\n\n   /* nb_background: Number of background you will have (see below)*/\n   /* rotation_time: Duration between each rotation*/\n   --nb_backgrounds: "
-        + str(len(urls))
-        + ";\n   --rotation_time:"
-        + str(rotation_time)
-        + "s;\n\n   animation: background_rotation calc(var(--nb_backgrounds) * var(--rotation_time)) linear 0s infinite;\n}\n\n"
-        + generate_keyframes(urls)
-        + "/* To hide the catbox video and let your background shine */\n#qpVideoHider.qpVideoOverlay {\n   background-color: rgb(0 0 0 / 0%);\n}\n\n/* To hide Countdown and let your background shine */\n#qpVideoOverflowContainer {\n   background: rgba(0, 0, 0, 0);\n}"
-    )
+    CSS_code = ""
+
+    if len(urls) > 0:
+
+        CSS_code = (
+            "body {\n   height: 100%;\n\n   /* nb_background: Number of background you will have (see below)*/\n   /* rotation_time: Duration between each rotation*/\n   --nb_backgrounds: "
+            + str(len(urls))
+            + ";\n   --rotation_time:"
+            + str(rotation_time)
+            + "s;\n\n   animation: background_rotation calc(var(--nb_backgrounds) * var(--rotation_time)) linear 0s infinite;\n}\n\n"
+            + generate_keyframes(urls)
+            + "/* To hide the catbox video and let your background shine */\n#qpVideoHider.qpVideoOverlay {\n   background-color: rgb(0 0 0 / 0%);\n}\n\n/* To hide Countdown and let your background shine */\n#qpVideoOverflowContainer {\n   background: rgba(0, 0, 0, 0);\n}"
+        )
     return CSS_code
 
 
 def process():
 
-    ##urls = upload_images_and_get_url()
-    # save_already_done_urls(urls)
-    urls = ["salut"]
+    urls = upload_images_and_get_url()
+    save_already_done_urls(urls)
     css_code = generate_CSS_code(urls)
     f = open("CSS_Code.txt", "w")
     f.write(css_code)
     f.close()
 
 
+def gui():
+
+    sg.theme("DarkAmber")
+
+    layout = [
+        [sg.Text("""Hello! To run this program just click "run" :-)""", size=(35, 1))],
+        [sg.Submit("Run"), sg.Cancel()],
+    ]
+    window = sg.Window("Rotation Background CSS generator", layout)
+
+    window_output = window.read()
+    window.close()
+
+    if window_output == ("Run", {}):
+        process()
+
+
 if __name__ == "__main__":
 
-    process()
+    gui()
