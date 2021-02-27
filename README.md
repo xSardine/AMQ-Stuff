@@ -17,7 +17,7 @@ You need python to make it work, it can be downloaded here: https://www.python.o
 	- Upload every images to ImgBB: https://imgbb.com/
 	- Save the URLs in a file named "saved_url.json"
 	- Generate CSS code in a file named "CSS_code.txt"
-- Remove the images you just uploaded from the directory, copy the content of "CSS_code.txt" and replace the "body" part of Elodie's script with it (Elodie script: https://userstyles.org/styles/179263/elodie-s-amq-script-v7-1)
+- Remove the images you just uploaded from the directory, copy the content of "CSS_code.txt" and add it to Elodie's script (Elodie script: https://userstyles.org/styles/179263/elodie-s-amq-script-v7-1), just pit under the "root" part for example :shrug:
 - Launch AMQ
 
 #### Adding new images:
