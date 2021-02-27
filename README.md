@@ -21,7 +21,7 @@ You need python to make it work, it can be downloaded here: https://www.python.o
 - Launch AMQ
 
 #### Adding new images:
-As long as you kept the file "saved_url.json" and place it in the same directory as main.py, you will be able to just add new images to the background pool without having to re-uplaod what you already uploaded.
+As long as you kept the file "saved_url.json" and place it in the same directory as main.py, you will be able to just add new images to the background pool without having to re-upload what you already uploaded.
 To add new images, just repeat the previous process (don't forget to remove what you already uploaded, so that you don't upload them twice)
 
 #### Customization:
