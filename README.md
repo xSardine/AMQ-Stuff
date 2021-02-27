@@ -7,14 +7,15 @@ AMQ stuff I make because i'm bored
 Get an URL link automatically for all the files in the directory and generate CSS code necessary to add to Elodie's script
 
 ## Usage
-### Requirement
-You need python to make it work, it can be downloaded here: https://www.python.org/downloads/
+### What to download
+If you have python installed, download the .py
+If you don't or you don't know, download the .exe
 
 ### How to use it
 #### First time
-- Create a directory with main.py and every image files you want as background in it
-- double click main.py, it will:
-	- Upload every images to ImgBB: https://imgbb.com/
+- Create a directory with rotating_background_css_generator.exe(.py) and every image files you want as background in it
+- double click rotating_background_css_generator, it will:
+	- Upload every images to ImgBB: https://imgbb.com/ | This part may take some time if you have a lot of files / a bad connection
 	- Save the URLs in a file named "saved_url.json"
 	- Generate CSS code in a file named "CSS_code.txt"
 - Remove the images you just uploaded from the directory, copy the content of "CSS_code.txt" and add it to Elodie's script (Elodie script: https://userstyles.org/styles/179263/elodie-s-amq-script-v7-1), just put it under the "root" part for example :shrug:
