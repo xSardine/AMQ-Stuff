@@ -2,12 +2,11 @@ import subprocess, os
 import requests
 import base64
 import json
-import PySimpleGUI as sg
 
 """Config"""
 rotation_time = 45  # seconds
 
-accepted_extension = [".jpg", ".png"]
+accepted_extension = [".jpg", ".png", "jpeg"]
 key = "53ca7503fc71be24856a9fd84c354cdd"
 saved_url_path = "saved_url.json"
 """Config"""
@@ -26,33 +25,101 @@ def imgbb_api_call(img):
     try:
         return requests.post("https://api.imgbb.com/1/upload", data=payload)
     except:
-        print("Can't reach API")
+        return {"Error": "Can't reach API"}
 
 
-def upload_images_and_get_url():
+def is_acceptable_extension(filename):
+    flag = False
+    for extension in accepted_extension:
+        if filename.endswith(extension):
+            flag = True
+    return flag
 
-    urls = []
+
+def is_image_already_uploaded(urls, img_name):
+
+    for img_file in urls:
+        if img_name == img_file["name"]:
+            return True
+    return False
+
+
+def write_error_file(errors):
+
+    msg = ""
+    for error in errors:
+        msg += error["name"] + ": " + error["error"] + "\n"
+
+    f = open("not_uploaded.txt", "w")
+    f.write(msg)
+    f.close()
+
+
+def upload_images_and_get_url(urls):
+
+    errors = []
 
     path = os.getcwd() + "/"
     for filename in os.listdir(path):
-        print("Working on " + filename)
-        flag = False
-        for extension in accepted_extension:
-            if filename.endswith(extension):
-                flag = True
-        if flag:
-            img = get_image(path + filename)
-            url = imgbb_api_call(img).json()["data"]["image"]["url"]
-            urls.append(url)
+        print("Working on " + filename + "...")
+        if is_acceptable_extension(filename):
+            if not is_image_already_uploaded(urls, filename):
+                img = get_image(path + filename)
+                response = imgbb_api_call(img).json()
+                if "data" in response:
+                    url = response["data"]["image"]["url"]
+                    urls.append({"name": filename, "url": url})
+                    save_already_done_urls(urls)
+                    print("Uploaded!\n")
+                else:
+                    print("Problem with the response:", response, "\n")
+                    errors.append(
+                        {
+                            "name": filename,
+                            "error": "Problem with the response:"
+                            + str(response)
+                            + "\n",
+                        }
+                    )
+            else:
+                print(
+                    "This file has already been uploaded (change its name if it hasn't)\n"
+                )
+                errors.append(
+                    {
+                        "name": filename,
+                        "error": "This file has already been uploaded (change its name if it hasn't)\n",
+                    }
+                )
+        else:
+            if (
+                not filename.endswith(".py")
+                and not filename.endswith(".txt")
+                and not filename.endswith(".exe")
+                and not filename.endswith(".json")
+            ):
+                print("Not a valid format: Ignored\n")
+                errors.append(
+                    {"name": filename, "error": "Not a valid image: Ignored\n"}
+                )
+            else:
+                print()
+
+    if len(errors) > 0:
+        write_error_file(errors)
+
     return urls
 
 
 def get_already_done_urls():
 
-    with open(saved_url_path) as json_file:
-        urls = json.load(json_file)
-
-    return urls
+    if os.path.isfile(saved_url_path):
+        with open(saved_url_path) as json_file:
+            urls = json.load(json_file)
+        return urls
+    else:
+        print("No save found\n")
+        return []
 
 
 def save_already_done_urls(urls):
@@ -64,15 +131,25 @@ def save_already_done_urls(urls):
 def generate_keyframes(urls):
 
     css_keyframes = "@keyframes background_rotation {\n"
-    for i, url in enumerate(urls):
-        percentage = round((100 / len(urls)) * i)
+    for i, img_file in enumerate(urls):
+        percentage = (100 / len(urls)) * i
         css_keyframes += (
-            "   " + str(percentage) + "%" + "{\n      --bg: url(" + url + ");\n   }\n\n"
+            "   "
+            + str(percentage)
+            + "%"
+            + "{\n      --bg: url("
+            + img_file["url"]
+            + ");\n   }\n\n"
         )
 
     percentage = 100
     css_keyframes += (
-        "   " + str(percentage) + "%" + "{\n      --bg: url(" + urls[0] + ");\n   }\n"
+        "   "
+        + str(percentage)
+        + "%"
+        + "{\n      --bg: url("
+        + urls[0]["url"]
+        + ");\n   }\n"
     )
     css_keyframes += "}\n\n"
 
@@ -81,12 +158,8 @@ def generate_keyframes(urls):
 
 def generate_CSS_code(urls):
 
-    saved_urls = get_already_done_urls()
-    for url in saved_urls:
-        if url not in urls:
-            urls.append(url)
-
     CSS_code = ""
+    print("Generating CSS code for ", len(urls), "images...")
 
     if len(urls) > 0:
 
@@ -99,17 +172,22 @@ def generate_CSS_code(urls):
             + generate_keyframes(urls)
             + "/* To hide the catbox video and let your background shine */\n#qpVideoHider.qpVideoOverlay {\n   background-color: rgb(0 0 0 / 0%);\n}\n\n/* To hide Countdown and let your background shine */\n#qpVideoOverflowContainer {\n   background: rgba(0, 0, 0, 0);\n}"
         )
+
     return CSS_code
 
 
 def process():
 
-    urls = upload_images_and_get_url()
-    save_already_done_urls(urls)
-    css_code = generate_CSS_code(urls)
-    f = open("CSS_Code.txt", "w")
-    f.write(css_code)
-    f.close()
+    urls = get_already_done_urls()
+    urls = upload_images_and_get_url(urls)
+    if len(urls) > 0:
+        save_already_done_urls(urls)
+        css_code = generate_CSS_code(urls)
+        f = open("CSS_Code.txt", "w")
+        f.write(css_code)
+        f.close()
+    else:
+        print("No valid image files detected")
 
 
 if __name__ == "__main__":
