@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         Fast @
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/xSardine
+// @version      1.0
 // @author       xSardine
 // @description  press a key and @someone
 // @match        https://animemusicquiz.com/*
 // @grant        none
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/special_character_macro/special_character_macro.js
 // ==/UserScript==
 
 
