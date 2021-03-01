@@ -183,7 +183,7 @@ def process():
     if len(urls) > 0:
         save_already_done_urls(urls)
         css_code = generate_CSS_code(urls)
-        f = open("CSS_Code.txt", "w")
+        f = open("CSS_Code.css", "w")
         f.write(css_code)
         f.close()
     else:
