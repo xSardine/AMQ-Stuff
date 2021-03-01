@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fast @
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @author       xSardine
 // @description  press a key and @someone
 // @match        https://animemusicquiz.com/*
 // @grant        none
