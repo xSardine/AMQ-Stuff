@@ -1,6 +1,7 @@
 # Rotation background CSS generator
 
 ## What it does
+Help you have multiple background as a diaporama for AMQ:
 Get an URL link automatically for all the files in the directory and generate CSS code necessary to add to Elodie's script
 
 ## Usage
