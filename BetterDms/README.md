@@ -2,8 +2,8 @@
 
 ## What it does
 Bigger_DMs: CSS code to add to Elodie's script to make your DMs bigger in exchange of your XP bar and levels
-DMs_Timestamps: Add the time at which the message has been sent (Advised to use it along the bigger DM code or else it's too small)
 
+DMs_Timestamps: Add the time at which the message has been sent (Advised to use it along the bigger DM code or else it's too small)
 
 ## Usage
 ### What to download
