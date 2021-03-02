@@ -1,7 +1,7 @@
 # Special Character Macro
 
 ## What it does
-Let you use macro for typing stuff in chat
+Let you use macro for typing stuff.
 
 Currently, the script let you press f2 to type ō and f4 to type ū, and ctrl+1 to type @husahusahusahusa (fuck his name)
 
