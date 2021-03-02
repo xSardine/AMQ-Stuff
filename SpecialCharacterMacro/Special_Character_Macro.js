@@ -6,7 +6,7 @@
 // @description  press a key and @someone
 // @match        https://animemusicquiz.com/*
 // @grant        none
-// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/special_character_macro/special_character_macro.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.js
 // ==/UserScript==
 
 
