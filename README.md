@@ -9,4 +9,4 @@ Makes your DMs looks better
 Get an URL automatically for all the files in the directory and generate CSS code necessary to add to Elodie's script and have a diaporama as background
 
 - SpecialCharacterMacro:
-Let you use macro for typing stuff in chat
+Let you use macro for typing stuff
