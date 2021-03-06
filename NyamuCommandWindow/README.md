@@ -38,3 +38,5 @@ it let you use Nyamu's command which are:
 
 #### Customize it
 If you want to change the key you have to press to open the command window, you just have to change the values of `if(event.altKey && event.keyCode==80)` with what you want using this website: https://keycode.info/
+
+You can also customize every command, if you want to type /at instead of /autothrow for example, you would just have to change `payload.message.startsWith("/autothrow")` with `payload.message.startsWith("/at")`
