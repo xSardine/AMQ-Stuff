@@ -3,7 +3,9 @@
 ## What it does
 Let you type nyamu's chat command in a personal windows instead of chat
 
-Currently, the script let you alt+p to open the command windows
+Currently, the script let you press alt+p to open the command windows
+
+Nyamu's script if you would rather use chat: https://github.com/nyamu-amq/amq_scripts/blob/master/amqChatCommands.user.js
 
 ## Usage
 ### How to download it
@@ -36,3 +38,5 @@ it let you use Nyamu's command which are:
 
 #### Customize it
 If you want to change the key you have to press to open the command window, you just have to change the values of `if(event.altKey && event.keyCode==80)` with what you want using this website: https://keycode.info/
+
+You can also customize every command, if you want to type /at instead of /autothrow for example, you just have to change the second value in the `commandMapping` dictionary
