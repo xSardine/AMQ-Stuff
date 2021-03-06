@@ -3,7 +3,7 @@
 ## What it does
 Let you type nyamu's chat command in a personal windows instead of chat
 
-Currently, the script let you alt+p to open the command windows
+Currently, the script let you press alt+p to open the command windows
 
 ## Usage
 ### How to download it
