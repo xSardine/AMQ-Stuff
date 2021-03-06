@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         DMs Timestamps
+// @name         AMQ DMs Timestamps
 // @namespace    https://github.com/xSardine
 // @version      1.0
 // @description  Adds timestamps to DMs

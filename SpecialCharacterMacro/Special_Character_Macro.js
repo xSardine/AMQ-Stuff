@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Fast @
+// @name         AMQ Special Character Macro
 // @namespace    https://github.com/xSardine
 // @version      1.0
 // @author       xSardine
