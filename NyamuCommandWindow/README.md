@@ -5,6 +5,8 @@ Let you type nyamu's chat command in a personal windows instead of chat
 
 Currently, the script let you press alt+p to open the command windows
 
+Nyamu's script if you would rather use chat: https://github.com/nyamu-amq/amq_scripts/blob/master/amqChatCommands.user.js
+
 ## Usage
 ### How to download it
 Download tampermonkey, and copy and paste the content of the .js file in a new tampermonkey script
