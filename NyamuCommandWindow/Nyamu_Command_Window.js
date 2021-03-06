@@ -2,7 +2,7 @@
 // @name         AMQ Nyamu's Command Window
 // @namespace    https://github.com/xSardine
 // @version      1.0
-// @author       xSardine
+// @author       Nyamu & xSardine
 // @description  Let you type commands in a window instead of in chat
 // @match        https://animemusicquiz.com/*
 // @grant        none
