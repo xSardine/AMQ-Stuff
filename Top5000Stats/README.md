@@ -17,9 +17,9 @@ There is two way
 - Download your sheet from google sheet: `File` → `Download` → `OpenDocument Format (.ods)` and move it into the `Top5000Stats` folder newly created.
 
 **or** :
-- Only do the third point and send it to me via DM if you don't want to download python and the code. I'll run it for you.
+- Only do the third point and send it to me via DM if you don't want to download python and the code, and/or you don't trust my sketchy files. I'll run it for you.
 
-~~The more people do the first version the less work I have to do~~
+~~The more people do the first version the less work I have to do and the more flexible they will be able in checking their stats with different settings~~
 
 ## **How to use it**
 
