@@ -14,3 +14,6 @@ Nyamu's script if you would rather use it on chat: https://github.com/nyamu-amq/
 
 - SpecialCharacterMacro:
 Let you use macro for typing stuff
+
+- Top5000Stats:
+Let you get stats concerning Saro's TOP 5000 openings (useless if you're not part of it)
