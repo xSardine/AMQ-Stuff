@@ -17,9 +17,9 @@ There is two way
 - Download your sheet from google sheet: `File` → `Download` → `OpenDocument Format (.ods)` and move it into the `Top5000Stats` folder newly created.
 
 **or** :
-- Only do the third point and send it to me via DM if you don't want to download python and the code. I'll run it for you.
+- Only do the third point and send it to me via DM if you don't want to download python and the code, and/or you don't trust my sketchy files. I'll run it for you.
 
-~~The more people do the first version the less work I have to do~~
+~~The more people do the first version the less work I have to do and the more flexible it is for them to check their stats with different settings~~
 
 ## **How to use it**
 
@@ -49,9 +49,9 @@ You can customize some settings in `ProcessingUserList.py`:
 This algorithm automatically maps an artist with a given ID, that way I can easily get every song for a given artists. However I can't **fully** automate it.
 
 - 85% is automated: Basic artists
-- 10% is semi-automated: Artists that have multiple names or that Saro typo'd                                                 (i.e. Afilia Saga / Afilia Saga East)
-- another 2% is semi-automated: Artists that contains "&" or "," in their name                                                    (ie. Kishida Kyodan &THE Akeboshi Rockets)
-- 3% will need to be manual: Different artists with the same name                                                                       (i.e. Minami (DomexKano) / Minami (Kuribayashi))
+- 10% is semi-automated: Artists that have multiple names or that Saro typo'd (i.e. Afilia Saga / Afilia Saga East)
+- another 2% is semi-automated: Artists that contains "&" or "," in their name (ie. Kishida Kyodan &THE Akeboshi Rockets)
+- 3% will need to be manually done: Different artists with the same name (i.e. Minami (DomexKano) / Minami (Kuribayashi))
 
 For the 2 middle cases, if you find an artist or combo of artists that I've yet to add to my exceptions in `ProcessingArtists.py`, you can DM me on Discord.
 
