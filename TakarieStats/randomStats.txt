@@ -1,0 +1,147 @@
+Who has the ultimate tastes (distance from average)
+EruisKawaii:  8.159183673469386
+kar72:  8.312244897959184
+Sgtvp:  9.575510204081631
+Yokipi:  10.618367346938774
+Jlin2:  10.887755102040813
+AluX:  10.926530612244896
+wswsasd:  10.99795918367347
+Revel:  11.024489795918367
+Malorn44:  11.118367346938774
+xSardine:  12.973469387755102
+likejaxirl:  13.34693877551021
+husa:  14.479591836734688
+Klinsk:  15.930612244897961
+BlackWind9:  17.257142857142863
+
+
+
+Who has the ultimate tastes (distance from rank)
+kar72:  6.6571428571428575
+EruisKawaii:  7.2
+Sgtvp:  8.6
+Yokipi:  10.771428571428572
+AluX:  10.914285714285715
+wswsasd:  11.371428571428572
+Malorn44:  11.714285714285714
+Jlin2:  11.742857142857142
+Revel:  11.771428571428572
+xSardine:  14.228571428571428
+likejaxirl:  14.257142857142858
+husa:  16.2
+Klinsk:  18.457142857142856
+BlackWind9:  20.6
+
+
+
+EruisKawaii
+BFF: Klinsk
+BFF: husa
+BFF: xSardine
+Worst ennemy: Malorn44
+Worst ennemy: kar72
+Worst ennemy: EruisKawaii
+
+BlackWind9
+BFF: AluX
+BFF: Malorn44
+BFF: Yokipi
+Worst ennemy: Revel
+Worst ennemy: likejaxirl
+Worst ennemy: BlackWind9
+
+AluX
+BFF: Klinsk
+BFF: husa
+BFF: likejaxirl
+Worst ennemy: Sgtvp
+Worst ennemy: kar72
+Worst ennemy: AluX
+
+Revel
+BFF: BlackWind9
+BFF: Yokipi
+BFF: xSardine
+Worst ennemy: Sgtvp
+Worst ennemy: kar72
+Worst ennemy: Revel
+
+Yokipi
+BFF: likejaxirl
+BFF: Klinsk
+BFF: husa
+Worst ennemy: kar72
+Worst ennemy: EruisKawaii
+Worst ennemy: Yokipi
+
+Jlin2
+BFF: likejaxirl
+BFF: Klinsk
+BFF: xSardine
+Worst ennemy: Yokipi
+Worst ennemy: EruisKawaii
+Worst ennemy: Jlin2
+
+husa
+BFF: likejaxirl
+BFF: xSardine
+BFF: wswsasd
+Worst ennemy: Jlin2
+Worst ennemy: EruisKawaii
+Worst ennemy: husa
+
+wswsasd
+BFF: BlackWind9
+BFF: Klinsk
+BFF: likejaxirl
+Worst ennemy: Sgtvp
+Worst ennemy: Yokipi
+Worst ennemy: wswsasd
+
+Malorn44
+BFF: Klinsk
+BFF: husa
+BFF: wswsasd
+Worst ennemy: kar72
+Worst ennemy: EruisKawaii
+Worst ennemy: Malorn44
+
+kar72
+BFF: Klinsk
+BFF: husa
+BFF: xSardine
+Worst ennemy: Sgtvp
+Worst ennemy: EruisKawaii
+Worst ennemy: kar72
+
+Klinsk
+BFF: AluX
+BFF: Revel
+BFF: Sgtvp
+Worst ennemy: likejaxirl
+Worst ennemy: kar72
+Worst ennemy: Klinsk
+
+Sgtvp
+BFF: Klinsk
+BFF: husa
+BFF: likejaxirl
+Worst ennemy: EruisKawaii
+Worst ennemy: kar72
+Worst ennemy: Sgtvp
+
+likejaxirl
+BFF: Yokipi
+BFF: Jlin2
+BFF: Klinsk
+Worst ennemy: EruisKawaii
+Worst ennemy: kar72
+Worst ennemy: likejaxirl
+
+xSardine
+BFF: husa
+BFF: Klinsk
+BFF: likejaxirl
+Worst ennemy: AluX
+Worst ennemy: kar72
+Worst ennemy: xSardine
