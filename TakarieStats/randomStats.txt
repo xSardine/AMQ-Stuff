@@ -35,113 +35,141 @@ BlackWind9:  20.6
 
 
 EruisKawaii
-BFF: Klinsk
-BFF: husa
-BFF: xSardine
-Worst ennemy: Malorn44
-Worst ennemy: kar72
-Worst ennemy: EruisKawaii
+BFF: kar72
+BFF: Sgtvp
+BFF: Yokipi
+BFF: Malorn44
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: xSardine
+Worst ennemy: husa
 
 BlackWind9
+BFF: likejaxirl
+BFF: husa
+BFF: wswsasd
+BFF: Revel
+Worst ennemy: AluX
+Worst ennemy: xSardine
+Worst ennemy: Malorn44
+Worst ennemy: Yokipi
+
+AluX
+BFF: kar72
+BFF: EruisKawaii
+BFF: Sgtvp
+BFF: Malorn44
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: husa
+Worst ennemy: likejaxirl
+
+Revel
+BFF: kar72
+BFF: Sgtvp
+BFF: AluX
+BFF: EruisKawaii
+Worst ennemy: Klinsk
+Worst ennemy: BlackWind9
+Worst ennemy: Yokipi
+Worst ennemy: xSardine
+
+Yokipi
+BFF: EruisKawaii
+BFF: Sgtvp
+BFF: kar72
+BFF: wswsasd
+Worst ennemy: BlackWind9
+Worst ennemy: likejaxirl
+Worst ennemy: Klinsk
+Worst ennemy: husa
+
+Jlin2
+BFF: EruisKawaii
+BFF: Yokipi
+BFF: Sgtvp
+BFF: wswsasd
+Worst ennemy: likejaxirl
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: Malorn44
+
+husa
+BFF: Jlin2
+BFF: EruisKawaii
+BFF: kar72
+BFF: Revel
+Worst ennemy: AluX
+Worst ennemy: likejaxirl
+Worst ennemy: wswsasd
+Worst ennemy: xSardine
+
+wswsasd
+BFF: Sgtvp
+BFF: Yokipi
+BFF: Jlin2
+BFF: kar72
+Worst ennemy: husa
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: likejaxirl
+
+Malorn44
+BFF: EruisKawaii
+BFF: Sgtvp
+BFF: kar72
+BFF: AluX
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: husa
+Worst ennemy: wswsasd
+
+kar72
+BFF: EruisKawaii
+BFF: Sgtvp
+BFF: AluX
+BFF: Yokipi
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: husa
+Worst ennemy: xSardine
+
+Klinsk
+BFF: EruisKawaii
+BFF: likejaxirl
+BFF: Jlin2
+BFF: kar72
+Worst ennemy: BlackWind9
+Worst ennemy: AluX
+Worst ennemy: Revel
+Worst ennemy: Malorn44
+
+Sgtvp
+BFF: kar72
+BFF: EruisKawaii
+BFF: Yokipi
+BFF: wswsasd
+Worst ennemy: BlackWind9
+Worst ennemy: Klinsk
+Worst ennemy: husa
+Worst ennemy: likejaxirl
+
+likejaxirl
+BFF: Malorn44
+BFF: kar72
+BFF: EruisKawaii
+BFF: Revel
+Worst ennemy: Jlin2
+Worst ennemy: husa
+Worst ennemy: Yokipi
+Worst ennemy: Klinsk
+
+xSardine
+BFF: Sgtvp
 BFF: AluX
 BFF: Malorn44
 BFF: Yokipi
-Worst ennemy: Revel
-Worst ennemy: likejaxirl
 Worst ennemy: BlackWind9
-
-AluX
-BFF: Klinsk
-BFF: husa
-BFF: likejaxirl
-Worst ennemy: Sgtvp
-Worst ennemy: kar72
-Worst ennemy: AluX
-
-Revel
-BFF: BlackWind9
-BFF: Yokipi
-BFF: xSardine
-Worst ennemy: Sgtvp
-Worst ennemy: kar72
-Worst ennemy: Revel
-
-Yokipi
-BFF: likejaxirl
-BFF: Klinsk
-BFF: husa
-Worst ennemy: kar72
-Worst ennemy: EruisKawaii
-Worst ennemy: Yokipi
-
-Jlin2
-BFF: likejaxirl
-BFF: Klinsk
-BFF: xSardine
-Worst ennemy: Yokipi
-Worst ennemy: EruisKawaii
-Worst ennemy: Jlin2
-
-husa
-BFF: likejaxirl
-BFF: xSardine
-BFF: wswsasd
-Worst ennemy: Jlin2
-Worst ennemy: EruisKawaii
-Worst ennemy: husa
-
-wswsasd
-BFF: BlackWind9
-BFF: Klinsk
-BFF: likejaxirl
-Worst ennemy: Sgtvp
-Worst ennemy: Yokipi
-Worst ennemy: wswsasd
-
-Malorn44
-BFF: Klinsk
-BFF: husa
-BFF: wswsasd
-Worst ennemy: kar72
-Worst ennemy: EruisKawaii
-Worst ennemy: Malorn44
-
-kar72
-BFF: Klinsk
-BFF: husa
-BFF: xSardine
-Worst ennemy: Sgtvp
-Worst ennemy: EruisKawaii
-Worst ennemy: kar72
-
-Klinsk
-BFF: AluX
-BFF: Revel
-BFF: Sgtvp
-Worst ennemy: likejaxirl
-Worst ennemy: kar72
 Worst ennemy: Klinsk
-
-Sgtvp
-BFF: Klinsk
-BFF: husa
-BFF: likejaxirl
-Worst ennemy: EruisKawaii
-Worst ennemy: kar72
-Worst ennemy: Sgtvp
-
-likejaxirl
-BFF: Yokipi
-BFF: Jlin2
-BFF: Klinsk
-Worst ennemy: EruisKawaii
-Worst ennemy: kar72
+Worst ennemy: husa
 Worst ennemy: likejaxirl
-
-xSardine
-BFF: husa
-BFF: Klinsk
-BFF: likejaxirl
-Worst ennemy: AluX
-Worst ennemy: kar72
-Worst ennemy: xSardine

@@ -88,18 +88,19 @@ def plot_affinity(affinity, rankers):
     plt.show()
 
 def print_affinity(affinity, rankers):
-     for index, ranker in enumerate(affinity):
-        idx = np. argpartition(ranker, -4)[-4:]
-        indices = idx[np. argsort((-ranker)[idx])]
+    for index, ranker in enumerate(affinity):
+        idx = np.argpartition(-ranker, -5)[-5:]
+        indices = idx[np.argsort((ranker)[idx])]
         print(rankers[index])
         for indice in indices[1:]:
             print("BFF: " + rankers[indice])
         
-        idx = np.argpartition(-ranker, -4)[-4:]
-        indices = idx[np. argsort((-ranker)[idx])]
-        for indice in indices[1:]:
+        idx = np.argpartition(ranker, -4)[-4:]
+        indices = idx[np.argsort((-ranker)[idx])]
+        for indice in indices:
             print("Worst ennemy: " + rankers[indice])
         print()
+    print("\n\n")
 
 
 def process_cosine_affinity(dataframe, ignored_players=[]):
@@ -152,4 +153,4 @@ if __name__ == "__main__":
             process_tastes_rank(dataframe, ignored)
 
         process_cosine_affinity(dataframe, [])
-        process_rank_affinity(dataframe, ["BlackWind9"])
+        process_rank_affinity(dataframe, [])
