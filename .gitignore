@@ -1,5 +1,6 @@
 
 Top5000Stats/Top anime openings - xSardine.txt
-*.ods
+*/**.ods
+*/**.xlsx
 *.json
 *.pyc
