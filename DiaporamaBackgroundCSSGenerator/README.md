@@ -7,7 +7,7 @@ Get an URL link automatically for all the files in the directory and generate CS
 
 ## Usage
 ### What to download
-If you have python installed, download the .py
+If you have python installed, download the .py (dependences: requests)
 
 If you don't or you don't know, download the .exe
 

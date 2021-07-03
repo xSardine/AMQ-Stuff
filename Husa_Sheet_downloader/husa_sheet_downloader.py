@@ -98,7 +98,7 @@ if len(sheet_list) > 0:  # If I found an .xlsx
                 "-map_metadata",
                 "-1",
                 "-map_chapters",
-                "-1" '"%s"' % create_file_name_Windows(song_name, output_path),
+                "-1 " '"%s"' % create_file_name_Windows(song_name, output_path),
             ]
             print(song_name, "->", link)
             print(" ".join(command))

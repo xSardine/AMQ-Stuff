@@ -9,7 +9,7 @@ If you don't have ffmpeg installed, download it, and configure it as an environm
 
 If you don't have python installed, download it, and configure it as an environment variable
 
-Then in the cmd, use `pip install openpyxl`
+Then in the cmd, use `python -m pip install openpyxl requests`
 
 Download your sheet from google sheet: `File` → `Download` → `Microsoft Excel (.xlsx)` and move it into the same folder as the one containing the .py file
 
@@ -24,9 +24,15 @@ You can find what you need to change at the start of the python file.
 - `output_path = Path("mp4")` -> name of the folder you want your files to be saved (here it is <current_directory/mp4/>)
 
 Once you're done, double click it, **or** right click -> open with python
-**or** run the command `python3 husa_sheet_downloader.py`
+**or** run the command `python <path_to_script>/husa_sheet_downloader.py`
 
 ### Customization:
 
 You can change the command you want to be done to the webm by searching the `command` variable (ctrl+f -> command)
 Currently, it convert the webm to an mp4, but you can modify it by changing the command just like you would do with ffmpeg while keeping the same format as the current one.
+
+
+### Restart from where you ended
+
+If for any reasons you stopped the script and don't want to start from the beginning, just do not touch or rename anything in the directory.
+You can change the "-y" in the `command` variable to "-n", and it should skip anything that you already downloaded.
