@@ -1,0 +1,1718 @@
+/*@-moz-document domain(animemusicquiz.com)*/
+/* Thank you to: Klem, Juvian, Reborn, Tsukassa and LolCats and Husa for providing a bunch of the code!*/
+
+/* You can pretty much change any element here. Feel free to message me if you want to find a certain thing to change */
+
+/*-MelodyElodie*/
+
+:root
+{
+    /* Optional: if you want a different background for chat. Phone wallpapers tend to work best. */
+  --chatbg: rgba(0, 0, 0, 0.7);
+}
+
+
+body {
+   height: 100%;
+
+   /* nb_background: Number of background you will have (see below)*/
+   /* rotation_time: Duration between each rotation*/
+   --nb_backgrounds: 167;
+   --rotation_time:90s;
+
+   animation: background_rotation calc(var(--nb_backgrounds) * var(--rotation_time)) linear 0s infinite;
+}
+
+@keyframes background_rotation {
+   0.0%{
+      --bg: url(https://i.ibb.co/Wxw4CnV/c7cada31c81d.jpg);
+   }
+
+   0.5988023952095808%{
+      --bg: url(https://i.ibb.co/XVcMtj2/62470bd057b3.png);
+   }
+
+   1.1976047904191616%{
+      --bg: url(https://i.ibb.co/Hh3CGj7/d988bc0ffdf3.png);
+   }
+
+   1.7964071856287425%{
+      --bg: url(https://i.ibb.co/mRxxRsN/a366f50b674e.png);
+   }
+
+   2.395209580838323%{
+      --bg: url(https://i.ibb.co/JFd8y1T/c545e8e73d25.jpg);
+   }
+
+   2.994011976047904%{
+      --bg: url(https://i.ibb.co/br3yCHk/02aa66da2d63.jpg);
+   }
+
+   3.592814371257485%{
+      --bg: url(https://i.ibb.co/syy87jK/9cfb7d7aa916.png);
+   }
+
+   4.191616766467066%{
+      --bg: url(https://i.ibb.co/n7bfx0G/9b150b3719ce.jpg);
+   }
+
+   4.790419161676646%{
+      --bg: url(https://i.ibb.co/0YmF5qQ/965e01ea4920.jpg);
+   }
+
+   5.389221556886227%{
+      --bg: url(https://i.ibb.co/dMvN06L/f3af3cd66943.png);
+   }
+
+   5.988023952095808%{
+      --bg: url(https://i.ibb.co/mF7W8kT/169e05194b69.jpg);
+   }
+
+   6.586826347305388%{
+      --bg: url(https://i.ibb.co/Qd39R6Q/68ddb9743bce.jpg);
+   }
+
+   7.18562874251497%{
+      --bg: url(https://i.ibb.co/rvYWHKp/77db4b22dc78.jpg);
+   }
+
+   7.7844311377245505%{
+      --bg: url(https://i.ibb.co/G2bg0gW/1b4f52c2cbaa.jpg);
+   }
+
+   8.383233532934131%{
+      --bg: url(https://i.ibb.co/sC1VvvP/b8326094f00a.jpg);
+   }
+
+   8.982035928143711%{
+      --bg: url(https://i.ibb.co/pX11sS8/2e7485ecbdd3.png);
+   }
+
+   9.580838323353293%{
+      --bg: url(https://i.ibb.co/ssy5zWL/14a72cd0753d.png);
+   }
+
+   10.179640718562874%{
+      --bg: url(https://i.ibb.co/VjJhsYQ/d06f4acafb72.jpg);
+   }
+
+   10.778443113772454%{
+      --bg: url(https://i.ibb.co/7tkn2wJ/2c0fb8cc6918.png);
+   }
+
+   11.377245508982035%{
+      --bg: url(https://i.ibb.co/j3pVRcd/38a1c3315896.jpg);
+   }
+
+   11.976047904191615%{
+      --bg: url(https://i.ibb.co/Mn4BJFL/88f63052869e.jpg);
+   }
+
+   12.574850299401197%{
+      --bg: url(https://i.ibb.co/3hfNmYB/dfd8a4496ded.jpg);
+   }
+
+   13.173652694610777%{
+      --bg: url(https://i.ibb.co/pw7jsBQ/8abc61e3dfd4.jpg);
+   }
+
+   13.772455089820358%{
+      --bg: url(https://i.ibb.co/N2Hqp1n/94b32caca0b9.jpg);
+   }
+
+   14.37125748502994%{
+      --bg: url(https://i.ibb.co/zZCbfjj/2ea43506b72f.jpg);
+   }
+
+   14.97005988023952%{
+      --bg: url(https://i.ibb.co/tYDCzGt/69660024634f.jpg);
+   }
+
+   15.568862275449101%{
+      --bg: url(https://i.ibb.co/ctfwDYV/e235f8f2d341.jpg);
+   }
+
+   16.16766467065868%{
+      --bg: url(https://i.ibb.co/vsVCNSs/c363b92f3918.jpg);
+   }
+
+   16.766467065868262%{
+      --bg: url(https://i.ibb.co/xY7vZ2d/826514b5db67.jpg);
+   }
+
+   17.365269461077844%{
+      --bg: url(https://i.ibb.co/g9FpFLn/2ae2202da9bf.jpg);
+   }
+
+   17.964071856287422%{
+      --bg: url(https://i.ibb.co/Rv1KJQS/3e32be973d98.jpg);
+   }
+
+   18.562874251497004%{
+      --bg: url(https://i.ibb.co/YdFttJt/1b02257c5ece.png);
+   }
+
+   19.161676646706585%{
+      --bg: url(https://i.ibb.co/304j4qh/4b1621a0af9f.jpg);
+   }
+
+   19.760479041916167%{
+      --bg: url(https://i.ibb.co/p0MMf0t/ddb781cef26d.png);
+   }
+
+   20.35928143712575%{
+      --bg: url(https://i.ibb.co/WknqR9L/a064d2532641.jpg);
+   }
+
+   20.958083832335326%{
+      --bg: url(https://i.ibb.co/HBLcMNP/c863752eb43d.png);
+   }
+
+   21.556886227544908%{
+      --bg: url(https://i.ibb.co/ChB47R6/3b91b3ffa3bb.png);
+   }
+
+   22.15568862275449%{
+      --bg: url(https://i.ibb.co/jhbpy6F/067b8e5c662b.jpg);
+   }
+
+   22.75449101796407%{
+      --bg: url(https://i.ibb.co/CVvp6D8/0b5164f6c509.png);
+   }
+
+   23.35329341317365%{
+      --bg: url(https://i.ibb.co/rQ1QK9x/61a4e7c1a1aa.jpg);
+   }
+
+   23.95209580838323%{
+      --bg: url(https://i.ibb.co/LPbkz9q/8382d4f42fd1.jpg);
+   }
+
+   24.550898203592812%{
+      --bg: url(https://i.ibb.co/b1GdpX0/90dc5e45c2b3.png);
+   }
+
+   25.149700598802394%{
+      --bg: url(https://i.ibb.co/yyjzhTZ/3558047c641f.png);
+   }
+
+   25.748502994011975%{
+      --bg: url(https://i.ibb.co/0mP6ZSP/fa28724d18c3.jpg);
+   }
+
+   26.347305389221553%{
+      --bg: url(https://i.ibb.co/TcH9BZK/e41a949917de.png);
+   }
+
+   26.946107784431135%{
+      --bg: url(https://i.ibb.co/9nZgCKp/0ef4d4dc9742.jpg);
+   }
+
+   27.544910179640716%{
+      --bg: url(https://i.ibb.co/hVBBY7B/7c762ccd5c2c.jpg);
+   }
+
+   28.143712574850298%{
+      --bg: url(https://i.ibb.co/RBwjgFt/90a045fdf575.jpg);
+   }
+
+   28.74251497005988%{
+      --bg: url(https://i.ibb.co/8BHYZ9h/ca0e38595216.jpg);
+   }
+
+   29.341317365269457%{
+      --bg: url(https://i.ibb.co/x31fnZ9/559994baeecf.jpg);
+   }
+
+   29.94011976047904%{
+      --bg: url(https://i.ibb.co/3cdbn6k/e7eb019cb248.jpg);
+   }
+
+   30.53892215568862%{
+      --bg: url(https://i.ibb.co/98CdZ0Q/319a5c6f5306.jpg);
+   }
+
+   31.137724550898202%{
+      --bg: url(https://i.ibb.co/rH7kjjn/2a6218e7170f.jpg);
+   }
+
+   31.73652694610778%{
+      --bg: url(https://i.ibb.co/GTsSDJ1/710027f99e36.png);
+   }
+
+   32.33532934131736%{
+      --bg: url(https://i.ibb.co/X7q23KT/044d026d6b20.png);
+   }
+
+   32.93413173652694%{
+      --bg: url(https://i.ibb.co/jThV2sV/2ba058439141.png);
+   }
+
+   33.532934131736525%{
+      --bg: url(https://i.ibb.co/k83T5tY/811e06d7866f.jpg);
+   }
+
+   34.131736526946106%{
+      --bg: url(https://i.ibb.co/0fMNVgg/7c4de0c39b5f.jpg);
+   }
+
+   34.73053892215569%{
+      --bg: url(https://i.ibb.co/S68WLfG/cef763c47bdc.png);
+   }
+
+   35.32934131736527%{
+      --bg: url(https://i.ibb.co/9bgDDDL/db4cc01047c4.jpg);
+   }
+
+   35.928143712574844%{
+      --bg: url(https://i.ibb.co/JmPGP4P/c7c0dddb2b24.jpg);
+   }
+
+   36.526946107784426%{
+      --bg: url(https://i.ibb.co/k3BLSD6/c573488cf189.jpg);
+   }
+
+   37.12574850299401%{
+      --bg: url(https://i.ibb.co/KFK49W3/7df4e9d3dc7a.jpg);
+   }
+
+   37.72455089820359%{
+      --bg: url(https://i.ibb.co/BBVG7MG/23f482b173bc.jpg);
+   }
+
+   38.32335329341317%{
+      --bg: url(https://i.ibb.co/gJWbtch/71c043136256.jpg);
+   }
+
+   38.92215568862275%{
+      --bg: url(https://i.ibb.co/FsJ02L7/ae8e1fef06b5.jpg);
+   }
+
+   39.52095808383233%{
+      --bg: url(https://i.ibb.co/zZVwBb9/474e7eb22579.png);
+   }
+
+   40.119760479041915%{
+      --bg: url(https://i.ibb.co/G73GRFf/d66e7cfe78e9.jpg);
+   }
+
+   40.7185628742515%{
+      --bg: url(https://i.ibb.co/Rbr7v9D/08a64039a2b1.jpg);
+   }
+
+   41.31736526946107%{
+      --bg: url(https://i.ibb.co/ZGBKgHq/2352f8caa601.jpg);
+   }
+
+   41.91616766467065%{
+      --bg: url(https://i.ibb.co/hHKmkrT/e94fe64d763d.png);
+   }
+
+   42.514970059880234%{
+      --bg: url(https://i.ibb.co/7pfZ7VP/19c922bf8f4c.jpg);
+   }
+
+   43.113772455089816%{
+      --bg: url(https://i.ibb.co/6XwFQ2p/92bc77cde611.jpg);
+   }
+
+   43.7125748502994%{
+      --bg: url(https://i.ibb.co/5x1GcMZ/d0379ca42f97.jpg);
+   }
+
+   44.31137724550898%{
+      --bg: url(https://i.ibb.co/DkWzkHt/b7687384c33e.png);
+   }
+
+   44.91017964071856%{
+      --bg: url(https://i.ibb.co/GFz1b1b/b60568c8d138.jpg);
+   }
+
+   45.50898203592814%{
+      --bg: url(https://i.ibb.co/x8SMHVL/bdbf3966d9dc.png);
+   }
+
+   46.10778443113772%{
+      --bg: url(https://i.ibb.co/tYdp3NQ/bab5f842daa0.png);
+   }
+
+   46.7065868263473%{
+      --bg: url(https://i.ibb.co/9YtCcmY/28ee68f569f6.png);
+   }
+
+   47.30538922155688%{
+      --bg: url(https://i.ibb.co/7jN09XN/wallup-net.jpg);
+   }
+
+   47.90419161676646%{
+      --bg: url(https://i.ibb.co/NxHMBG3/4e51d338cf07.jpg);
+   }
+
+   48.50299401197604%{
+      --bg: url(https://i.ibb.co/ZL9s3NG/75aa2bf4d335.jpg);
+   }
+
+   49.101796407185624%{
+      --bg: url(https://i.ibb.co/3c93wVV/587c5a601a2b.jpg);
+   }
+
+   49.700598802395206%{
+      --bg: url(https://i.ibb.co/bbBJJg9/193acf69e085.jpg);
+   }
+
+   50.29940119760479%{
+      --bg: url(https://i.ibb.co/wCrxMjK/cfd99267a787.jpg);
+   }
+
+   50.89820359281437%{
+      --bg: url(https://i.ibb.co/25tNbyq/4c6574ce5d5d.jpg);
+   }
+
+   51.49700598802395%{
+      --bg: url(https://i.ibb.co/GP9L0Vq/3bd98b4ba95c.png);
+   }
+
+   52.095808383233525%{
+      --bg: url(https://i.ibb.co/mRk5g5d/d4ea0939e93e.png);
+   }
+
+   52.694610778443106%{
+      --bg: url(https://i.ibb.co/b3xMDyg/6cb9816a3318.jpg);
+   }
+
+   53.29341317365269%{
+      --bg: url(https://i.ibb.co/0B77xgH/249bff21a1b8.jpg);
+   }
+
+   53.89221556886227%{
+      --bg: url(https://i.ibb.co/SK9RPhM/f0d733c8f0ab.png);
+   }
+
+   54.49101796407185%{
+      --bg: url(https://i.ibb.co/h86jd5b/1b75dd3546d8.jpg);
+   }
+
+   55.08982035928143%{
+      --bg: url(https://i.ibb.co/D9xThST/15d9f54b0fd0.jpg);
+   }
+
+   55.688622754491014%{
+      --bg: url(https://i.ibb.co/zfdZwCG/14888065c88d.jpg);
+   }
+
+   56.287425149700596%{
+      --bg: url(https://i.ibb.co/BLsDdR6/caf597ddb27b.jpg);
+   }
+
+   56.88622754491018%{
+      --bg: url(https://i.ibb.co/T4PYv2j/00d3236f4ed1.jpg);
+   }
+
+   57.48502994011976%{
+      --bg: url(https://i.ibb.co/pWSX8KN/bdebada1e48e.png);
+   }
+
+   58.08383233532933%{
+      --bg: url(https://i.ibb.co/NWdytwW/4ab9045ccfb8.jpg);
+   }
+
+   58.682634730538915%{
+      --bg: url(https://i.ibb.co/v3mpPz5/0ca974586d30.jpg);
+   }
+
+   59.281437125748496%{
+      --bg: url(https://i.ibb.co/XkYBP0L/6ab896c8f984.png);
+   }
+
+   59.88023952095808%{
+      --bg: url(https://i.ibb.co/qg9FhxV/0da11d179378.jpg);
+   }
+
+   60.47904191616766%{
+      --bg: url(https://i.ibb.co/bLR9t40/6cecec7924ac.png);
+   }
+
+   61.07784431137724%{
+      --bg: url(https://i.ibb.co/dPv356R/5adc6240985f.jpg);
+   }
+
+   61.67664670658682%{
+      --bg: url(https://i.ibb.co/zSf2TQ1/729eed7a5ea9.png);
+   }
+
+   62.275449101796404%{
+      --bg: url(https://i.ibb.co/3d0PXSc/988e2479ad3d.png);
+   }
+
+   62.874251497005986%{
+      --bg: url(https://i.ibb.co/dtBCMvv/b75ff15768c2.jpg);
+   }
+
+   63.47305389221556%{
+      --bg: url(https://i.ibb.co/PQhXk22/45ba4fff8c9b.jpg);
+   }
+
+   64.07185628742515%{
+      --bg: url(https://i.ibb.co/ZT64zt8/85264bb04fe3.jpg);
+   }
+
+   64.67065868263472%{
+      --bg: url(https://i.ibb.co/6WqbXpJ/391c0fc932ff.jpg);
+   }
+
+   65.26946107784431%{
+      --bg: url(https://i.ibb.co/gg70JZz/72c250147ad0.png);
+   }
+
+   65.86826347305389%{
+      --bg: url(https://i.ibb.co/Kzs76Z5/9281d9c7000f.jpg);
+   }
+
+   66.46706586826346%{
+      --bg: url(https://i.ibb.co/2qS63rR/c02afc52ec6f.jpg);
+   }
+
+   67.06586826347305%{
+      --bg: url(https://i.ibb.co/1zmmJ6f/33058b4aad8c.jpg);
+   }
+
+   67.66467065868262%{
+      --bg: url(https://i.ibb.co/TRdRm59/39675bfc7232.jpg);
+   }
+
+   68.26347305389221%{
+      --bg: url(https://i.ibb.co/BCqrdLm/eade4b05f65e.png);
+   }
+
+   68.86227544910179%{
+      --bg: url(https://i.ibb.co/25kkcXF/e1b2b0872291.png);
+   }
+
+   69.46107784431138%{
+      --bg: url(https://i.ibb.co/XWvtCWM/413f76c3ab7c.jpg);
+   }
+
+   70.05988023952095%{
+      --bg: url(https://i.ibb.co/D4JMdpS/9c08bd039fc8.png);
+   }
+
+   70.65868263473054%{
+      --bg: url(https://i.ibb.co/W6B3w57/8c41f286fb9f.jpg);
+   }
+
+   71.25748502994011%{
+      --bg: url(https://i.ibb.co/P95Zdw4/b2ee9bedf9a9.jpg);
+   }
+
+   71.85628742514969%{
+      --bg: url(https://i.ibb.co/8PgtZth/e8c1123c27e7.jpg);
+   }
+
+   72.45508982035928%{
+      --bg: url(https://i.ibb.co/cQGHFGQ/9299113db08a.png);
+   }
+
+   73.05389221556885%{
+      --bg: url(https://i.ibb.co/jkK3Bq4/44d776b931eb.jpg);
+   }
+
+   73.65269461077844%{
+      --bg: url(https://i.ibb.co/5YW3Xyj/ac7c7460352c.jpg);
+   }
+
+   74.25149700598801%{
+      --bg: url(https://i.ibb.co/b3sF57X/88598cff36e5.jpg);
+   }
+
+   74.8502994011976%{
+      --bg: url(https://i.ibb.co/v3vBx1m/4051e8db86ef.png);
+   }
+
+   75.44910179640718%{
+      --bg: url(https://i.ibb.co/gRJ8KRc/6d0cc3b9ee8b.jpg);
+   }
+
+   76.04790419161677%{
+      --bg: url(https://i.ibb.co/CVPz2m0/d01851c96e2d.png);
+   }
+
+   76.64670658682634%{
+      --bg: url(https://i.ibb.co/4J2tmkK/43b74b166027.jpg);
+   }
+
+   77.24550898203591%{
+      --bg: url(https://i.ibb.co/ScyXwJm/30a4dd9c29c8.png);
+   }
+
+   77.8443113772455%{
+      --bg: url(https://i.ibb.co/Jv9XssT/c9b87de8ac86.jpg);
+   }
+
+   78.44311377245508%{
+      --bg: url(https://i.ibb.co/Fmtfcs1/518787a73e09.png);
+   }
+
+   79.04191616766467%{
+      --bg: url(https://i.ibb.co/PWcpkDJ/dfec7f5a1a3c.jpg);
+   }
+
+   79.64071856287424%{
+      --bg: url(https://i.ibb.co/42Xqtvn/fd4baf3907fa.jpg);
+   }
+
+   80.23952095808383%{
+      --bg: url(https://i.ibb.co/zr8wbn6/4397067d8aa4.jpg);
+   }
+
+   80.8383233532934%{
+      --bg: url(https://i.ibb.co/zWg67f4/2f01b3e0d44c.jpg);
+   }
+
+   81.437125748503%{
+      --bg: url(https://i.ibb.co/Y2Wwm8B/ec9c436e8648.jpg);
+   }
+
+   82.03592814371257%{
+      --bg: url(https://i.ibb.co/qmSP42x/3853acf6415a.png);
+   }
+
+   82.63473053892214%{
+      --bg: url(https://i.ibb.co/GWDD20C/97e500eb6e27.jpg);
+   }
+
+   83.23353293413173%{
+      --bg: url(https://i.ibb.co/jh0nCtn/dca34c39d4cd.jpg);
+   }
+
+   83.8323353293413%{
+      --bg: url(https://i.ibb.co/938DBbh/6628ff5de691.png);
+   }
+
+   84.4311377245509%{
+      --bg: url(https://i.ibb.co/jb2qFw3/cff6addf7127.png);
+   }
+
+   85.02994011976047%{
+      --bg: url(https://i.ibb.co/VxQdvPG/b1ac0a913877.png);
+   }
+
+   85.62874251497006%{
+      --bg: url(https://i.ibb.co/KhK83WF/9d0b18f99b6e.jpg);
+   }
+
+   86.22754491017963%{
+      --bg: url(https://i.ibb.co/kgVWXTq/3337bc99d492.jpg);
+   }
+
+   86.82634730538922%{
+      --bg: url(https://i.ibb.co/8PHYvbf/f39976ceadf5.jpg);
+   }
+
+   87.4251497005988%{
+      --bg: url(https://i.ibb.co/jfG5yRr/c2001ab37191.jpg);
+   }
+
+   88.02395209580837%{
+      --bg: url(https://i.ibb.co/C8ZSnZ5/0bd6a0b4869d.jpg);
+   }
+
+   88.62275449101796%{
+      --bg: url(https://i.ibb.co/g42Hmgn/855b763f451f.png);
+   }
+
+   89.22155688622753%{
+      --bg: url(https://i.ibb.co/Sy13TzQ/abefc298c098.jpg);
+   }
+
+   89.82035928143712%{
+      --bg: url(https://i.ibb.co/HTfmrsn/769fb36067f2.jpg);
+   }
+
+   90.4191616766467%{
+      --bg: url(https://i.ibb.co/pnP5d2C/b4c7801d1133.jpg);
+   }
+
+   91.01796407185628%{
+      --bg: url(https://i.ibb.co/9TLMsSf/64e30da80408.jpg);
+   }
+
+   91.61676646706586%{
+      --bg: url(https://i.ibb.co/x5xGpcJ/b1d2555af262.jpg);
+   }
+
+   92.21556886227545%{
+      --bg: url(https://i.ibb.co/whkvt7Q/c00913cbea67.jpg);
+   }
+
+   92.81437125748502%{
+      --bg: url(https://i.ibb.co/VVVQdF0/261aff622151.jpg);
+   }
+
+   93.4131736526946%{
+      --bg: url(https://i.ibb.co/5MKbPmJ/7b48112bb5ad.jpg);
+   }
+
+   94.01197604790418%{
+      --bg: url(https://i.ibb.co/bsjTvT3/0a2f65e06ea1.jpg);
+   }
+
+   94.61077844311376%{
+      --bg: url(https://i.ibb.co/k94cpzt/06e908424efe.png);
+   }
+
+   95.20958083832335%{
+      --bg: url(https://i.ibb.co/vY93Fsf/0177ce8e9026.jpg);
+   }
+
+   95.80838323353292%{
+      --bg: url(https://i.ibb.co/yFSvyrc/7daf9fa56d3c.jpg);
+   }
+
+   96.40718562874251%{
+      --bg: url(https://i.ibb.co/Wxw4CnV/c7cada31c81d.jpg);
+   }
+
+   97.00598802395209%{
+      --bg: url(https://i.ibb.co/k5BLfj2/b4bf3364b61d.png);
+   }
+
+   97.60479041916167%{
+      --bg: url(https://i.ibb.co/Y3jYfX1/02bd78df1bdf.png);
+   }
+
+   98.20359281437125%{
+      --bg: url(https://i.ibb.co/h9PcL6Q/5dea5b08982b.png);
+   }
+
+   98.80239520958082%{
+      --bg: url(https://i.ibb.co/9pbtn0t/843c706b286b.png);
+   }
+
+   99.40119760479041%{
+      --bg: url(https://i.ibb.co/TTFNTzd/25ce7ae116fe.png);
+   }
+
+   100%{
+      --bg: url(https://i.ibb.co/Wxw4CnV/c7cada31c81d.jpg);
+   }
+}
+
+/* To hide the catbox video and let your background shine */
+#qpVideoHider.qpVideoOverlay {
+   background-color: rgb(0 0 0 / 0%);
+}
+
+/* To hide Countdown and let your background shine */
+#qpVideoOverflowContainer {
+   background: rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+/*
+*Bigger DM
+*/
+#chatContainer {
+	height: 330px;
+	left: 240px;
+	width: 1205px;
+}
+ 
+#activeChatScrollContainer {
+    padding-left: 0px;
+}
+ 
+.chatBox {
+    width: 294px;
+    margin-right: 20px;
+    bottom: -30px;
+}
+ 
+.chatTopBar p {
+    width: 182px;
+}
+ 
+.chatContent {
+    height: 209px;
+    margin-left: 2px;
+}
+ 
+.chatBoxContainer {
+    height: 275px;
+    bottom: 0px;
+}
+ 
+.chatBoxContainer.open{
+    transform: translateY(-16%);
+}
+ 
+#xpBarOuter {
+    position: absolute;
+    width: 0px;
+    left: 50000px;
+}
+ 
+#currencyContainer {
+    position: absolute;
+    left: 620px;
+}
+ 
+.chatBoxContainer .header {
+    height: 55px;
+	line-height: 25px;
+}
+/*
+*Bigger DM
+*/
+ 
+
+tr.songData.clickAble.guessHidden {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+tr.songData.clickAble.correctGuess {
+    background-color: rgba(0, 70, 0, .6);
+}
+
+tr.songData.clickAble.incorrectGuess {
+    background-color: rgba(70, 0, 0, .6);
+}
+
+
+#startPage
+{
+  background-image: var(--bg);
+  background-size: cover;
+}
+
+#gameContainer
+{
+  background-image: var(--bg);
+  background-size: cover;
+}
+
+#loadingScreen
+{
+  background-image: var(--bg);
+  background-size: cover;
+}
+
+#gameChatPage > .col-xs-9
+{
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#gcGameChatButton > .col-xs-9
+{
+  color: #ffffff;
+  box-shadow: none;
+  text-shadow: 0 0 20px #96FF96, 0 0 30px #66FF66, 0 0 40px #66FF66, 0 0 50px #66FF66 !important;
+}
+
+#footerMenuBarBackground
+{
+  background: transparent;
+}
+
+#awMainView
+{
+  background-image: var(--bg);
+  background-size: cover;
+}
+
+#gameChatContainer
+{
+  background: var(--chatbg);
+}
+
+.leftShadowBorder, #currencyContainer, #menuBarOptionContainer, #awContentRow .rightShadowBorder
+{
+  box-shadow: none;
+}
+
+#footerMenuBar .menuBar, #rightMenuBarPartContainer::before, .gcList > li:nth-child(2n)
+{
+  background-color: #1b1b1b;
+}
+
+#socialTab:not(.open), #optionsContainer:not(.open)
+{
+  display: none;
+}
+
+#mainMenuSocailButton, #avatarUserImgContainer
+{
+  border: none !important;
+}
+
+#rbMajorFilters
+{
+  background-color: #1b1b1b;
+  padding-left: 10px;
+}
+
+.leftShadowBorder
+{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.gcList > li:nth-child(2n)
+{
+  background: none;
+}
+
+.gcInputContainer
+{
+  background: none;
+}
+
+#xpBarOuter
+{
+  background-color: #1b1b1b;
+}
+
+#xpBarInner
+{
+  background: #177580;
+  box-shadow: none;
+/*Change Colour of XP bar*/;
+}
+
+.levelText
+{
+  color: #e3fcff;
+/*Change Colour of text.*/;
+}
+
+
+/* Legibility fix for guesses */
+
+.qpAvatarAnswerContainer.rightAnswer .qpAvatarAnswer
+{
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.qpAvatarAnswerContainer.wrongAnswer .qpAvatarAnswer
+{
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.avatarIsHostContainer
+{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.avatarIsHostContainerOuter
+{
+  position: initial;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+#mainMenuSocailButton
+{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.lobbyAvatarImgContainer
+{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.menuBarOptionContainer
+{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#avatarUserImgContainer
+{
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+#avatarUserImgContainer:hover
+{
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.lobbyAvatarTextContainer
+{
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#mainMenuSocailButton, #avatarUserImgContainer, #awContentRow, #awMainView, .gcInputContainer, .qpSideContainer, .qpAnimeNameContainer, #qpCounter, #qpWaitBuffering
+{
+  background-color: rgba(0, 0, 0, 0.7);
+  background-size: 100% auto !important;
+  background-attachment: fixed !important;
+  background-position: 0px !important;
+}
+
+#gameChatPage > .col-xs-9
+{
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#gameChatContainer
+{
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#qpAnimeNameHider
+{
+  background-color: #1b1b1b;
+}
+
+#qpInfoHider
+{
+  background-color: #1b1b1b;
+}
+
+#xpBarCoverInner
+{
+  background-color: #1b1b1b;
+}
+
+.qpAvatarNameContainer
+{
+  background-color: #1b1b1b;
+}
+
+.qpAvatarAnswerContainer
+{
+  background-color: #1b1b1b;
+}
+
+.rbRoom, .rbrRoomImageContainer
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.qpAvatarLevelText
+{
+  background-color: #1b1b1b;
+  border-radius: 1px 1px 50px 50px;
+}
+
+.qpAvatarPointText
+{
+  background-color: #1b1b1b;
+  border-radius: 50px 50px 1px 1px;
+}
+
+.qpAvatarNameContainer .avatarIsHostContainer
+{
+  position: fixed;
+  left: 24px;
+  top: 155px;
+  z-index: -1;
+}
+
+#socialTabFriendsText
+{
+  text-indent: -9999px;
+  line-height: 0;
+ /* Collapse the original line */;
+}
+
+#socialTabFriendsText::after
+{
+  content: "Bullies";
+  text-indent: 0;
+  display: block;
+  line-height: initial;
+ /* New content takes up original line height */;
+}
+
+#socialTabFriendsText
+{
+  position: relative;
+  top: 3px;
+  left: 10px;
+}
+
+#socialTabFriendsText
+{
+  text-indent: -9999px;
+  line-height: 0;
+ /* Collapse the original line */;
+}
+
+#socialTabFriendsText::after
+{
+  content: "Bullies";
+  text-indent: 0;
+  display: block;
+  line-height: initial;
+ /* New content takes up original line height */;
+}
+
+.mmSocialButtonOnlineCountContainer
+{
+  position: relative;
+  top: 3px;
+  left: 10px;
+}
+
+.mmSocialButtonOnlineCountContainer
+{
+  content: "Bullies";
+  text-indent: 0;
+  display: block;
+  line-height: initial;
+ /* New content takes up original line height */;
+}
+
+.mmSocialButtonOnlineCountContainer
+{
+  position: relative;
+  top: -1px;
+  left: 5px;
+}
+
+.mmSocialButtonOnlineCountContainer > h5
+{
+  text-indent: -9999px;
+  line-height: 0;
+ /* Collapse the original line */;
+}
+
+.mmSocialButtonOnlineCountContainer::after
+{
+  content: "Bullies Players";
+  text-indent: 0;
+  display: block;
+  line-height: initial;
+ /* New content takes up original line height */;
+}
+
+#mainMenuSocailButton > i
+{
+  display: none;
+}
+
+#mainMenuSocailButton
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mpPlayButton
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mpExpandButton
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mpDriveDonationContainer .button
+{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#mpDriveStatsContainer
+{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#mpAvatarDriveContainer, #mpAvatarDriveHeaderShadowHider .floatingContainer
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mpNewsContainer, #mpNewsTitleShadowHider div
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mpPatreonContainer .button
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#awSkinPreviewContainer
+{
+  background-color: transparent;
+}
+
+.lobbyAvatarNameContainer
+{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.avatarUserImgContainer
+{
+  box-shadow: none;
+}
+
+#brMapContent
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.brShowEntry, .brMapObject
+{
+  background-color: rgba(103, 52, 173);
+}
+
+.topMenuBar
+{
+  background-color: transparent;
+}
+
+.elInputContainer
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#xpBarCoverOuter
+{
+  border-color: #1b1b1b;
+}
+
+#xpBarCoverInner
+{
+  border: none;
+}
+
+#lobbyCountContainer
+{
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#mpRankedButton
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#mpLeaderboardButton
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#lobbyCountContainer
+{
+  top: -15px;
+}
+
+.ps > .ps__scrollbar-y-rail > .ps__scrollbar-y
+{
+  position: absolute;
+      /* please don't change 'position' */
+      background-color: #faf5f5;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+      -webkit-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
+      -o-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+      -moz-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -webkit-border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
+      right: 2px;
+      /* there must be 'right' for ps__scrollbar-y */
+      width: 6px; }
+ .ps:hover > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y {
+      background-color: #2cb0d1; 
+}
+
+#qpHiderText {
+    background: rgba(0, 0, 0, 0.0);
+}
+
+#qpVideoOverflowContainer {
+    
+    background: rgba(0, 0, 0, 0);
+    /*background-image: url("https://i.imgur.com/hMvjFI7.jpg");*/
+    box-shadow: none
+/* Change opacity of background of "sound only". Can change colour too if you fancy*/
+}
+
+#qpVideoSoundOnly {
+    opacity: 0;
+}
+#qpVideoContainer {
+    box-shadow: none
+}
+#qpAnswerInputContainer {
+    border: none;
+  	border-radius: 0%;
+}
+#qpAnswerInputContainer.floatingContainer {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#qpVoteState {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#qpAnswerInputContainer.focused {
+    box-shadow: none
+}
+#qpVoteSkip {
+    background-color: rgba(46, 63, 99);
+}
+#qpVoteSkip.toggled {
+    background-color: rgba(185, 147, 237);
+/*Change Vote Skip Button Colour When Clicked*/
+}
+#qpVideoProgressBar {
+    background-color: rgba(127, 245, 241, 0.5);
+/*Change colour bar at the bottom of the video colour*/
+}
+.qpSingleRateContainer {
+    background-color: rgba(0, 0, 0, 0.0)
+                                            
+}
+.qpAvatarStatus {
+    background: rgba(47, 127, 145, 0.0);
+}
+/*#footerMenuBar .menuBar, #optionsContainer.popOut, #rightMenuBarPartContainer::before, .gcList > li:nth-child(2n) {
+    background-color: rgba(0, 0, 0, 0.5);*/
+/*Only for People who want to open up their footbar to make their UI look slightly bigger*/
+
+#qpWaitBuffering {
+    opacity: 0.0;
+}
+
+/*Expand Player Opacity*/
+
+#elQuestionNoSongSelectedContainer, .elQuestionAnime.floatingContainer.clickAble, #elCounterContainer.floatingContainer.text-center{
+    background-color: #1b1b1b;
+}
+
+.elQuestionSong.floatingContainer.clickAble.open, .elQuestionSong.floatingContainer.clickAble {
+    background-color: #1b1b1b;
+    opacity: 0.8;
+}
+
+
+
+#elInputContainer {
+    width: 35%;
+}
+#elInputVideoContainer {
+    height: 40%;
+}
+
+
+
+div#startPageCenter {
+    background-color: rgb(19, 12, 12, 0.7);
+}
+    
+div#startPageLogoContainer {
+    background-color: rgb(0, 0, 0, 0);
+}
+
+/*Change colour of your own name whilst playing in game*/
+
+.qpsPlayerName.self {
+    color: #af7aff;
+    text-shadow: 0 0 10px #563269;
+}
+
+/*Change colour of how many people are in a lobby on lobby picker as well as Avatar Drive colour bar*/
+
+.progress-bar {
+    background-color: #52a2ab;
+}
+
+/*Change Friend colour on lobby picker page*/
+
+.fa-friend {
+    color: #a577bf;
+}
+
+/*Change colour of Volume button*/
+#qpVolume {
+    color: #5c7da7;
+}
+
+
+/* Right And Wrong Border colours*/
+
+.qpAvatarAnswerText.wrongAnswer {
+    text-shadow: none
+}
+
+.qpAvatarAnswerText.rightAnswer {
+    text-shadow: none
+}
+
+.qpAvatarImage[src*="Right."]~.particleEmiter {
+    box-shadow: inset 0 0 10px #2b47ff,0 0 10px #2b47ff, 0 0 10px #2b47ff, 0 0 10px #2b47ff;
+    background-color: rgba(43, 71, 255, 0.2);
+}
+.qpAvatarImage[src*="Wrong."]~.particleEmiter {
+    box-shadow: inset 0 0 10px #ff0000,0 0 10px #ff0000, 0 0 10px #ff0000, 0 0 10px #ff0000;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.qpAvatarImage[src*="Confused."]~.particleEmiter {
+    box-shadow: inset 0 0 10px #ff0000,0 0 10px #ff0000, 0 0 10px #ff0000, 0 0 10px #ff0000;
+    background-color: rgba(255, 0, 100, 0.2);
+}
+
+.qpAvatarImage[src*="Thinking."]~.particleEmiter {
+    box-shadow: inset 0 0 0px #000, 0 0 0px #000, 0 0 0px #000, 0 0 0px #000;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.qpAvatarImage[src*="Waiting."]~.particleEmiter {
+    box-shadow: inset 0 0 10px #ebd778,0 0 10px #ebd778, 0 0 10px #ebd778, 0 0 10px #ebd778;
+    background-color: rgba(252, 248, 45, 0.2);
+}
+
+.qpAvatarImage[src*="Basic."]~.particleEmiter {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 0px #000, 0 0 0px #000, 0 0 0px #000, 0 0 0px #000;    
+}
+
+.qpAvatarImage~.particleEmiter {
+    border-radius: 10px;
+    opacity: 1;
+    z-index: -1;
+}
+.qpAvatarContainer.disabled .particleEmiter {
+    opacity: 0;
+}
+
+.qpAvatarAnswerText {
+    text-align: center;
+	border-right: 17px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+/*Change Colour of List Showing Up*/
+
+.qpAvatarStatusBar.completed {
+    left: 0px;
+    opacity: 1;
+    background-color: #2e69ff;
+    box-shadow: none
+}
+
+.qpAvatarStatusBar.watching {
+    left: 0px;
+    opacity: 1;
+    background-color: #3cff4e;
+}
+
+.qpAvatarStatusBar.hold {
+    left: 0px;
+    opacity: 1;
+    background-color: #f7ff32;
+}
+
+.qpAvatarStatusBar.dropped {
+    left: 0px;
+    opacity: 1;
+    background-color: #ff070c;
+}
+
+.qpAvatarStatusBar.planning {
+    left: 0px;
+    opacity: 1;
+    background-color: white;
+}          
+
+.qpAvatarStatusInnerContainer {
+    background-color: #000000;
+    opacity: 1;
+    right: -10px;
+}
+     
+
+
+.qpAvatarListBar {
+    opacity: 1
+}
+
+h4.qpAvatarListStatus {
+    color: #c3cad6
+}
+
+h4.qpAvatarShowScore {
+    color: #c3cad6
+}
+
+
+#storeWindow {
+    
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+div#swNoSelectionContainer {
+    opacity: 0
+}
+
+
+div#restartMessageContainer.floatingContainer.popoutMessage.noShadow.open {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+div#restartMessageContainer.floatingContainer.popoutMessage.noShadow {
+    background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+div#popoutMessageContainer.floatingContainer.popoutMessage.noShadow {
+    background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+#mpPlayMultiplayer:hover, #mpPlaySolo:hover {
+    background-color: #000000;
+    opacity: 0.5
+}
+
+#mpNewSocialTab {
+	border-bottom: none;
+}
+
+#mpNewSocailTab > .leftRightButtonTop {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+#elInputContainer.floatingContainer {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#elQuestionInputSongName::after, #elQuestionInputArtistName::after {
+    background-image: none;
+}
+
+.qpAvatarImageContainer {
+    box-shadow: none;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+/*Change team opacity*/
+.gcTeamMessageIcon {
+    opacity: 0.4;
+    background-color: #552788;
+}
+
+/*Change Standings Correct Colour*/
+
+#qpStandingCorrectCount {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    text-shadow: 0 0 5px #fff, 0 0 15px #2b47ff, 0 0 20px #2b47ff, 0 0 25px #2b47ff;
+}
+
+/*Change Host Colour*/
+
+.lobbyAvatarHostSubTextContainer {
+    background-color: #4497ea;
+}
+
+.qpAvatarHostIcon {
+    background-color: #4497ea;
+}
+
+.qpsPlayerScore.rightAnswer {
+    text-shadow: 0 0 5px #2b47ff, 0 0 10px #2b47ff, 0 0 15px #2b47ff, 0 0 20px #2b47ff, 0 0 35px #2b47ff, 0 0 40px #2b47ff, 0 0 50px #2b47ff, 0 0 75px #2b47ff;
+}
+
+
+.qpAvatarStatusOuterContainer{
+  border-radius: 0px 10px 10px 0px
+}
+
+.lobbyAvatarCommandIcon {
+    border-radius: 2px;
+}
+
+#qpAnswerStateContainerOuter {
+    border-radius: 0 20px 20px 0;
+}
+
+.qpAvatarImage {
+    border-radius: 15px;
+}
+
+
+/*Circling things - remove all below if you want it back to normal - Increase "border radius" if you want it more round*/
+
+#qpVoteStateContainer{
+  border-radius: 20px;
+}
+
+#qpVideoOverflowContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 20px;
+}
+ #qpVideoHider {
+     border-radius: 20px;
+ }
+#qpVoteShadowHider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    width: 80px;
+    height: 100%;
+    border-radius: 20px;
+}
+#qpAnswerInputContainer.floatingContainer {
+    border-radius: 20px;
+}
+#qpVoteState {
+    border-radius: 20px;
+}
+
+#qpAnswerInputContainer .awesomplete {
+    width: 95%;
+}
+
+.qpAvatarAnswerContainer {
+    border-radius: 10px;
+}
+
+.qpAvatarImgContainer {
+    border-radius: 10px;
+}
+
+.lobbyAvatarNameContainer {
+    border-radius: 10px;
+}
+
+#qpAnimeNameHider {
+    border-radius: 10px;
+}
+
+.qpSideContainer, .qpAnimeNameContainer {
+    border-radius: 10px;
+}
+
+#mpNewsBody.ps.ps--theme_default.ps--active-y{
+    border-radius: 20px;
+}
+#mpNewsContainer.floatingContainer.mpMainContentContainer{
+    border-radius: 20px;
+}
+
+#mpAvatarDriveContainer {
+    border-radius: 20px;
+}
+
+#mpPlayButton.button.floatingContainer {
+    border-radius: 15px;
+}
+
+#mpExpandButton.button.floatingContainer.mainMenuButton {
+    border-radius: 15px;
+}
+
+#mpRankedButton.button.floatingContainer.mainMenuButton.off {
+    border-radius: 15px;
+}
+
+#mpLeaderboardButton.button.floatingContainer.mainMenuButton {
+    border-radius: 15px;
+}
+
+.rbRoom, .rbrRoomImageContainer {
+    border-radius: 15px;
+}
+
+#elInputContainer {
+    border-radius: 15px;
+}
+
+/*Joseph Addon - "Userscript Homepage" "Song List"*/
+
+#mpInstalled.button.floatingContainer.mainMenuButton {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#listWindowBody.modal-body.resizableList.slWindowBody {
+    background-color: #1b1b1b;
+}
+#listWindowHeader.modal-header.ui-draggable-handle {
+    background-color: #1b1b1b;
+}
+#slSearch {
+    background-color: #1b1b1b;
+}
+button.btn.btn-default.songListOptionsButton {
+    background-color: #1b1b1b;
+    border: none;
+}
+
+tr.songData.clickAble{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#listWindowOptions.customWindowPanel {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#listWindowTableContainer.customWindowPanel {
+        background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-header.customWindowHeader.draggableWindow {
+    	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.customWindow.ui-draggable {
+    	background-color: rgba(0, 0, 0, 0.5);
+}
+.customWindowPanel {
+   		background-color: rgba(0, 0, 0, 0.8);
+}
+
+.flatTextInput {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.runAnimation > .particleEmiter {
+    animation: particleSpawn 0 alternate;
+}
+
+/* Rounding option*/
+
+#mpInstalled.button.floatingContainer.mainMenuButton {
+    border-radius: 15px;
+}
+
+
+/*
+Klem radio
+*/
+#openRadioButton {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 5px;
+}
+#radioOverlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 5px;
+}
+/*
+Klem radio
+*/
+
+div.modal-content
+{
+  background-color: rgba(0, 0, 0, 0.90) !important;
+}
+
+
+/* i really want this to be global */
+/* I don't, but if I was page specific it would mess up the code. I don't see it effecting other websites that often. It's rare, if so, it's only the background image. I'll figure it out.*/
