@@ -12,12 +12,12 @@ Stylus for Elodie's script. (don't use stylish 🔫)
 
 You need to download python: <https://www.python.org/downloads/>. During the installation phase, don't forget to select the option that let you have python as a PATH system variable.
 
-To check if your installation is working, you can open your CMD (explorer -> cmd) and type python, if you don't get any errors, you're good to go. Type `exit()` to leave the python interpretor.
+To check if your installation is working, you can open your CMD (explorer -> cmd) and type `python`, if you don't get any errors, you're good to go. Type `exit()` to leave the python interpretor.
 
 Install the script's depencencies:
-``bash
+```bash
 python -m pip install requests
-``
+```
 
 ## **How to use it**
 ### **> First time**
