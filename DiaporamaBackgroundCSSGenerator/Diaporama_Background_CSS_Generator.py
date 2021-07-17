@@ -118,7 +118,9 @@ def get_already_done_urls():
             urls = json.load(json_file)
         return urls
     else:
-        print("No save found\n")
+        print(
+            "No save found, if you had one, make sur it's called saved_url.json and it is in the right directory.\n"
+        )
         return []
 
 
@@ -170,7 +172,7 @@ def generate_CSS_code(urls):
             + str(rotation_time)
             + "s;\n\n   animation: background_rotation calc(var(--nb_backgrounds) * var(--rotation_time)) linear 0s infinite;\n}\n\n"
             + generate_keyframes(urls)
-            + "/* To hide the catbox video and let your background shine */\n#qpVideoHider.qpVideoOverlay {\n   background-color: rgb(0 0 0 / 0%);\n}\n\n/* To hide Countdown and let your background shine */\n#qpVideoOverflowContainer {\n   background: rgba(0, 0, 0, 0);\n}"
+            + "/* If any of these don't work, make sure the rest of Elodie's script isn't overwriting any of these */\n/* To hide the video during loading phase */\n#qpVideoOverflowContainer {\n   box-shadow: none;\n   background: rgba(0, 0, 0, 0);\n}\n\n/* To hide the black screen during guessing phase */\n#qpVideoHider.qpVideoOverlay {\n   background-color: rgb(0 0 0 / 0%);\n}\n\n/* To hide the countdown during guessing phase */\n.qpVideoOverlay > div {\n    top: 115%;\n}"
         )
 
     return CSS_code
