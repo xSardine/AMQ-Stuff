@@ -76,12 +76,11 @@ It will create a sheet with the songs from expand filtered by your configuration
 
 Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can download every song as an mp4 with the download_party_rank_sheet.py script. You can also edit the first few lines if you want to change the output path and such. You start it the same way as the previous script.
 
-If you need to stop the process in the middle of the downloading but don't want to loose all the progress, you can quit the terminal, check which line you stopped, and change the 2 in the line in the code:
+If you need to stop the process in the middle of the downloading but don't want to loose all the progress, don't worry you can quit the terminal, when you want to start again, check which line you stopped, and change the `2` in the line in the code:
 ```py
 link_start_row = 2  # number of the row where I need to start getting links
 ```
 to the line you want to start from. (don't forget to change it back to 2 for the next PR)
-
 
 ## Process Party Rank Stats
 
