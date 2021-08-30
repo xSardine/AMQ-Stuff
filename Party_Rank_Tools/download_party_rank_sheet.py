@@ -9,6 +9,7 @@ import os
 
 # Script Configuration
 ignore_already_existing_name = True
+output_path = Path("mp4")
 # Script Configuration
 
 # Sheet configuration
@@ -27,7 +28,6 @@ sheet_list = list(sheet_path.glob("**/*.xlsx"))
 ffmpeg = "ffmpeg"
 
 # Create webm directory if it doesn't exist
-output_path = Path("mp4")
 output_path.mkdir(parents=False, exist_ok=True)
 
 
