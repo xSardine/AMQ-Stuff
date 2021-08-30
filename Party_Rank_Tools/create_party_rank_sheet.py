@@ -114,7 +114,7 @@ def filter_json_list(
                         elif song["type"] == 2:
                             type = "ED"
                         else:
-                            type = "INS"
+                            type = "IN"
                         number = song["number"] if song["number"] != 0 else ""
 
                         link = (
