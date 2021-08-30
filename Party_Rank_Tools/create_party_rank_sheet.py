@@ -6,7 +6,7 @@ from openpyxl.styles.colors import Color
 
 # Filtering search
 anime_search_filters = []
-artist_search_filters = ["kokia"]
+artist_search_filters = ["yoshino nanjou", "fripside"]
 song_name_search_filters = []
 # Filtering search
 
@@ -99,7 +99,9 @@ def filter_json_list(
             if anime_contains_anime_filters(anime, anime_search_filters):
                 for song in anime["songs"]:
                     if anime_contains_song_filters(
-                        song, artist_search_filters, song_name_search_filters,
+                        song,
+                        artist_search_filters,
+                        song_name_search_filters,
                     ):
                         if song["type"] == 1:
                             type = "OP"
@@ -119,6 +121,12 @@ def filter_json_list(
                             else "Not Uploaded"
                         )
 
+                        mp3_link = (
+                            song["examples"]["mp3"]
+                            if "mp3" in song["examples"].keys()
+                            else "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        )
+
                         songs.append(
                             {
                                 "type": type + str(number),
@@ -128,6 +136,7 @@ def filter_json_list(
                                 + " by "
                                 + song["artist"],
                                 "link": link,
+                                "mp3_link": mp3_link,
                             }
                         )
                 if len(songs) > 0:
@@ -156,6 +165,7 @@ def create_workbook(filtered_animes):
     ws.cell(1, 2, "Anime Name")
     ws.cell(1, 3, "Song Type")
     ws.cell(1, 4, "Song Info")
+    ws.cell(1, 4, "mp3 Links")
     ws.cell(1, 5, "Full Versions")
     ws.cell(1, 6, "Rank")
 
@@ -166,7 +176,8 @@ def create_workbook(filtered_animes):
             ws.cell(row_iter, 2, anime["name"])
             ws.cell(row_iter, 3, song["type"])
             ws.cell(row_iter, 4, song["info"]).hyperlink = song["link"]
-            ws.cell(row_iter, 5, "Link")
+            ws.cell(row_iter, 5, song["info"]).hyperlink = song["mp3_link"]
+            ws.cell(row_iter, 6, "Link")
             row_iter += 1
 
     # Change width of column based on longest cell value
@@ -191,24 +202,24 @@ def create_workbook(filtered_animes):
         bottom=Side(style="thin", color=border_color),
     )
 
-    for line in ws["A1:F" + str(row_iter - 1)]:
+    for line in ws["A1:G" + str(row_iter - 1)]:
         for cell in line:
             cell.fill = gray_background
             cell.font = Font(size=rest_font_size, name="Arial")
             cell.border = thin_border
 
     # Style for first line
-    for line in ws["A1:F1"]:
+    for line in ws["A1:G1"]:
         for cell in line:
             cell.font = Font(size=first_line_font_size, bold=True)
 
     # Blue color for links
-    for line in ws["D2:D" + str(row_iter - 1)]:
+    for line in ws["D2:E" + str(row_iter - 1)]:
         for cell in line:
             cell.font = Font(color=link_color)
 
     # Sorting property
-    ws.auto_filter.ref = "A1:F" + str(row_iter - 1)
+    ws.auto_filter.ref = "A1:G" + str(row_iter - 1)
 
     wb.save(file_name)
 
