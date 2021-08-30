@@ -6,13 +6,15 @@ from openpyxl.styles.colors import Color
 
 # todo arial not working, removing duplicates
 
+
 # Filtering search
-anime_search_filters = []
-artist_search_filters = ["coorie"]
+anime_search_filters = ["capo"]
+artist_search_filters = []
 song_name_search_filters = []
 # Filtering search
 
 # Sheet Configuration
+player_list = ["EruisKawaii", "Husa", "xSardine", "..."]
 file_name = "My_File.xlsx"
 sheet_name = "My_Sheet"
 link_color = "1155cc"
@@ -229,7 +231,8 @@ def create_workbook(filtered_animes):
     # Sorting property
     ws.auto_filter.ref = "A1:G" + str(row_iter - 1)
 
-    wb.save(file_name)
+    for player in player_list:
+        wb.save(file_name + " (" + player + ")")
 
 
 if __name__ == "__main__":
