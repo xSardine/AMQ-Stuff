@@ -34,7 +34,7 @@ It will create a sheet with the songs from expand filtered by your configuration
 
 ## Download Party Rank Sheet
 
-Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can download every song as an mp3 with the download_party_rank_sheet.py script. You can also edit the first few lines if you want to change the output path and such.
+Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can download every song as an mp4 with the download_party_rank_sheet.py script. You can also edit the first few lines if you want to change the output path and such.
 
 ## Process Party Rank Stats
 
