@@ -15,7 +15,7 @@ Once this is done, you need to install the python library I'm using for these sc
 
 For this, you'll need an export of the expand library as a JSON, you can get it through the console of your navigator (press F12, then go on the console tab) using this call:
 
-```
+```js
 new Listener("expandLibrary questions", (payload) => {
   console.log(payload)
 }).bindListener()
@@ -50,6 +50,14 @@ song_name_search_filters = []
 # Filtering search
 ```
 
+You can also modify your sheet configuration, I recommend you to only care about the first two lines:
+```py
+file_name = "My_File.xlsx"
+sheet_name = "My_Sheet"
+```
+
+the file_name will be the name of your file, the sheet name will be the name of the tab that appears at the bottom left.
+
 Once you're done with this configuration, you can go in your `cmd` and get to the folder you just created using the `cd` commands:
 let's say your scripts are in `C://Users/<Your_Name>/Documents/PR/`:
 ```
@@ -67,6 +75,13 @@ It will create a sheet with the songs from expand filtered by your configuration
 ## Download Party Rank Sheet
 
 Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can download every song as an mp4 with the download_party_rank_sheet.py script. You can also edit the first few lines if you want to change the output path and such. You start it the same way as the previous script.
+
+If you need to stop the process in the middle of the downloading but don't want to loose all the progress, you can quit the terminal, check which line you stopped, and change the 2 in the line in the code:
+```py
+link_start_row = 2  # number of the row where I need to start getting links
+```
+to the line you want to start from. (don't forget to change it back to 2 for the next PR)
+
 
 ## Process Party Rank Stats
 
