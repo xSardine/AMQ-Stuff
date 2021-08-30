@@ -5,8 +5,8 @@ from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
 
 # Filtering search
-anime_search_filters = []
-artist_search_filters = ["yoshino nanjou", "fripside"]
+anime_search_filters = ["white album"]
+artist_search_filters = []
 song_name_search_filters = []
 # Filtering search
 
@@ -165,9 +165,9 @@ def create_workbook(filtered_animes):
     ws.cell(1, 2, "Anime Name")
     ws.cell(1, 3, "Song Type")
     ws.cell(1, 4, "Song Info")
-    ws.cell(1, 4, "mp3 Links")
-    ws.cell(1, 5, "Full Versions")
-    ws.cell(1, 6, "Rank")
+    ws.cell(1, 5, "mp3 Links")
+    ws.cell(1, 6, "Full Versions")
+    ws.cell(1, 7, "Rank")
 
     # Insert values
     row_iter = 2
@@ -176,7 +176,7 @@ def create_workbook(filtered_animes):
             ws.cell(row_iter, 2, anime["name"])
             ws.cell(row_iter, 3, song["type"])
             ws.cell(row_iter, 4, song["info"]).hyperlink = song["link"]
-            ws.cell(row_iter, 5, song["info"]).hyperlink = song["mp3_link"]
+            ws.cell(row_iter, 5, "Link").hyperlink = song["mp3_link"]
             ws.cell(row_iter, 6, "Link")
             row_iter += 1
 
