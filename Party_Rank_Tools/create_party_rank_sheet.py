@@ -5,8 +5,8 @@ from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
 
 # Filtering search
-anime_search_filters = ["white album"]
-artist_search_filters = []
+anime_search_filters = []
+artist_search_filters = ["yoshino nanjou", "fripside"]
 song_name_search_filters = []
 # Filtering search
 
@@ -42,13 +42,19 @@ ANIME_REGEX_REPLACE_RULES = [
 ]
 
 
+def escapeRegExp(str):
+    return re.escape(str)
+
+
 def replace_regex_values(search_filters):
 
     search_filter_regexs = []
     for search_filter in search_filters:
+        search_filter = escapeRegExp(search_filter)
+        print(search_filter)
         for rule in ANIME_REGEX_REPLACE_RULES:
             search_filter = search_filter.replace(rule["input"], rule["replace"])
-        search_filter_regexs.append(search_filter)
+        search_filter_regexs.append(".*" + search_filter + ".*")
     return search_filter_regexs
 
 
@@ -228,6 +234,7 @@ if __name__ == "__main__":
 
     anime_search_filters = replace_regex_values(anime_search_filters)
     artist_search_filters = replace_regex_values(artist_search_filters)
+    print(artist_search_filters)
     song_name_search_filters = replace_regex_values(song_name_search_filters)
 
     filtered_animes = filter_json_list(
