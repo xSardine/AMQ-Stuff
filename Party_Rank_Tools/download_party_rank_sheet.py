@@ -13,7 +13,7 @@ ignore_already_existing_name = True
 
 # Sheet configuration
 link_start_row = 2  # number of the row where I need to start getting links
-link_position_column = 3  # position of the column containing webms in the sheet
+link_position_column = 4  # position of the column containing webms in the sheet
 file_name = "whatever, it's not necessary as long as it is in the same directory"
 sheet_tab_name = "My_Sheet"  # name of the tab of the sheet
 # Sheet configuration
