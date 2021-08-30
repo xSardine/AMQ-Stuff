@@ -4,9 +4,11 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
 
+# todo arial not working, removing duplicates
+
 # Filtering search
 anime_search_filters = []
-artist_search_filters = ["yoshino nanjou", "fripside"]
+artist_search_filters = ["coorie"]
 song_name_search_filters = []
 # Filtering search
 
@@ -97,7 +99,7 @@ def filter_json_list(
 
     filtered_animes = []
 
-    with open("expand.json") as json_file:
+    with open("expand.json", encoding="utf-8") as json_file:
         data = json.load(json_file)["questions"]
         for anime in data:
             anime_name = anime["name"]
