@@ -4,18 +4,27 @@ make sure to configure link_start_row and sheet_tab_name
 
 from pathlib import Path
 import openpyxl
-import requests
 import re
-import subprocess
+import os
+
+# Script Configuration
+ignore_already_existing_name = True
+# Script Configuration
+
+# Sheet configuration
+link_start_row = 2  # number of the row where I need to start getting links
+link_position_column = 3  # position of the column containing webms in the sheet
+file_name = "whatever, it's not necessary as long as it is in the same directory"
+sheet_tab_name = "My_Sheet"  # name of the tab of the sheet
+# Sheet configuration
+
+# End of Configuration
 
 # Search for any .xlsx file in the current directory or subdirectory
 sheet_path = Path(".")
 sheet_list = list(sheet_path.glob("**/*.xlsx"))
 
 ffmpeg = "ffmpeg"
-link_start_row = 2  # number of the row where I need to start getting links
-link_position_column = 3  # position of the column containing webms in the sheet
-sheet_tab_name = "ark1"  # name of the tab of the sheet
 
 # Create webm directory if it doesn't exist
 output_path = Path("mp4")
@@ -66,17 +75,21 @@ def create_file_name_common(songTitle, path, bad_characters, allowance=255):
 
 
 def execute_command(command):
-    subprocess.call(command)
+    os.system(command)
 
 
 if len(sheet_list) > 0:  # If I found an .xlsx
-    print(sheet_list)
 
     # Open the first one
     wb = openpyxl.load_workbook(sheet_list[0])
 
     ws = wb[sheet_tab_name]  # access the right tab
     flag_exception = True
+    if ignore_already_existing_name:
+        ignore_parameter = "-y"
+    else:
+        ignored_parameter = "-n"
+
     while flag_exception:  # loop on every link until I end up on a non-link cell
         song_name = ""
         try:
@@ -87,8 +100,8 @@ if len(sheet_list) > 0:  # If I found an .xlsx
                 row=link_start_row, column=link_position_column
             ).hyperlink.target
             command = [
-                '"%s"' % ffmpeg,
-                "-y",
+                "%s" % ffmpeg,
+                ignore_parameter,
                 "-i",
                 link,
                 "-c:a",
@@ -108,4 +121,4 @@ if len(sheet_list) > 0:  # If I found an .xlsx
             flag_exception = False
             if len(song_name) > 0:
                 print("Failed for", link, "(" + song_name + ")")
-    print("Downloading Done :)")
+    print("Script is Done :)")
