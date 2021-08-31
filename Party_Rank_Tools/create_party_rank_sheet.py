@@ -3,20 +3,26 @@ import re
 from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
+from pathlib import Path
+import google_api
 
-# todo arial not working, removing duplicates
+# todo arial not working
 
+connect_and_upload_to_drive = True
+delete_local_file_once_done = True
+
+party_rank_name = "Nonoc"
+player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
 
 # Filtering search
-anime_search_filters = ["capo"]
-artist_search_filters = []
+anime_search_filters = []
+artist_search_filters = ["nonoc"]
 song_name_search_filters = []
 # Filtering search
 
 # Sheet Configuration
-player_list = ["EruisKawaii", "Husa", "xSardine", "..."]
-file_name = "My_File.xlsx"
-sheet_name = "My_Sheet"
+file_name = party_rank_name + " Anime Songs Ranking Sheet.xlsx"
+sheet_name = "Sheet1"
 link_color = "1155cc"
 cell_background_color = "cccccc"
 border_color = "949494"
@@ -231,8 +237,41 @@ def create_workbook(filtered_animes):
     # Sorting property
     ws.auto_filter.ref = "A1:G" + str(row_iter - 1)
 
-    for player in player_list:
-        wb.save(file_name + " (" + player + ")")
+    wb.save(file_name)
+
+
+def upload_every_xlsx():
+
+    print("Connecting to Google Drive API...")
+    drive = google_api.connect_to_drive()
+    print("Connection successful!")
+
+    print("Uploading files...")
+    dir1 = google_api.createRemoteFolder(drive, "Party Ranks")
+    dir2 = google_api.createRemoteFolder(drive, party_rank_name, dir1)
+
+    # Search for any .xlsx file in the current directory or subdirectory
+    sheet_path = Path(".")
+    sheet_list = list(sheet_path.glob("**/*.xlsx"))
+    for sheet in sheet_list:
+        if str(sheet).startswith(party_rank_name):
+            for player in player_list:
+                file1 = drive.CreateFile(
+                    {
+                        "title": str(Path(file_name).with_suffix(""))
+                        + " ("
+                        + player
+                        + ").xlsx",
+                        "parents": [{"kind": "drive#fileLink", "id": dir2}],
+                    }
+                )  # Create GoogleDriveFile instance
+                file1.SetContentFile(
+                    sheet_list[0]
+                )  # Set content of the file from given file.
+                file1.Upload()
+    print("Done :)")
+    if delete_local_file_once_done:
+        Path(file_name).unlink()
 
 
 if __name__ == "__main__":
@@ -249,3 +288,6 @@ if __name__ == "__main__":
     print_anime_list(filtered_animes)
 
     create_workbook(filtered_animes)
+
+    if connect_and_upload_to_drive:
+        upload_every_xlsx()
