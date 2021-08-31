@@ -33,24 +33,20 @@ once this is done, you can right click the results and `expand recursively`, the
 
 You can also DM me if you don't want to bother.
 
-## 1.2 - Configuring the scripts
+## 1.2 - Download the files
 
-Then you need to get these scripts: `create_party_rank_sheet.py`, `upload_party_rank_sheet.py`, `download_party_rank_sheet.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
+Then you need to get these scripts: `create_party_rank_sheet.py`, `upload_party_rank_sheet.py`, `download_party_rank_sheet.py`, `PR_config.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
 
-Once you have this, you can configure the first few lines of the create_party_rank_sheet.py file to meet your needs:
+## 1.3 - Configuring the scripts
+
+Once you have this, you can configure the project to meet the requirements for the current Party Rankins in the `PR_config.py` file.
 
 ```py
-connect_and_upload_to_drive = True
-delete_local_file_once_done = True
-
 party_rank_name = "Nonoc"
 player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
 ```
 
-If you set `connect_and_upload_to_drive` to True, you will have to follow the guide on how to set up your google API credentials. (Set to False if you don't want to)
-
-If `delete_local_file_once_done` is set to True, it will delete the created file automatically, if you only want to use those uploaded on google drive. (Set to False if you don't want to)
-
+This is straight forward.
 
 ```py
 # Filtering search
@@ -101,10 +97,6 @@ You're now good to go!
 
 You will have to use your logins the first time, they will then be stored in a new file created in the folder: `credentials.json`. Don't worry, they are securely stored (Hashed, not in plain sight). As long as you have this file in the folder, you won't have to login again.
 
-By default, the files will be uploaded in `~/Party Ranks/PR_Name/files.xlsx`.
-
-(example for Nonoc: `~/Party Ranks/Nonoc/Nonoc Anime Songs Sheets (User).xlsx`)
-
 ## 1.4 - Starting the scritps
 
 Once you're done with this configuration, you can go in your `cmd` and get to the folder you just created using the `cd` commands:
@@ -114,16 +106,23 @@ cd Documents
 cd PR
 ```
 
-and now you can start it:
+## 1.4.1 Creating the sheet
+
+You can start it like this:
 ```
-python create_party_rank_sheet
+python create_party_rank_sheet.py
 ```
 
-It will create a sheet with the songs from expand filtered by your configuration, keep in mind fully uploaded stuff will not appear and still has to get taken from in game. It might also take into account songs that you don't need (i.e, angela giving you "angela aki" for example), make sure to remove those.
+It will create a sheet with the songs from expand filtered by your configuration, keep in mind fully uploaded stuff will not appear and still has to get taken from in game. It might also take into account songs that you don't need (i.e, angela giving you "angela aki" for example) as well as duplicates, make sure to remove those.
 
-## Download Party Rank Sheet
+Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can then do the next two steps in the order you want.
 
-Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can download every song as an mp4 with the download_party_rank_sheet.py script. You can also edit the first few lines if you want to change the output path and such. You start it the same way as the previous script.
+## 1.4.2 Downloading the mp4 videos
+
+Download every song as an mp4 with the download_party_rank_sheet.py script:
+```
+python download_party_rank_sheet.py
+```
 
 If you need to stop the process in the middle of the downloading but don't want to loose all the progress, don't worry you can quit the terminal, when you want to start again, check which line you stopped, and change the `2` in the line in the code:
 ```py
@@ -131,6 +130,12 @@ link_start_row = 2  # number of the row where I need to start getting links
 ```
 to the line you want to start from. (don't forget to change it back to 2 for the next PR)
 
-## Process Party Rank Stats
+## 1.4.3 Uploading every user custom sheet to google drive
 
-It will process the different stats from the sheets with everyone rankings in it.
+You can upload a sheet per user into google drive with this command:
+```
+python upload_party_rank_sheet.py
+```
+By default, the files will be uploaded in `~/Party Ranks/PR_Name/files.xlsx`.
+
+(example for Nonoc: `~/Party Ranks/Nonoc/Nonoc Anime Songs Sheets (User).xlsx`)
