@@ -84,7 +84,7 @@ It will now ask about which personal acces you will need for your application, t
 - Click on `Add or Delete application domains`
 - In the search filter, type `drive` and press enter
 - Select the second and third elements ("Display, Modify, Update or **Create** files in your google drive")
-- Go the second page and select the element right before the last one ("Connect to Google Drive")
+- Go to the second page and select the element right before the last one ("Connect to Google Drive")
 - Press `update` at the bottom of the page
 
 You can now press `Save and Continue`.
@@ -93,7 +93,17 @@ It will now asks you which type of application this is, it doesn't really matter
 
 Click `create`.
 
-You can now click the `download` button, it will give you a `.json` that you will put in the same folder as the rest. If it is not already, rename it to `client_secrets.json`. You are now ready to start your scripts!
+You can now click the `download` button, it will give you a `.json` that you will put in the same folder as the rest. You can find your `Client ID` and `Client Secret` in that file, copy and paste them in their respective field in the `settings.yaml` file. You can now delete the `.json` file downloaded previously.
+
+Final step: on the google project interface, on the left, below `logins`, click on `OAuth Consent Screen`, and on this page, click on `Add user`. Type the email adress you will be using to store these Party Ranks sheets.
+
+You're now good to go!
+
+You will have to use your logins the first time, they will then be stored in a new file created in the folder: `credentials.json`. Don't worry, they are securely stored (Hashed, not in plain sight). As long as you have this file in the folder, you won't have to login again.
+
+By default, the files will be uploaded in `~/Party Ranks/PR_Name/files.xlsx`.
+
+(example for Nonoc: `~/Party Ranks/Nonoc/Nonoc Anime Songs Sheets (User).xlsx`)
 
 ## 1.4 - Starting the scritps
 
