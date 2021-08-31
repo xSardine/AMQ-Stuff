@@ -6,13 +6,14 @@ from pathlib import Path
 import openpyxl
 import re
 import os
+import PR_config
 
 
 # Script Configuration
-party_rank_name = "Nonoc"
+party_rank_name = PR_config.party_rank_name
 # Script Configuration
 
-output_path = Path(party_rank_name + "/")
+output_path = Path(party_rank_name + "_mp4/")
 ignore_already_existing_name = True
 
 # Sheet configuration

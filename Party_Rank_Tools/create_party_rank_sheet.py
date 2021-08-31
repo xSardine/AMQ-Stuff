@@ -1,5 +1,6 @@
 import json
 import re
+import PR_config
 from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
@@ -7,12 +8,12 @@ from openpyxl.styles.alignment import Alignment
 
 # todo arial not working
 
-party_rank_name = "Nonoc"
+party_rank_name = PR_config.party_rank_name
 
 # Filtering search
-anime_search_filters = []
-artist_search_filters = ["nonoc"]
-song_name_search_filters = []
+anime_search_filters = PR_config.anime_search_filters
+artist_search_filters = PR_config.artist_search_filters
+song_name_search_filters = PR_config.song_name_search_filters
 # Filtering search
 
 # Sheet Configuration

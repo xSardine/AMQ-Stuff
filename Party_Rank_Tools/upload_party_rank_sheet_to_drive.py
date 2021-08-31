@@ -1,6 +1,11 @@
 from pathlib import Path
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
+import PR_config
+
+party_rank_name = PR_config.party_rank_name
+player_list = PR_config.player_list
+file_name = party_rank_name + " Anime Songs Ranking Sheet.xlsx"
 
 
 def connect_to_drive():
@@ -36,15 +41,6 @@ def createRemoteFolder(drive, folderName, parentID=0):
     file0 = drive.CreateFile(file_metadata)
     file0.Upload()
     return file0["id"]
-
-
-# Configuration
-party_rank_name = "Nonoc"
-player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
-# Configuration
-
-
-file_name = party_rank_name + " Anime Songs Ranking Sheet.xlsx"
 
 
 def upload_every_xlsx():
