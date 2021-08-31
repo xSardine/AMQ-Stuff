@@ -35,7 +35,7 @@ You can also DM me if you don't want to bother.
 
 ## 1.2 - Configuring the scripts
 
-Then you need to get these scripts: `create_party_rank_sheet.py`, `google_api.py`, `download_party_rank_sheet.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
+Then you need to get these scripts: `create_party_rank_sheet.py`, `upload_party_rank_sheet.py`, `download_party_rank_sheet.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
 
 Once you have this, you can configure the first few lines of the create_party_rank_sheet.py file to meet your needs:
 

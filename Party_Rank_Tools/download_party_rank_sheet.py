@@ -7,10 +7,13 @@ import openpyxl
 import re
 import os
 
+
 # Script Configuration
+party_rank_name = "Nonoc"
+# Script Configuration
+
+output_path = Path(party_rank_name + "/")
 ignore_already_existing_name = True
-output_path = Path("mp4")
-# Script Configuration
 
 # Sheet configuration
 link_start_row = 2  # number of the row where I need to start getting links
@@ -78,47 +81,46 @@ def execute_command(command):
     os.system(command)
 
 
-if len(sheet_list) > 0:  # If I found an .xlsx
+for sheet in sheet_list:
+    if str(sheet).startswith(party_rank_name):
+        wb = openpyxl.load_workbook(sheet_list[0])
 
-    # Open the first one
-    wb = openpyxl.load_workbook(sheet_list[0])
+        ws = wb[sheet_tab_name]  # access the right tab
+        flag_exception = True
+        if ignore_already_existing_name:
+            ignore_parameter = "-y"
+        else:
+            ignored_parameter = "-n"
 
-    ws = wb[sheet_tab_name]  # access the right tab
-    flag_exception = True
-    if ignore_already_existing_name:
-        ignore_parameter = "-y"
-    else:
-        ignored_parameter = "-n"
-
-    while flag_exception:  # loop on every link until I end up on a non-link cell
-        song_name = ""
-        try:
-            song_name = ws.cell(
-                row=link_start_row, column=link_position_column
-            ).value.replace(" ", "_")
-            link = ws.cell(
-                row=link_start_row, column=link_position_column
-            ).hyperlink.target
-            command = [
-                "%s" % ffmpeg,
-                ignore_parameter,
-                "-i",
-                link,
-                "-c:a",
-                "aac",
-                "-c:v",
-                "libx264",
-                "-map_metadata",
-                "-1",
-                "-map_chapters",
-                "-1 " '"%s"' % create_file_name_Windows(song_name, output_path),
-            ]
-            print(song_name, "->", link)
-            print(" ".join(command))
-            execute_command(" ".join(command))
-            link_start_row += 1
-        except:
-            flag_exception = False
-            if len(song_name) > 0:
-                print("Failed for", link, "(" + song_name + ")")
-    print("Script is Done :)")
+        while flag_exception:  # loop on every link until I end up on a non-link cell
+            song_name = ""
+            try:
+                song_name = ws.cell(
+                    row=link_start_row, column=link_position_column
+                ).value.replace(" ", "_")
+                link = ws.cell(
+                    row=link_start_row, column=link_position_column
+                ).hyperlink.target
+                command = [
+                    "%s" % ffmpeg,
+                    ignore_parameter,
+                    "-i",
+                    link,
+                    "-c:a",
+                    "aac",
+                    "-c:v",
+                    "libx264",
+                    "-map_metadata",
+                    "-1",
+                    "-map_chapters",
+                    "-1 " '"%s"' % create_file_name_Windows(song_name, output_path),
+                ]
+                print(song_name, "->", link)
+                print(" ".join(command))
+                execute_command(" ".join(command))
+                link_start_row += 1
+            except:
+                flag_exception = False
+                if len(song_name) > 0:
+                    print("Failed for", link, "(" + song_name + ")")
+        print("Done :)")

@@ -3,16 +3,11 @@ import re
 from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, PatternFill
 from openpyxl.styles.colors import Color
-from pathlib import Path
-import google_api
+from openpyxl.styles.alignment import Alignment
 
 # todo arial not working
 
-connect_and_upload_to_drive = True
-delete_local_file_once_done = True
-
 party_rank_name = "Nonoc"
-player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
 
 # Filtering search
 anime_search_filters = []
@@ -27,8 +22,8 @@ link_color = "1155cc"
 cell_background_color = "cccccc"
 border_color = "949494"
 font_police = "Arial"
-first_line_font_size = 10
-rest_font_size = 10
+first_line_font_size = 12
+rest_font_size = 11
 # Sheet Configuration
 
 # End of configuration
@@ -205,7 +200,7 @@ def create_workbook(filtered_animes):
                     (dims.get(cell.column_letter, 0), len(str(cell.value)))
                 )
     for col, value in dims.items():
-        ws.column_dimensions[col].width = value + 4
+        ws.column_dimensions[col].width = value + 7
 
     # general style
     gray_color = Color(rgb=cell_background_color)
@@ -221,13 +216,14 @@ def create_workbook(filtered_animes):
     for line in ws["A1:G" + str(row_iter - 1)]:
         for cell in line:
             cell.fill = gray_background
-            cell.font = Font(size=rest_font_size, name="Arial")
+            cell.font = Font(size=rest_font_size, name=font_police)
             cell.border = thin_border
+            cell.alignment = Alignment(vertical="center")
 
     # Style for first line
     for line in ws["A1:G1"]:
         for cell in line:
-            cell.font = Font(size=first_line_font_size, bold=True)
+            cell.font = Font(size=first_line_font_size, bold=True, name=font_police)
 
     # Blue color for links
     for line in ws["D2:E" + str(row_iter - 1)]:
@@ -238,40 +234,6 @@ def create_workbook(filtered_animes):
     ws.auto_filter.ref = "A1:G" + str(row_iter - 1)
 
     wb.save(file_name)
-
-
-def upload_every_xlsx():
-
-    print("Connecting to Google Drive API...")
-    drive = google_api.connect_to_drive()
-    print("Connection successful!")
-
-    print("Uploading files...")
-    dir1 = google_api.createRemoteFolder(drive, "Party Ranks")
-    dir2 = google_api.createRemoteFolder(drive, party_rank_name, dir1)
-
-    # Search for any .xlsx file in the current directory or subdirectory
-    sheet_path = Path(".")
-    sheet_list = list(sheet_path.glob("**/*.xlsx"))
-    for sheet in sheet_list:
-        if str(sheet).startswith(party_rank_name):
-            for player in player_list:
-                file1 = drive.CreateFile(
-                    {
-                        "title": str(Path(file_name).with_suffix(""))
-                        + " ("
-                        + player
-                        + ").xlsx",
-                        "parents": [{"kind": "drive#fileLink", "id": dir2}],
-                    }
-                )  # Create GoogleDriveFile instance
-                file1.SetContentFile(
-                    sheet_list[0]
-                )  # Set content of the file from given file.
-                file1.Upload()
-    print("Done :)")
-    if delete_local_file_once_done:
-        Path(file_name).unlink()
 
 
 if __name__ == "__main__":
@@ -288,6 +250,3 @@ if __name__ == "__main__":
     print_anime_list(filtered_animes)
 
     create_workbook(filtered_animes)
-
-    if connect_and_upload_to_drive:
-        upload_every_xlsx()
