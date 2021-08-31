@@ -1,17 +1,22 @@
 # Party Rank Tools
 
-## Requirements
+# Requirements
 
 To use these scripts you will need python that you can download here: <https://www.python.org/downloads/>,
 Make sure that it will make an environment variable for you when it will ask for it.
 
 You also need to install ffmpeg: <https://www.ffmpeg.org/>, and set it up as an environment variable too, it is quickly explained here in the "Add ffmpeg to Windows 10 Path" section: <https://windowsloop.com/install-ffmpeg-windows-10/>
 
-Once this is done, you need to install the python library I'm using for these scripts by typing this command in the CMD:
+Once this is done, you need to install the python libraries I'm using for these scripts by typing this command in the CMD:
 
-`python -m pip install openpyxl`
+```
+python -m pip install openpyxl
+python -m pip install pydrive
+```
 
-## Create Party Rank Sheet
+# 1 - Create Party Rank Sheet
+
+## 1.1 - Getting Expand.json
 
 For this, you'll need an export of the expand library as a JSON, you can get it through the console of your navigator (press F12, then go on the console tab) using this call:
 
@@ -28,9 +33,24 @@ once this is done, you can right click the results and `expand recursively`, the
 
 You can also DM me if you don't want to bother.
 
-Then you need to get both scripts: `create_party_rank_sheet` and `download_party_rank_sheet` and place them in the same folder as `expand.json`. For this, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
+## 1.2 - Configuring the scripts
+
+Then you need to get these scripts: `create_party_rank_sheet.py`, `google_api.py`, `download_party_rank_sheet.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
 
 Once you have this, you can configure the first few lines of the create_party_rank_sheet.py file to meet your needs:
+
+```py
+connect_and_upload_to_drive = True
+delete_local_file_once_done = True
+
+party_rank_name = "Nonoc"
+player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
+```
+
+If you set `connect_and_upload_to_drive` to True, you will have to follow the guide on how to set up your google API credentials. (Set to False if you don't want to)
+
+If `delete_local_file_once_done` is set to True, it will delete the created file automatically, if you only want to use those uploaded on google drive. (Set to False if you don't want to)
+
 
 ```py
 # Filtering search
@@ -50,13 +70,32 @@ song_name_search_filters = []
 # Filtering search
 ```
 
-You can also modify your sheet configuration, I recommend you to only care about the first two lines:
-```py
-file_name = "My_File.xlsx"
-sheet_name = "My_Sheet"
-```
+## 1.3 - Setting up Google Drive API
 
-the file_name will be the name of your file, the sheet name will be the name of the tab that appears at the bottom left.
+If you wish to automatically upload each sheet to your google drive you need to follow additional steps:
+
+You can start by following the steps described in the first 3 pages of this pdf:
+<https://d35mpxyw7m7k7g.cloudfront.net/bigdata_1/Get+Authentication+for+Google+Service+API+.pdf>, the process changed after the 4th page, so I'll be continuing here.
+
+Once you've done this, click on `Create Credentials`, it will brings you to a form.
+For the first question, select the `Google Drive API`, the second question, select `users data`, after this, it will ask further information about your apps, since it will be only personal use, it doesn't matter and you can give it a random name. Enter you google email adress you're using to store your party ranks.
+
+It will now ask about which personal acces you will need for your application, this script will need to login (you will still have to provide your password obviously), and create a new file in your drive, so let's add those:
+- Click on `Add or Delete application domains`
+- In the search filter, type `drive` and press enter
+- Select the second and third elements ("Display, Modify, Update or **Create** files in your google drive")
+- Go the second page and select the element right before the last one ("Connect to Google Drive")
+- Press `update` at the bottom of the page
+
+You can now press `Save and Continue`.
+
+It will now asks you which type of application this is, it doesn't really matter, just select `Desktop App` and keep the default name.
+
+Click `create`.
+
+You can now click the `download` button, it will give you a `.json` that you will put in the same folder as the rest. If it is not already, rename it to `client_secrets.json`. You are now ready to start your scripts!
+
+## 1.4 - Starting the scritps
 
 Once you're done with this configuration, you can go in your `cmd` and get to the folder you just created using the `cd` commands:
 let's say your scripts are in `C://Users/<Your_Name>/Documents/PR/`:
