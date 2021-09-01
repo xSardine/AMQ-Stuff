@@ -6,12 +6,6 @@ anime_search_filters = []
 artist_search_filters = ["coorie", ["rino", True]]
 song_name_search_filters = []
 
-# You can also set a filter to have to match the exact name (not case sensitive) by giving it the "True" statue.
-# I.E, if you want "mpi" to match the exact artist to avoid catching Empire as well in a Sawano Ranking:
-# artist_search_filters = ["mika kobayashi", "eliana", ["mpi", True]]
-# or for Minami and every other Minami (Minami Takahashi etc...):
-# artist_search_filters = ["minami kuri", ["minami", True]] (this will still catch domexkano tho, since it's the exact same name)
-
 # If set to True, the song will need to fit every type of filter (it still "or" inside the filter themselves tho),
 # if set to False, the song will need to fit at least one of these filters (i.e: either the artist filter, song name filter, or anime filter)
 and_filter = True
@@ -19,6 +13,12 @@ and_filter = True
 # If set to True, it will only take the first instance of a song,
 # meaning that if a further instance is a longer sample, it will ignore it anyway
 filter_duplicate = False
+
+# You can also set a filter to have to match the exact name (not case sensitive) by giving it the "True" statue.
+# I.E, if you want "mpi" to match the exact artist to avoid catching Empire as well in a Sawano Ranking:
+# artist_search_filters = ["mika kobayashi", "eliana", ["mpi", True]]
+# or for Minami and every other Minami (Minami Takahashi etc...):
+# artist_search_filters = ["minami kuri", ["minami", True]] (this will still catch domexkano tho, since it's the exact same name)
 
 # Filtering search
 
@@ -29,12 +29,11 @@ Some Usage example:
 _______________________________________________________________
 "exact name" example
 Song that are called "Yakusoku" Party Rank
-Not setting the True value here would find every song with yakusoku in it
-such as "Madoromi no Yakusoku"
+Not setting the True value to "yakusoku" here would find every song with yakusoku in it such as "Madoromi no Yakusoku"
 
 anime_search_filters = []
 artist_search_filters = []
-song_name_search_filters = [["Yakusoku", True]]
+song_name_search_filters = [["yakusoku", True]]
 and_filter = (doesn't matter since only one filter used)
 _______________________________________________________________
 
@@ -77,7 +76,7 @@ artist_search_filters = [
     ["laco", True],  # avoiding galaco
     "eliana",
 ]
-song_name_search_filters = ["Harmonious", "vogel im kaf]
+song_name_search_filters = ["Harmonious", "vogel im kaf"]
 and_filter = False
 
 /!\ It might be missing some, I did that by memory
