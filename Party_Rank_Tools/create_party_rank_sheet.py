@@ -146,7 +146,6 @@ def format_song(song):
 def is_song_in_list(filtered_animes, songs, new_song):
 
     for existing_song in songs:
-        print("comparing", existing_song["info"], new_song["info"])
         if existing_song["info"] == new_song["info"]:
             return True
 
@@ -188,7 +187,7 @@ def filter_json_list(
                     for song in anime["songs"]:
                         song = format_song(song)
                         if filter_duplicate:
-                            if not is_song_in_list(songs, song):
+                            if not is_song_in_list(filtered_animes, songs, song):
                                 songs.append(song)
                         else:
                             songs.append(song)
@@ -202,7 +201,7 @@ def filter_json_list(
                         ):
                             song = format_song(song)
                             if filter_duplicate:
-                                if not is_song_in_list(songs, song):
+                                if not is_song_in_list(filtered_animes, songs, song):
                                     songs.append(song)
                             else:
                                 songs.append(song)

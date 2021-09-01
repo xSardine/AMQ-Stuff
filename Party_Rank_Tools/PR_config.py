@@ -8,11 +8,11 @@ song_name_search_filters = []
 
 # If set to True, the song will need to fit every type of filter (it still "or" inside the filter themselves tho),
 # if set to False, the song will need to fit at least one of these filters (i.e: either the artist filter, song name filter, or anime filter)
-and_filter = True
+and_filter = False
 
 # If set to True, it will only take the first instance of a song,
 # meaning that if a further instance is a longer sample, it will ignore it anyway
-filter_duplicate = False
+filter_duplicate = True
 
 # You can also set a filter to have to match the exact name (not case sensitive) by giving it the "True" statue.
 # I.E, if you want "mpi" to match the exact artist to avoid catching Empire as well in a Sawano Ranking:
@@ -76,7 +76,7 @@ artist_search_filters = [
     ["laco", True],  # avoiding galaco
     "eliana",
 ]
-song_name_search_filters = ["Harmonious", "vogel im kaf"]
+song_name_search_filters = ["Harmonious", "vogel im kaf", "Rё∀˥", "grenzli", "blumenk", "solitary serenade"]
 and_filter = False
 
 /!\ It might be missing some, I did that by memory
