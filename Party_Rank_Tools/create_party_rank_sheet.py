@@ -29,6 +29,7 @@ rest_font_size = 11
 # Sheet Configuration
 
 and_filter = PR_config.and_filter
+filter_duplicate = PR_config.filter_duplicate
 
 # End of configuration
 
@@ -142,6 +143,21 @@ def format_song(song):
     }
 
 
+def is_song_in_list(filtered_animes, songs, new_song):
+
+    for existing_song in songs:
+        print("comparing", existing_song["info"], new_song["info"])
+        if existing_song["info"] == new_song["info"]:
+            return True
+
+    for anime in filtered_animes:
+        for existing_song in anime["songs"]:
+            if existing_song["info"] == new_song["info"]:
+                return True
+
+    return False
+
+
 def filter_json_list(
     anime_search_filters, artist_search_filters, song_name_search_filters
 ):
@@ -157,20 +173,39 @@ def filter_json_list(
                 if anime_contains_anime_filters(anime, anime_search_filters):
                     for song in anime["songs"]:
                         if anime_contains_song_filters(
-                            song, artist_search_filters, song_name_search_filters,
+                            song,
+                            artist_search_filters,
+                            song_name_search_filters,
                         ):
-                            songs.append(format_song(song))
+                            song = format_song(song)
+                            if filter_duplicate:
+                                if not is_song_in_list(filtered_animes, songs, song):
+                                    songs.append(song)
+                            else:
+                                songs.append(song)
             else:
                 if anime_contains_anime_filters(anime, anime_search_filters):
                     for song in anime["songs"]:
-                        songs.append(format_song(song))
+                        song = format_song(song)
+                        if filter_duplicate:
+                            if not is_song_in_list(songs, song):
+                                songs.append(song)
+                        else:
+                            songs.append(song)
 
                 else:
                     for song in anime["songs"]:
                         if anime_contains_song_filters(
-                            song, artist_search_filters, song_name_search_filters,
+                            song,
+                            artist_search_filters,
+                            song_name_search_filters,
                         ):
-                            songs.append(format_song(song))
+                            song = format_song(song)
+                            if filter_duplicate:
+                                if not is_song_in_list(songs, song):
+                                    songs.append(song)
+                            else:
+                                songs.append(song)
 
             if len(songs) > 0:
                 filtered_animes.append({"name": anime_name, "songs": songs})

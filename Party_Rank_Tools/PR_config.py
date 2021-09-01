@@ -14,7 +14,11 @@ song_name_search_filters = []
 
 # If set to True, the song will need to fit every type of filter (it still "or" inside the filter themselves tho),
 # if set to False, the song will need to fit at least one of these filters (i.e: either the artist filter, song name filter, or anime filter)
-and_filter = False
+and_filter = True
+
+# If set to True, it will only take the first instance of a song,
+# meaning that if a further instance is a longer sample, it will ignore it anyway
+filter_duplicate = False
 
 # Filtering search
 
