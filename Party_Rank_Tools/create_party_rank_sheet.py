@@ -1,5 +1,6 @@
 import json
 import re
+from typing import List
 import PR_config
 from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, PatternFill
@@ -27,6 +28,8 @@ first_line_font_size = 12
 rest_font_size = 11
 # Sheet Configuration
 
+and_filter = PR_config.and_filter
+
 # End of configuration
 
 ANIME_REGEX_REPLACE_RULES = [
@@ -49,25 +52,31 @@ ANIME_REGEX_REPLACE_RULES = [
 
 
 def escapeRegExp(str):
-    return re.escape(str)
+    str = re.escape(str)
+    str = str.replace("\ ", " ")
+    return str
 
 
 def replace_regex_values(search_filters):
 
-    search_filter_regexs = []
-    for search_filter in search_filters:
-        search_filter = escapeRegExp(search_filter)
-        print(search_filter)
+    filters_regexs = []
+    for filter in search_filters:
+        exact_flag = True if isinstance(filter, list) and filter[1] else False
+        filter = filter[0] if isinstance(filter, list) else filter
+        filter = escapeRegExp(filter)
         for rule in ANIME_REGEX_REPLACE_RULES:
-            search_filter = search_filter.replace(rule["input"], rule["replace"])
-        search_filter_regexs.append(".*" + search_filter + ".*")
-    return search_filter_regexs
+            filter = filter.replace(rule["input"], rule["replace"])
+            if exact_flag:
+                filters_regexs.append("^" + filter + "$")
+            else:
+                filters_regexs.append(".*" + filter + ".*")
+    return filters_regexs
 
 
 def anime_contains_anime_filters(anime, anime_search_filters):
 
     if len(anime_search_filters) == 0:
-        return True
+        return True if and_filter else False
     else:
         for filter in anime_search_filters:
             if re.match(filter, anime["name"], re.IGNORECASE):
@@ -85,16 +94,52 @@ def anime_contains_song_filters(song, artist_search_filters, song_name_search_fi
             if re.match(filter, song["artist"], re.IGNORECASE):
                 flag_artist = True
     else:
-        flag_artist = True
+        flag_artist = True if and_filter else False
 
     if len(song_name_search_filters) > 0:
         for filter in song_name_search_filters:
             if re.match(filter, song["name"], re.IGNORECASE):
                 flag_song_name = True
     else:
-        flag_song_name = True
+        flag_song_name = True if and_filter else False
 
-    return flag_artist and flag_song_name
+    return (
+        flag_artist and flag_song_name if and_filter else flag_artist or flag_song_name
+    )
+
+
+def format_song(song):
+
+    if song["type"] == 1:
+        type = "OP"
+    elif song["type"] == 2:
+        type = "ED"
+    else:
+        type = "IN"
+    number = song["number"] if song["number"] != 0 else ""
+
+    link = (
+        song["examples"]["720"]
+        if "720" in song["examples"].keys()
+        else song["examples"]["480"]
+        if "480" in song["examples"].keys()
+        else song["examples"]["mp3"]
+        if "mp3" in song["examples"].keys()
+        else "Not Uploaded"
+    )
+
+    mp3_link = (
+        song["examples"]["mp3"]
+        if "mp3" in song["examples"].keys()
+        else "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    )
+
+    return {
+        "type": type + str(number),
+        "info": '"' + song["name"] + '"' + " by " + song["artist"],
+        "link": link,
+        "mp3_link": mp3_link,
+    }
 
 
 def filter_json_list(
@@ -108,51 +153,27 @@ def filter_json_list(
         for anime in data:
             anime_name = anime["name"]
             songs = []
-            if anime_contains_anime_filters(anime, anime_search_filters):
-                for song in anime["songs"]:
-                    if anime_contains_song_filters(
-                        song,
-                        artist_search_filters,
-                        song_name_search_filters,
-                    ):
-                        if song["type"] == 1:
-                            type = "OP"
-                        elif song["type"] == 2:
-                            type = "ED"
-                        else:
-                            type = "IN"
-                        number = song["number"] if song["number"] != 0 else ""
+            if and_filter:
+                if anime_contains_anime_filters(anime, anime_search_filters):
+                    for song in anime["songs"]:
+                        if anime_contains_song_filters(
+                            song, artist_search_filters, song_name_search_filters,
+                        ):
+                            songs.append(format_song(song))
+            else:
+                if anime_contains_anime_filters(anime, anime_search_filters):
+                    for song in anime["songs"]:
+                        songs.append(format_song(song))
 
-                        link = (
-                            song["examples"]["720"]
-                            if "720" in song["examples"].keys()
-                            else song["examples"]["480"]
-                            if "480" in song["examples"].keys()
-                            else song["examples"]["mp3"]
-                            if "mp3" in song["examples"].keys()
-                            else "Not Uploaded"
-                        )
+                else:
+                    for song in anime["songs"]:
+                        if anime_contains_song_filters(
+                            song, artist_search_filters, song_name_search_filters,
+                        ):
+                            songs.append(format_song(song))
 
-                        mp3_link = (
-                            song["examples"]["mp3"]
-                            if "mp3" in song["examples"].keys()
-                            else "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        )
-
-                        songs.append(
-                            {
-                                "type": type + str(number),
-                                "info": '"'
-                                + song["name"]
-                                + '"'
-                                + " by "
-                                + song["artist"],
-                                "link": link,
-                                "mp3_link": mp3_link,
-                            }
-                        )
-                if len(songs) > 0:
-                    filtered_animes.append({"name": anime_name, "songs": songs})
+            if len(songs) > 0:
+                filtered_animes.append({"name": anime_name, "songs": songs})
 
     return filtered_animes
 
@@ -241,7 +262,6 @@ if __name__ == "__main__":
 
     anime_search_filters = replace_regex_values(anime_search_filters)
     artist_search_filters = replace_regex_values(artist_search_filters)
-    print(artist_search_filters)
     song_name_search_filters = replace_regex_values(song_name_search_filters)
 
     filtered_animes = filter_json_list(

@@ -66,6 +66,8 @@ song_name_search_filters = []
 # Filtering search
 ```
 
+There are also some other possibilities, I advise to check the few examples I've written in the bottom of the `PR_config.py` script, it will help you understand the everything you can do (it's better than expand search, that's for sure).
+
 ## 1.3 - Setting up Google Drive API
 
 If you wish to automatically upload each sheet to your google drive you need to follow additional steps:
@@ -102,18 +104,17 @@ You will have to use your logins the first time, they will then be stored in a n
 Once you're done with this configuration, you can go in your `cmd` and get to the folder you just created using the `cd` commands:
 let's say your scripts are in `C://Users/<Your_Name>/Documents/PR/`:
 ```
-cd Documents
-cd PR
+cd Documents\PR
 ```
 
 ## 1.4.1 Creating the sheet
 
-You can start it like this:
+You can create the sheet like this:
 ```
 python create_party_rank_sheet.py
 ```
 
-It will create a sheet with the songs from expand filtered by your configuration, keep in mind fully uploaded stuff will not appear and still has to get taken from in game. It might also take into account songs that you don't need (i.e, angela giving you "angela aki" for example) as well as duplicates, make sure to remove those.
+It will create a sheet with the songs from expand filtered by your configuration, keep in mind fully uploaded stuff will not appear and still has to get taken from in game. It might also take into account songs that you don't need (i.e, minami domexkano and minami [kuribayashi]) as well as duplicates, make sure to remove those.
 
 Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can then do the next two steps in the order you want.
 
