@@ -2,71 +2,57 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from scipy import spatial
-import matplotlib
 import matplotlib.pyplot as plt
-from sklearn import preprocessing
+
+START_COLUMN_PLAYER = 5  # the column at which players start appearing
+NB_PLAYERS = 16
 
 
 def get_song_average(song):
-    return song[5:].mean()
+    return song[START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS].mean()
 
 
-def process_tastes_average(dataframe, ignore):
+def process_tastes_average(dataframe, topWeight=0):
+    """
+    topWeight = Which songs should be weighted
+    topWeight = O: no weight
+    topWeight = 5: the top 5 songs of the player will be weighted more (1 being even more weighted than 5, etc...)) 
+    """
 
     currentMeanDistance = {}
-    for key in dataframe.keys()[5:]:
+    for key in dataframe.keys()[START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS]:
         currentMeanDistance[key] = 0
 
     for index, song in dataframe.iterrows():
         average = get_song_average(song)
-        if index < ignore:
-            for ranker in song.keys()[5:]:
+        for ranker in song.keys()[
+            START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS
+        ]:
+
+            if song[ranker] < topWeight + 1:
+                currentMeanDistance[ranker] += abs(average - song[ranker]) * (
+                    topWeight + 2 - song[ranker]
+                )
+            else:
                 currentMeanDistance[ranker] += abs(average - song[ranker])
 
     for key in currentMeanDistance:
-        currentMeanDistance[key] = currentMeanDistance[key] / ignore
+        currentMeanDistance[key] = currentMeanDistance[key] / (index + 1)
 
     currentMeanDistance = dict(
         sorted(currentMeanDistance.items(), key=lambda item: item[1])
     )
 
-    msg = "Who has the ultimate tastes (distance from average)"
-    if ignore != 70:
-        msg += " | Only taking into account top" + str(ignore)
-    print(msg)
+    optional = f" with top {topWeight} songs weighted" if topWeight > 1 else ""
+    ultimate_taste = f"Who has the ultimate tastes (distance from average{optional})\n"
     for key in currentMeanDistance:
-        print(key + ": ", currentMeanDistance[key])
-    print("\n\n")
+        ultimate_taste += f"{key}: {round(currentMeanDistance[key], 2)}\n"
+    ultimate_taste += "\n"
+
+    return ultimate_taste
 
 
-def process_tastes_rank(dataframe, ignore):
-
-    currentMeanDistance = {}
-    for key in dataframe.keys()[5:]:
-        currentMeanDistance[key] = 0
-
-    for index, song in dataframe.iterrows():
-        if index < ignore:
-            for ranker in song.keys()[5:]:
-                currentMeanDistance[ranker] += abs(index - song[ranker])
-
-    for key in currentMeanDistance:
-        currentMeanDistance[key] = currentMeanDistance[key] / ignore
-
-    currentMeanDistance = dict(
-        sorted(currentMeanDistance.items(), key=lambda item: item[1])
-    )
-
-    msg = "Who has the ultimate tastes (distance from rank)"
-    if ignore != 70:
-        msg += " | Only taking into account top" + str(ignore)
-    print(msg)
-    for key in currentMeanDistance:
-        print(key + ": ", currentMeanDistance[key])
-    print("\n\n")
-
-
-def plot_affinity(affinity, rankers):
+def plot_affinity(affinity, rankers, PR_name):
     fig, ax = plt.subplots()
     im = ax.imshow(affinity)
 
@@ -83,7 +69,7 @@ def plot_affinity(affinity, rankers):
     # Loop over data dimensions and create text annotations.
     for i in range(len(rankers)):
         for j in range(len(rankers)):
-            text = ax.text(
+            ax.text(
                 j,
                 i,
                 round(1 - affinity[i, j], 2),
@@ -95,85 +81,47 @@ def plot_affinity(affinity, rankers):
 
     ax.set_title("Affinity between players")
     fig.tight_layout()
-    plt.show()
+    plt.savefig(f"{PR_name}_Affinity.png", dpi=199)
 
 
-def print_affinity(affinity, rankers):
-    for index, ranker in enumerate(affinity):
-        idx = np.argpartition(-ranker, -5)[-5:]
-        indices = idx[np.argsort((ranker)[idx])]
-        print(rankers[index])
-        for indice in indices[1:]:
-            print("BFF: " + rankers[indice])
-
-        idx = np.argpartition(ranker, -4)[-4:]
-        indices = idx[np.argsort((-ranker)[idx])]
-        for indice in indices:
-            print("Worst ennemy: " + rankers[indice])
-        print()
-    print("\n\n")
-
-
-def process_cosine_affinity(dataframe, nb_players, ignored_players=[]):
+def process_cosine_affinity(dataframe):
 
     rankers = []
-    for ranker in dataframe.keys()[5:]:
-        if ranker not in ignored_players:
-            rankers.append(ranker)
+    for ranker in dataframe.keys()[
+        START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS
+    ]:
+        rankers.append(ranker)
 
-    affinity = np.zeros(
-        (nb_players - len(ignored_players), nb_players - len(ignored_players))
-    )
+    affinity = np.zeros((NB_PLAYERS, NB_PLAYERS))
 
-    for ranker in dataframe.keys()[5:]:
-        for ranker2 in dataframe.keys()[5:]:
-            if ranker not in ignored_players and ranker2 not in ignored_players:
-                affinity[rankers.index(ranker)][
-                    rankers.index(ranker2)
-                ] = spatial.distance.cosine(
-                    np.array(dataframe[ranker]), np.array(dataframe[ranker2])
-                )
+    for ranker in dataframe.keys()[
+        START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS
+    ]:
+        for ranker2 in dataframe.keys()[
+            START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS
+        ]:
+            affinity[rankers.index(ranker)][
+                rankers.index(ranker2)
+            ] = spatial.distance.cosine(
+                np.array(dataframe[ranker]), np.array(dataframe[ranker2])
+            )
 
-    print_affinity(affinity, rankers)
-    plot_affinity(affinity, rankers)
-
-
-def process_rank_affinity(dataframe, nb_players, ignored_players=[]):
-
-    rankers = []
-    for ranker in dataframe.keys()[5:]:
-        if ranker not in ignored_players:
-            rankers.append(ranker)
-
-    affinity = np.zeros(
-        (nb_players - len(ignored_players), nb_players - len(ignored_players))
-    )
-
-    for ranker in dataframe.keys()[5:]:
-        for ranker2 in dataframe.keys()[5:]:
-            if ranker not in ignored_players and ranker2 not in ignored_players:
-                affinity[rankers.index(ranker)][rankers.index(ranker2)] += np.sum(
-                    abs(np.array(dataframe[ranker]) - np.array(dataframe[ranker2]))
-                )
-    affinity = preprocessing.normalize(affinity)
-    print_affinity(affinity, rankers)
-    plot_affinity(affinity, rankers)
+    return affinity, rankers
 
 
 if __name__ == "__main__":
     sheet_path = Path(".")
-    sheet_list = list(sheet_path.glob("**/*.ods"))
-
-    ignoring = [70]
-    nb_players = 16
+    sheet_list = list(sheet_path.glob("*.ods"))
 
     if len(sheet_list) > 0:
-        dataframe = pd.read_excel(sheet_list[0], engine="odf")
-        for ignored in ignoring:
-            process_tastes_average(dataframe, ignored)
+        for sheet in sheet_list:
+            dataframe = pd.read_excel(sheet, engine="odf")
+            PR_name = str(sheet).split(" ")[0]
+            f = open(f"{PR_name}_ultimate_tastes.txt", "w")
+            f.write(f"{sheet.name}\n\n")
+            f.write(process_tastes_average(dataframe))
+            f.write(process_tastes_average(dataframe, topWeight=3))
+            f.close()
 
-        for ignored in ignoring:
-            process_tastes_rank(dataframe, ignored)
-
-        process_cosine_affinity(dataframe, nb_players, ["likejaxirl"])
-        process_rank_affinity(dataframe, nb_players, ["likejaxirl"])
+            affinity, rankers = process_cosine_affinity(dataframe)
+            plot_affinity(affinity, rankers, PR_name)
