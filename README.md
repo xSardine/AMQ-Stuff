@@ -13,6 +13,9 @@ Get an URL automatically for all the files in the directory and generate CSS cod
 Let you use Nyamu's Chat command script in a personal window instead of chat.
 Nyamu's script if you would rather use it on chat: https://github.com/nyamu-amq/amq_scripts/blob/master/amqChatCommands.user.js
 
+- SongCountGuessRate:
+Keep the number of time the song has previously played in your games as well as giving you your guess rate on the song
+
 - SpecialCharacterMacro:
 Let you use macro for typing stuff
 
