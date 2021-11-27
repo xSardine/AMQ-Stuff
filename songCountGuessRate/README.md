@@ -12,8 +12,7 @@ Go to https://nodejs.org/en/ , download the recommended version and install it
 
 - Open the powershell in the directory: Shift + Right-Click on the folder 'songHistory' then 'Open PowerShell window here'
 
-- Install the necessary modules: 
-`npm install`
+- Download the necessary modules by extracting node_modules.zip
 
 - Add the tampermonkey_script.js in Tampermonkey
  
