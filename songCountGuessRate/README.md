@@ -1,3 +1,5 @@
+mshift's S/A script that me and Husa modified to keep only the songCounter part
+
 ## Song Count + Guess Rate
 It might not be 100% legal because you're scrapping AMQ database, but Husa made it public, so I might as well. ~~don't worry, you can use it no one cares~~
 
