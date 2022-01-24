@@ -1,0 +1,26 @@
+exampleSheet.ods
+
+Who has the ultimate tastes (distance from average)
+asleep: 2.16
+Deafness: 2.16
+Satori: 2.74
+Hayato: 2.81
+GyroInmobile: 2.87
+ShiroKuro: 2.97
+Sewim: 3.01
+EruisKawaii: 3.04
+SaroArsten: 3.04
+wswsasd: 3.87
+
+Who has the ultimate tastes (distance from average with top 3 songs weighted)
+asleep: 3.64
+Deafness: 3.71
+Sewim: 4.48
+EruisKawaii: 4.68
+GyroInmobile: 4.89
+SaroArsten: 4.9
+Satori: 5.04
+Hayato: 5.19
+ShiroKuro: 5.49
+wswsasd: 6.92
+

@@ -1,74 +1,59 @@
 # Party Rank Tools
 
+- For Tools to create the Sheet itself automatically, and/or download every webm/mp4 needed, DM me on discord.
+
+- Process Stats will output some stats such as how much people got their ranking close to the final result, or the affinity between people.
+
+- Upload Party Rank will take as input a sheet you need to send to the player, and the list of player, and will automatically upload everything to your Google Drive.
+
 # Requirements
 
 To use these scripts you will need python that you can download here: <https://www.python.org/downloads/>,
 Make sure that it will make an environment variable for you when it will ask for it.
 
-You also need to install ffmpeg: <https://www.ffmpeg.org/>, and set it up as an environment variable too, it is quickly explained here in the "Add ffmpeg to Windows 10 Path" section: <https://windowsloop.com/install-ffmpeg-windows-10/>
-
 Once this is done, you need to install the python libraries I'm using for these scripts by typing this command in the CMD:
 
+- For process_stats.py:
+```
+python -m pip install matplotlib
+python -m pip install pandas
+python -m pip install scipy
+```
+
+- For upload_party.py:
 ```
 python -m pip install openpyxl
 python -m pip install pydrive
 ```
 
-# 1 - Create Party Rank Sheet
+# Download and Start a script (Windows)
 
-## 1.1 - Getting Expand.json
+To download one of the scripts, you need to click on it on github, it will open the content. Click on `raw` at the top right of your screen. You can then `right click` and press `save as`.
 
-For this, you'll need an export of the expand library as a JSON, you can get it through the console of your navigator (press F12, then go on the console tab) using this call:
-
-```js
-new Listener("expandLibrary questions", (payload) => {
-  console.log(payload)
-}).bindListener()
-socket.sendCommand({
-    type: "library",
-    command: "expandLibrary questions"
-})
+To start it you can either:
+- `Alt + Right click` the folder containing the script and select `Open Powershell`
+- Type `cmd` in your windows search bar and open the command line interpretor. Then use the `cd` function to move into the folder containing the script. (i.e, if the script is in `Documents/PR_Tools/script.py`, then you use `cd Documents\PR_Tools\`)
+  
+After you've done one of these two steps, you can then type in the cmd:
 ```
-once this is done, you can right click the results and `expand recursively`, then you can right click again and `save as`, naming it `expand.json`
-
-You can also DM me if you don't want to bother.
-
-## 1.2 - Download the files
-
-Then you need to get these scripts: `create_party_rank_sheet.py`, `upload_party_rank_sheet.py`, `download_party_rank_sheet.py`, `PR_config.py` and `settings.yaml` and place them in the same folder as `expand.json`. To download them, you need to click on the script, then `raw` on the top right, and then you can right click and `save as...`.
-
-## 1.3 - Configuring the scripts
-
-Once you have this, you can configure the project to meet the requirements for the current Party Rankins in the `PR_config.py` file.
-
-```py
-party_rank_name = "Nonoc"
-player_list = ["EruisKawaii", "Husa", "xSardine", "etc"]
+python name_of_the_script.py
 ```
 
-This is straight forward.
+# Process Party Stats
 
-```py
-# Filtering search
-anime_search_filters = []
-artist_search_filters = ["yoshino nanjou", "fripside"]
-song_name_search_filters = []
-# Filtering search
-```
-Here it will return every song in the `expand.json` file that have either `yoshino nanjou` or `fripside` as artist.
+exampleSheet.ods is a minimal sheet for which the script should work, just replicate it with your PR. You can have stuff on the left and the right of this minimal information (like ids, song names, totals, ...) as long as you change the variables to the right values, however nothing should be on the top or the bottom.
 
-If you want every madoka song in white album:
-```py
-# Filtering search
-anime_search_filters = ["white album"]
-artist_search_filters = ["madoka yonezawa"]
-song_name_search_filters = []
-# Filtering search
-```
+If the players `ranked` the songs, then you need to use `process_party_rank_stats.py`, otherwise, if they `rated` the songs, you need to use `process_party_rate_stats.py`
 
-There are also some other possibilities, I advise to check the few examples I've written in the bottom of the `PR_config.py` script, it will help you understand the everything you can do (it's better than expand search, that's for sure).
+Place the `PR final sheets` you want stats from in the same folder as the script. Open the script with an editor and put the right amount of people in the `NB_PLAYERS` variable.
 
-## 1.3 - Setting up Google Drive API
+You can then start the script and it will output a .txt file and an image in that same folder.
+
+# 2. Upload Party Rank
+
+## 2.1 Setting up Google Drive API
+
+*might be outdated, search on google to help you do that*
 
 If you wish to automatically upload each sheet to your google drive you need to follow additional steps:
 
@@ -99,41 +84,11 @@ You're now good to go!
 
 You will have to use your logins the first time, they will then be stored in a new file created in the folder: `credentials.json`. Don't worry, they are securely stored (Hashed, not in plain sight). As long as you have this file in the folder, you won't have to login again.
 
-## 1.4 - Starting the scritps
+## 2.2 Uploading every user custom sheet to google drive
 
-Once you're done with this configuration, you can go in your `cmd` and get to the folder you just created using the `cd` commands:
-let's say your scripts are in `C://Users/<Your_Name>/Documents/PR/`:
-```
-cd Documents\PR
-```
-
-## 1.4.1 Creating the sheet
-
-You can create the sheet like this:
-```
-python create_party_rank_sheet.py
-```
-
-It will create a sheet with the songs from expand filtered by your configuration, keep in mind fully uploaded stuff will not appear and still has to get taken from in game. It might also take into account songs that you don't need (i.e, minami domexkano and minami [kuribayashi]) as well as duplicates, make sure to remove those.
-
-Once your sheet is created, and you've added anything that is missing, and deleted anything that you don't want, you can then do the next two steps in the order you want.
-
-## 1.4.2 Downloading the mp4 videos
-
-Download every song as an mp4 with the download_party_rank_sheet.py script:
-```
-python download_party_rank_sheet.py
-```
-
-If you need to stop the process in the middle of the downloading but don't want to loose all the progress, don't worry you can quit the terminal, when you want to start again, check which line you stopped, and change the `2` in the line in the code:
-```py
-link_start_row = 2  # number of the row where I need to start getting links
-```
-to the line you want to start from. (don't forget to change it back to 2 for the next PR)
-
-## 1.4.3 Uploading every user custom sheet to google drive
-
-You can upload a sheet per user into google drive with this command:
+- Place the script and the sheet you need to upload in the same folder.
+- Edit the first few lines to meet your PR configuration
+- You can then upload a sheet per user into google drive with this command in your cmd:
 ```
 python upload_party_rank_sheet.py
 ```

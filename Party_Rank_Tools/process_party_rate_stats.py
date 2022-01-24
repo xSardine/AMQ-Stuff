@@ -1,7 +1,6 @@
 from pathlib import Path
 import pandas as pd
 import numpy as np
-from scipy import spatial
 import matplotlib.pyplot as plt
 
 START_COLUMN_PLAYER = 0  # the column at which players start appearing
@@ -54,7 +53,7 @@ def process_tastes_average(dataframe, topWeight=0):
 
 def plot_affinity(affinity, rankers, PR_name):
     fig, ax = plt.subplots()
-    im = ax.imshow(affinity, cmap="YlGn_r", vmin=0, vmax=max(np.max(affinity), 0.65))
+    im = ax.imshow(affinity, cmap="YlGn_r", vmin=0, vmax=1)
 
     # We want to show all ticks...
     ax.set_xticks(np.arange(len(rankers)))
@@ -72,19 +71,23 @@ def plot_affinity(affinity, rankers, PR_name):
             ax.text(
                 j,
                 i,
-                f"{int(round(1 - affinity[i, j], 2) * 100)}",
+                f"{int(round(1 - affinity[i, j], 2) * 100)}%",
                 ha="center",
                 va="center",
                 color="w",
                 size=4.5,
             )
 
-    ax.set_title(f"{PR_name}\nAffinity between people")
+    ax.set_title(PR_name)
     fig.tight_layout()
     plt.savefig(f"{PR_name}_Affinity.png", dpi=199)
 
 
-def process_cosine_affinity(dataframe):
+def NormalizeData(data, nb_songs):
+    return (data - 0) / (nb_songs * 10 - 0)
+
+
+def process_affinity(dataframe):
 
     rankers = []
     for ranker in dataframe.keys()[
@@ -100,12 +103,14 @@ def process_cosine_affinity(dataframe):
         for ranker2 in dataframe.keys()[
             START_COLUMN_PLAYER : START_COLUMN_PLAYER + NB_PLAYERS
         ]:
-            affinity[rankers.index(ranker)][
-                rankers.index(ranker2)
-            ] = spatial.distance.cosine(
-                np.array(dataframe[ranker]), np.array(dataframe[ranker2])
-            )
+            rating1 = np.array(dataframe[ranker])
+            rating2 = np.array(dataframe[ranker2])
+            for i, rating in enumerate(rating1):
+                affinity[rankers.index(ranker)][rankers.index(ranker2)] += abs(
+                    rating - rating2[i]
+                )
 
+    affinity = NormalizeData(affinity, len(rating1))
     return affinity, rankers
 
 
@@ -123,5 +128,5 @@ if __name__ == "__main__":
             f.write(process_tastes_average(dataframe, topWeight=3))
             f.close()
 
-            affinity, rankers = process_cosine_affinity(dataframe)
+            affinity, rankers = process_affinity(dataframe)
             plot_affinity(affinity, rankers, PR_name)

@@ -1,10 +1,9 @@
 from pathlib import Path
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-import PR_config
 
-party_rank_name = PR_config.party_rank_name
-player_list = PR_config.player_list
+party_rank_name = "Insert Party Rank Name"
+player_list = ["Player 1", "Player 2", "Player 3", "[...]", "Player X"]
 file_name = party_rank_name + " Anime Songs Ranking Sheet.xlsx"
 
 
