@@ -1,79 +1,74 @@
-from pathlib import Path
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+import os.path
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.http import MediaFileUpload
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
-party_rank_name = "Insert Party Rank Name"
+party_rank_name = "Insert Party Rank Name.ods"
 player_list = ["Player 1", "Player 2", "Player 3", "[...]", "Player X"]
-file_name = party_rank_name + " Anime Songs Ranking Sheet.xlsx"
+
+SCOPES = [
+    "https://www.googleapis.com/auth/docs",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/drive.install",
+]
 
 
-def connect_to_drive():
-    gauth = GoogleAuth()
-    gauth.LocalWebserverAuth()
-    drive = GoogleDrive(gauth)
-    return drive
+def main():
 
+    creds = None
+    # The file token.json stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists("token.json"):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open("token.json", "w") as token:
+            token.write(creds.to_json())
 
-def createRemoteFolder(drive, folderName, parentID=0):
+    try:
+        service = build("drive", "v3", credentials=creds)
 
-    folderlist = drive.ListFile(
-        {"q": "mimeType='application/vnd.google-apps.folder' and trashed=false"}
-    ).GetList()
-
-    titlelist = [x["title"] for x in folderlist]
-    if folderName in titlelist:
-        for item in folderlist:
-            if item["title"] == folderName:
-                return item["id"]
-
-    if parentID != 0:
+        # Create General Party Rank Folder
         file_metadata = {
-            "title": folderName,
-            "mimeType": "application/vnd.google-apps.folder",
-            "parents": [{"id": parentID}],
-        }
-    else:
-        file_metadata = {
-            "title": folderName,
+            "name": f"{party_rank_name.split('.')[0]} PR",
             "mimeType": "application/vnd.google-apps.folder",
         }
-    file0 = drive.CreateFile(file_metadata)
-    file0.Upload()
-    return file0["id"]
+        PRFolder = service.files().create(body=file_metadata, fields="id").execute()
+        print(f"Created folder: {party_rank_name.split(' ')[0]} PR")
 
+        for player in player_list:
+            # Upload the sheet for the current user
+            file_metadata = {
+                "name": f"{party_rank_name.split(' ')[0]} ({player}).ods",
+                "parents": [PRFolder.get("id")],
+            }
+            media = MediaFileUpload(
+                "exampleSheet.ods",
+                mimetype="application/vnd.oasis.opendocument.spreadsheet",
+            )
+            sheet = (
+                service.files()
+                .create(body=file_metadata, media_body=media, fields="id")
+                .execute()
+            )
+            print(f"Created sheet: {party_rank_name.split(' ')[0]} ({player}).ods")
+        print("Done :)")
 
-def upload_every_xlsx():
-
-    print("Connecting to Google Drive API...")
-    drive = connect_to_drive()
-    print("Connection successful!")
-
-    print("Uploading files...")
-    dir1 = createRemoteFolder(drive, "Party Ranks")
-    dir2 = createRemoteFolder(drive, party_rank_name, dir1)
-
-    # Search for any .xlsx file in the current directory or subdirectory
-    sheet_path = Path(".")
-    sheet_list = list(sheet_path.glob("**/*.xlsx"))
-    for sheet in sheet_list:
-        if str(sheet).startswith(party_rank_name):
-            for player in player_list:
-                file1 = drive.CreateFile(
-                    {
-                        "title": str(Path(file_name).with_suffix(""))
-                        + " ("
-                        + player
-                        + ").xlsx",
-                        "parents": [{"kind": "drive#fileLink", "id": dir2}],
-                    }
-                )  # Create GoogleDriveFile instance
-                file1.SetContentFile(
-                    sheet_list[0]
-                )  # Set content of the file from given file.
-                file1.Upload()
-    print("Done :)")
+    except HttpError as error:
+        # TODO(developer) - Handle errors from drive API.
+        print(f"An error occurred: {error}")
 
 
 if __name__ == "__main__":
 
-    upload_every_xlsx()
+    main()

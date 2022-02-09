@@ -3,9 +3,10 @@ import pandas as pd
 import numpy as np
 from scipy import spatial
 import matplotlib.pyplot as plt
+import matplotlib.patheffects as PathEffects
 
 START_COLUMN_PLAYER = 0  # the column at which players start appearing
-NB_PLAYERS = 10
+NB_PLAYERS = 24
 
 
 def get_song_average(song):
@@ -54,7 +55,7 @@ def process_tastes_average(dataframe, topWeight=0):
 
 def plot_affinity(affinity, rankers, PR_name):
     fig, ax = plt.subplots()
-    im = ax.imshow(affinity, cmap="YlGn_r", vmin=0, vmax=max(np.max(affinity), 0.65))
+    im = ax.imshow(affinity)
 
     # We want to show all ticks...
     ax.set_xticks(np.arange(len(rankers)))
@@ -76,7 +77,10 @@ def plot_affinity(affinity, rankers, PR_name):
                 ha="center",
                 va="center",
                 color="w",
-                size=4.5,
+                size=5,
+                path_effects=[
+                    PathEffects.withStroke(linewidth=0.8, foreground="black")
+                ],
             )
 
     ax.set_title(f"{PR_name}\nAffinity between people")

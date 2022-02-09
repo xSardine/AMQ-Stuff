@@ -4,7 +4,7 @@
 
 - Process Stats will output some stats such as how much people got their ranking close to the final result, or the affinity between people.
 
-- Upload Party Rank will take as input a sheet you need to send to the player, and the list of player, and will automatically upload everything to your Google Drive.
+- Upload Party Rank will take as input a sheet you need to send to the player, and the list of player, and will automatically upload everything to your Google Drive. (You'll still have to send them the link to their sheet)
 
 # Requirements
 
@@ -15,15 +15,12 @@ Once this is done, you need to install the python libraries I'm using for these 
 
 - For process_stats.py:
 ```
-python -m pip install matplotlib
-python -m pip install pandas
-python -m pip install scipy
+python -m pip install matplotlib pandas scipy odfpy
 ```
 
 - For upload_party.py:
 ```
-python -m pip install openpyxl
-python -m pip install pydrive
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 
 # Download and Start a script (Windows)
@@ -32,7 +29,7 @@ To download one of the scripts, you need to click on it on github, it will open 
 
 To start it you can either:
 - `Alt + Right click` the folder containing the script and select `Open Powershell`
-- Type `cmd` in your windows search bar and open the command line interpretor. Then use the `cd` function to move into the folder containing the script. (i.e, if the script is in `Documents/PR_Tools/script.py`, then you use `cd Documents\PR_Tools\`)
+- or type `cmd` in your windows search bar and open the command line interpretor. Then use the `cd` function to move into the folder containing the script. (i.e, if the script is in `Documents/PR_Tools/script.py`, then you use `cd Documents\PR_Tools\`)
   
 After you've done one of these two steps, you can then type in the cmd:
 ```
@@ -45,7 +42,7 @@ exampleSheet.ods is a minimal sheet for which the script should work, just repli
 
 If the players `ranked` the songs, then you need to use `process_party_rank_stats.py`, otherwise, if they `rated` the songs, you need to use `process_party_rate_stats.py`
 
-Place the `PR final sheets` you want stats from in the same folder as the script. Open the script with an editor and put the right amount of people in the `NB_PLAYERS` variable.
+Place the `PR final sheets` in the same folder as the script. Open the script with an editor and put the right amount of people in the `NB_PLAYERS` variable.
 
 You can then start the script and it will output a .txt file and an image in that same folder.
 
@@ -55,15 +52,15 @@ You can then start the script and it will output a .txt file and an image in tha
 
 *might be outdated, search on google to help you do that*
 
-If you wish to automatically upload each sheet to your google drive you need to follow additional steps:
+If you wish to automatically upload 1 sheet per user to your google drive you need to follow additional steps, **this is only worth if you intend to do a lot of PR or PRs with a lot of people**:
 
-You can start by following the steps described in the first 3 pages of this pdf:
-<https://d35mpxyw7m7k7g.cloudfront.net/bigdata_1/Get+Authentication+for+Google+Service+API+.pdf>, the process changed after the 4th page, so I'll be continuing here.
+You'll want to open your google cloud platform:
+<https://console.developers.google.com/home/>
+In the search bar, type `Google Drive API` and press enter. Wait a few seconds, once it is activated, click on `Create Credentials` on the top right.
 
-Once you've done this, click on `Create Credentials`, it will brings you to a form.
-For the first question, select the `Google Drive API`, the second question, select `users data`, after this, it will ask further information about your apps, since it will be only personal use, it doesn't matter and you can give it a random name. Enter you google email adress you're using to store your party ranks.
+It will ask how you will use the API, select user data as we will manage our own data. Press Next. It will ask more information about the application, since it's for personnal use, it doesn't really matter, just enter some random names for the necessary fields and enter your email.
 
-It will now ask about which personal acces you will need for your application, this script will need to login (you will still have to provide your password obviously), and create a new file in your drive, so let's add those:
+It will now ask about which personal acces you will need for your application, this script will need to login (you will still have to provide your password when using it obviously), and create a new file in your drive, so let's add those:
 - Click on `Add or Delete application domains`
 - In the search filter, type `drive` and press enter
 - Select the second and third elements ("Display, Modify, Update or **Create** files in your google drive")
@@ -76,13 +73,11 @@ It will now asks you which type of application this is, it doesn't really matter
 
 Click `create`.
 
-You can now click the `download` button, it will give you a `.json` that you will put in the same folder as the rest. You can find your `Client ID` and `Client Secret` in that file, copy and paste them in their respective field in the `settings.yaml` file. You can now delete the `.json` file downloaded previously.
+You can now click the `download` button, it will give you a `.json` that you will put in the same folder as the rest. Rename this file `credentials.json`.
 
-Final step: on the google project interface, on the left, below `logins`, click on `OAuth Consent Screen`, and on this page, click on `Add user`. Type the email adress you will be using to store these Party Ranks sheets.
+Final step: Go back to the menu on the top left of your screen, select `API and services`, select `OAuth Consent Screen`, scroll down a little and click on `Add User`. Enter the email related to the Google Drive account you will use to store your sheets. Press save twice and you're done.
 
-You're now good to go!
-
-You will have to use your logins the first time, they will then be stored in a new file created in the folder: `credentials.json`. Don't worry, they are securely stored (Hashed, not in plain sight). As long as you have this file in the folder, you won't have to login again.
+You will have to use your logins the first time. A new file `token.json` will be created and will let you use the script without logging in as long as it is in the folder.
 
 ## 2.2 Uploading every user custom sheet to google drive
 
@@ -92,6 +87,6 @@ You will have to use your logins the first time, they will then be stored in a n
 ```
 python upload_party_rank_sheet.py
 ```
-By default, the files will be uploaded in `~/Party Ranks/PR_Name/files.xlsx`.
+By default, the files will be uploaded in `~/<file_name> PR/<file_name> (<user_name>).extension`.
 
-(example for Nonoc: `~/Party Ranks/Nonoc/Nonoc Anime Songs Sheets (User).xlsx`)
+(example for the file name "Nonoc.ods": `~/Nonoc PR/Nonoc (User).ods`)
