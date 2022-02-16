@@ -20,7 +20,7 @@ python -m pip install matplotlib pandas scipy odfpy
 
 - For upload_party.py:
 ```
-pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+python -m pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 
 # Download and Start a script (Windows)
