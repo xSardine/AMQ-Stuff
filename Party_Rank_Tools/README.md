@@ -11,9 +11,9 @@
 To use these scripts you will need python that you can download here: <https://www.python.org/downloads/>,
 Make sure that it will make an environment variable for you when it will ask for it.
 
-Once this is done, you need to install the python libraries I'm using for these scripts by typing this command in the CMD:
+Once this is done, you need to install the python libraries for the script you want to use. Type this command in the CMD:
 
-- For process_stats.py:
+- For process_PR_stats.py:
 ```
 python -m pip install matplotlib pandas scipy odfpy
 ```
@@ -38,11 +38,11 @@ python name_of_the_script.py
 
 # Process Party Stats
 
-exampleSheet.ods is a minimal sheet for which the script should work, just replicate it with your PR. You can have stuff on the left and the right of this minimal information (like ids, song names, totals, ...) as long as you change the variables to the right values, however nothing should be on the top or the bottom.
+exampleSheet.ods is a minimal sheet for which the script should work, just replicate it with your PR. You can have stuff on the left of the player grid as long as you fill in correctly the variables `START_COLUMN_PLAYER` and `START_LINE_PLAYER` to the right values within the script.
 
-If the players `ranked` the songs, then you need to use `process_party_rank_stats.py`, otherwise, if they `rated` the songs, you need to use `process_party_rate_stats.py`
+However, if you want to have stuff on the bottom of your sheet, then you'll need to update `NB_SONGS` variable for each PR. If you want stuff on the right of the PR, then you'll need to update `NB_PLAYERS`. These variables are used as coordinates to isolate the "player score grid" from the rest of the sheet to simulate the format of exampleSheet.ods.
 
-Place the `PR final sheets` in the same folder as the script. Open the script with an editor and put the right amount of people in the `NB_PLAYERS` variable.
+Place the `PR final sheets` in the same folder as the script. Open the script with an editor and edit the different settings/variables to meet your sheet formats and the current PR.
 
 You can then start the script and it will output a .txt file and an image in that same folder.
 
@@ -77,7 +77,6 @@ You can now click the `download` button, it will give you a `.json` that you wil
 
 Final step: Go back to the menu on the top left of your screen, select `API and services`, select `OAuth Consent Screen`, scroll down a little and click on `Add User`. Enter the email related to the Google Drive account you will use to store your sheets. Press save twice and you're done.
 
-You will have to use your logins the first time. A new file `token.json` will be created and will let you use the script without logging in as long as it is in the folder.
 
 ## 2.2 Uploading every user custom sheet to google drive
 
@@ -87,6 +86,8 @@ You will have to use your logins the first time. A new file `token.json` will be
 ```
 python upload_party_rank_sheet.py
 ```
+You will have to use your logins the first time. A new file `token.json` will be created and will let you use the script without logging in as long as it is in the folder.
+
 By default, the files will be uploaded in `~/<file_name> PR/<file_name> (<user_name>).extension`.
 
 (example for the file name "Nonoc.ods": `~/Nonoc PR/Nonoc (User).ods`)
