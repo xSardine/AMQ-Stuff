@@ -28,7 +28,7 @@ python -m pip install --upgrade google-api-python-client google-auth-httplib2 go
 To download one of the scripts, you need to click on it on github, it will open the content. Click on `raw` at the top right of your screen. You can then `right click` and press `save as`.
 
 To start it you can either:
-- `Maj + Right click` the folder containing the script and select `Open Powershell`
+- `Shift + Right click` the folder containing the script and select `Open Powershell`
 - or type `cmd` in your windows search bar and open the command line interpretor. Then use the `cd` function to move into the folder containing the script. (i.e, if the script is in `Documents/PR_Tools/script.py`, then you use `cd Documents\PR_Tools\`)
   
 After you've done one of these two steps, you can then type in the cmd:
