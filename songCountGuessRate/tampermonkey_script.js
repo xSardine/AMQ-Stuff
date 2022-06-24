@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         amq song history
+// @name         AMQ Song Play Count / Guess Rate
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  Display the number of time this song played before and your guess rate on it in the song info window
 // @author       You
 // @match        https://animemusicquiz.com/*
 // @grant        none
@@ -18,7 +18,7 @@ if (window.quiz) {
     setup()
 }
 
-function onSongPlayed(data) {
+function isCorrect(data) {
 
     let myID = -1
     for (let player in window.quiz.players) {
@@ -34,8 +34,21 @@ function onSongPlayed(data) {
         }
     }
 
-    let body = data.songInfo
-    body["isCorrect"] = isCorrect
+    return isCorrect
+
+}
+
+function onSongPlayed(data) {
+
+
+    let body = {
+        "songName": data.songInfo.songName,
+        "artist": data.songInfo.artist
+    }
+
+    let correct = isCorrect(data)
+
+    body["isCorrect"] = correct
     body["isSpectator"] = quiz.isSpectator
 
     let params = {
@@ -50,13 +63,14 @@ function onSongPlayed(data) {
     fetch(`${SERVER_ADDRESS}/songrec`, params)
         .then(req => req.json())
         .then(res => {
+
             if (!res.inDatabase) {
-                infoDiv.innerHTML = ""
+                infoDiv.innerHTML = "First time encountered"
                 return
             }
 
             let correctIncrement = 0
-            if (isCorrect) {
+            if (correct) {
                 correctIncrement = 1
             }
 
@@ -66,8 +80,8 @@ function onSongPlayed(data) {
             }
 
             if (!quiz.isSpectator || res.playCount > 0) {
-                infoDiv.innerHTML = `Play Count: <b>${res.playCount + playCountIncrement}</b> (${Math.floor((res.correctcount + correctIncrement) / (res.playCount + playCountIncrement) * 100)}%)`;
-                infoDiv.innerHTML += `<br>Last played: <b>${timeAgo(res.lastPlayed)}</b>`;
+                infoDiv.innerHTML = `Play Count: <b>${res.playCount + playCountIncrement}</b> (${Math.floor((res.correctCount + correctIncrement) / (res.playCount + playCountIncrement) * 100)}%)`;
+                infoDiv.innerHTML += `<br>Last played: <b>${timeAgo(res.lastTimePlayed)}</b>`;
             }
         })
 }
