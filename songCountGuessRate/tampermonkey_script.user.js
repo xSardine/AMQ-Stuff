@@ -5,8 +5,8 @@
 // @description  Display the number of time this song played before and your guess rate on it in the song info window
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
-// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.js
-// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.js
+// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js
 // @grant        none
 // ==/UserScript==
 
