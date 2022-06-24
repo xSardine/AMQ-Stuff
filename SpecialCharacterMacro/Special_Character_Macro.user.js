@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         AMQ Special Character Macro
 // @namespace    https://github.com/xSardine
-// @version      1.0
+// @version      1.1
 // @author       xSardine
 // @description  press a key and @someone
 // @match        https://animemusicquiz.com/*
 // @grant        none
-// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.js
+// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.user.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.user.js
 // ==/UserScript==
 
 

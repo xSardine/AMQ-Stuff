@@ -6,7 +6,8 @@
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
 // @grant        none
-// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/dm_timestamp.js
+// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/dm_timestamp.user.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/dm_timestamp.user.js
 // ==/UserScript==
 
 ChatBox.prototype.writeMessage = function (sender, msg, emojis, allowHtml) {

@@ -9,6 +9,8 @@
 // @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqScriptInfo.js
 // @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqWindows.js
 // @require      https://github.com/nyamu-amq/amq_scripts/raw/master/amqChatCommands.user.js
+// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/NyamuCommandWindow/Nyamu_Command_Window.user.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/NyamuCommandWindow/Nyamu_Command_Window.user.js
 // ==/UserScript==
 
 if (document.getElementById('startPage')) {

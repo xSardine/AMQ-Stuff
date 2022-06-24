@@ -1,29 +1,31 @@
 mshift's S/A script that me and Husa modified to keep only the songCounter part
 
-## Song Count + Guess Rate
-It might not be 100% legal because you're scrapping AMQ database, but Husa made it public, so I might as well. ~~don't worry, you can use it no one cares~~
+It will display the number of time a song have appeared and your guess rate on it in the song info box.
 
-If you're one of the few people that uses the S/A script as well, do not use that version yet.
+## Song Count + Guess Rate
+
+If you're one of the few people that uses the S/A script as well, do not use this as idk if they are compatible.
 
 ## Installation
 
-- Install Node.js
-Go to https://nodejs.org/en/ , download the recommended version and install it
+- Install [tampermonkey](https://www.tampermonkey.net/) if you don't have it already
 
-- Download the files in this directory (click on them, raw, right click, download)
+- Install [Node.js](https://nodejs.org/en/), download the recommended version
 
-- Download the necessary modules by extracting node_modules.zip
+- Download the [node_modules.zip](https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/node_modules.zip), and the [index.js script](https://raw.githubusercontent.com/xSardine/AMQ-Stuff/main/songCountGuessRate/index.js) (right click → save as) from this repository. Place them in the same directory and extract the `node_modules.zip` archive.
 
-- Add the tampermonkey_script.js in Tampermonkey
+- Add the [tampermonkey_script](https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js) in Tampermonkey
 
-- Open the powershell in the directory: Shift + Right-Click on the folder 'songHistory' then 'Open PowerShell window here'
+The preparation should be done, you can now start the local server and start playing AMQ.
+This server will be called at the end of each song and save your stats on the songs, it will then send it back to the userscript that will display the information on the song info box.
 
- 
-The preparation should be done, you can now start the server and start playing AMQ.
+To start the local server:
 
-To start the server: `node index.js` in the shell window
+- Open the powershell in the directory: `Shift + Right-Click` on the folder where your files are located, then click `Open PowerShell window here`
+- Type `node index.js` in the shell window
+
 You should see a message that the HTTP server is listening. Make sure to keep this window open whenever you're playing AMQ
 
-If either:
-The song name or the artist change/get fixed, it will reset the song count and guess rate as it will detect is as a whole new song, it's "normal" as that's how mshift's script work. Maybe i'll improve that someday. (no)
+### Known issue
 
+If the song name or the artist change/get fixed, it will reset the song count and guess rate as it will detect is as a whole new song. There's not much I can do about this without saving the links and other informations, which would make this script too borderline cheating to be used on AMQ.
