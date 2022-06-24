@@ -1,27 +1,22 @@
 ## AMQ-Stuff
+
 AMQ stuff I make because i'm bored
 
-
 - BetterDms:
-Makes your DMs looks better
+Makes your DMs looks better in exchange of the XP bar and levels
 
 - DiaporamaBackgroundCSSGenerator:
-Get an URL automatically for all the files in the directory and generate CSS code necessary to add to Elodie's script and have a diaporama as background
-
+Help you generate the code necessary to add to Elodie's userscript to have multiple backgrounds swapping as a diaporama on AMQ
 
 - NyamuCommandWindow:
 Let you use Nyamu's Chat command script in a personal window instead of chat.
-Nyamu's script if you would rather use it on chat: https://github.com/nyamu-amq/amq_scripts/blob/master/amqChatCommands.user.js
+Nyamu's script if you would rather use it on chat: <https://github.com/nyamu-amq/amq_scripts/blob/master/amqChatCommands.user.js>
 
 - SongCountGuessRate:
-Keep the number of time the song has previously played in your games as well as giving you your guess rate on the song
+Display the number of time this song played before and your guess rate on it in the song info window
 
 - SpecialCharacterMacro:
 Let you use macro for typing stuff
 
 - Party Rank Tools:
-Some tools to make creating the sheets and downloading the songs easier
-
-- Top5000Stats:
-Let you get stats concerning Saro's TOP 5000 openings (useless if you're not part of it)
-
+Some tools to make organizing Party Rank easier
