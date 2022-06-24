@@ -6,8 +6,8 @@
 // @description  press a key and @someone
 // @match        https://animemusicquiz.com/*
 // @grant        none
-// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.user.js
-// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.user.js
+// @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/Special_Character_Macro.user.js
+// @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/Special_Character_Macro.user.js
 // ==/UserScript==
 
 

@@ -10,7 +10,7 @@ Currently, the script let you press f2 to type ō and f4 to type ū, and ctrl+1 
 
 ### How to download it
 
-Download [tampermonkey](https://www.tampermonkey.net/), and add this [script](https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/special_character_macro.user.js) to tampermonkey.
+Download [tampermonkey](https://www.tampermonkey.net/), and add this [script](https://github.com/xSardine/AMQ-Stuff/raw/main/SpecialCharacterMacro/Special_Character_Macro.user.js) to tampermonkey.
 
 ### How to use it
 

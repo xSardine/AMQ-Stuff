@@ -10,7 +10,7 @@ DMs_Timestamps: Add the time at which the message has been sent (Advised to use 
 
 ### What to download
 
-[Tampermonkey]() for DMs_Timestamps, then add the [userscript](https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/dm_timestamp.user.js) to it
+[Tampermonkey]() for DMs_Timestamps, then add the [userscript](https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/DMs_Timestamp.user.js) to it
 
 Stylus for Elodie's script and Bigger_DMs
 
