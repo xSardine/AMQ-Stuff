@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Song Play Count / Guess Rate
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      1.0
 // @description  Display the number of time this song played before and your guess rate on it in the song info window
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
