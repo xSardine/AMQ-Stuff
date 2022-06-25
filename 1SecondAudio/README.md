@@ -1,4 +1,4 @@
-# Better DMs
+# 1 Second Audio
 
 ## What it does
 
