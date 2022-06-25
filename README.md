@@ -2,6 +2,9 @@
 
 AMQ stuff I make because i'm bored
 
+- 1SecondAudio:
+Mute your audio after 1 second, is that enough for you to answer ?
+
 - BetterDms:
 Makes your DMs looks better in exchange of the XP bar and levels
 
