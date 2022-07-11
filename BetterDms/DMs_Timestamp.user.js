@@ -30,6 +30,6 @@ ChatBox.prototype.writeMessage = function (sender, msg, emojis, allowHtml) {
 AMQ_addScriptData({
 	name: "DMs Timestamps",
 	author: "xSardine",
-	description: `<p>Add the time at which the DM has been sent (Advised to use it along the <a href="https://github.com/xSardine/AMQ-Stuff/tree/main/BetterDms">Bigger DM userscript</a> or else it's kinda small)</p>
+	description: `<p>Add the time at which the DM has been sent (Advised to use it along the <a href="https://github.com/xSardine/AMQ-Stuff/tree/main/BetterDms" target="_blank">Bigger DM userscript</a> or else it's kinda small)</p>
             <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/DMs_Timestamp.user.js">Click this link</a> to update it.</p>`
 });
