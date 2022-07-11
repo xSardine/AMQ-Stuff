@@ -159,7 +159,8 @@ function timeAgo(time) {
 }
 
 AMQ_addScriptData({
-	name: "Song Play Count / Guess Rate",
-	author: "xSardine",
-	description: `Display the number of time a song played before and your guess rate on it in the song info window`
+    name: "Song Play Count / Guess Rate",
+    author: "xSardine",
+    description: `<p>Display the number of time a song played before and your guess rate on it in the song info window</p>
+            <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js">Click this link</a> to update it.</p>`
 });

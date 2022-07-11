@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ 1 Second Audio
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Mute the audio after 1s (can change timing by modifying delayBeforeMute variable)
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
@@ -9,6 +9,7 @@
 // @copyright    MIT license
 // @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js
 // @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js
+// @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqScriptInfo.js
 // ==/UserScript==
 
 /* Usage:
@@ -144,3 +145,13 @@ new Listener("Host Game", () => {
 	shutdownBtn();
 }).bindListener()
 document.addEventListener('keyup', dockeyup, false);
+
+
+AMQ_addScriptData({
+	name: "1 Second Audio",
+	author: "xSardine",
+	description: `<p>Mute the audio after 1s (can change timing by modifying delayBeforeMute variable)</p>
+			<p>Toggle ON/OFF: alt+m</p>
+			<p>/!\\ Might not be toggling off completely, I'll check that asap. In the mean time, deactivate directly from the Tampermonkey window</p>
+            <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js">Click this link</a> to update it.</p>`
+});

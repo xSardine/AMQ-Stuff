@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         AMQ DMs Timestamps
 // @namespace    https://github.com/xSardine
-// @version      1.0
+// @version      1.1
 // @description  Adds timestamps to DMs
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
 // @grant        none
 // @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/DMs_Timestamp.user.js
 // @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/DMs_Timestamp.user.js
+// @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqScriptInfo.js
 // ==/UserScript==
 
 ChatBox.prototype.writeMessage = function (sender, msg, emojis, allowHtml) {
@@ -24,3 +25,11 @@ ChatBox.prototype.writeMessage = function (sender, msg, emojis, allowHtml) {
 	}
 	this.$CHAT_CONTENT.perfectScrollbar('update');
 };
+
+
+AMQ_addScriptData({
+	name: "DMs Timestamps",
+	author: "xSardine",
+	description: `<p>Add the time at which the DM has been sent (Advised to use it along the <a href="https://github.com/xSardine/AMQ-Stuff/tree/main/BetterDms">Bigger DM userscript</a> or else it's kinda small)</p>
+            <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/BetterDms/DMs_Timestamp.user.js">Click this link</a> to update it.</p>`
+});

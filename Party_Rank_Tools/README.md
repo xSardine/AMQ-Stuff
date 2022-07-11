@@ -2,7 +2,9 @@
 
 This folder contains scripts that help you organizing a Party Rank, if you don't know what this is or don't inted to do one, then you can ignore this, it is useless to you.
 
-- For Tools to create the Sheet itself automatically, and/or download every webm/mp4 needed, DM me on discord.
+- For Tools to create the Sheet itself automatically, and/or download every webm/mp4 needed from catbox, DM me on discord.
+
+- download_youtube_sheet will download all the mp4 from youtube from a youtube-based sheet links with yt-dlp
 
 - Process Stats will output some stats such as how much people got their ranking close to the final result, or the affinity between people.
 
@@ -13,6 +15,14 @@ This folder contains scripts that help you organizing a Party Rank, if you don't
 To use these scripts you will need [python](https://www.python.org/downloads/), make sure that it will make an environment variable for you when it will ask for it.
 
 Once this is done, you need to install the python libraries for the script you want to use. Type this command in the CMD:
+
+- For download_youtube_sheet.py:
+
+You need to have [yt-dlp](https://www.google.com/search?q=yt-dlp&oq=yt-dlp&aqs=chrome..69i57j69i60.998j0j4&sourceid=chrome&ie=UTF-8) installed and in your environment variable PATH
+
+```
+python -m pip install openpyxl
+```
 
 - For process_PR_stats.py:
 
@@ -41,7 +51,12 @@ After you've done one of these two steps, you can then type in the cmd:
 python name_of_the_script.py
 ```
 
-# 1. Process Party Stats
+# 1. Download Youtube Sheet
+
+exampleYoutubeSheet.ods is a minimal sheet for which the script should work, just replicate it with your PR. You can use your own format as long as you provide the correct values to the variables at the start of the script.
+You will need to install <https://github.com/yt-dlp/yt-dlp/releases> and set it up in a directory which is in the environment variable PATH: <https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/>
+
+# 2. Process Party Stats
 
 exampleSheet.ods is a minimal sheet for which the script should work, just replicate it with your PR. You can have stuff on the left of the player grid as long as you fill in correctly the variables `START_COLUMN_PLAYER` and `START_LINE_PLAYER` to the right values within the script.
 
@@ -51,9 +66,9 @@ Place the `PR final sheets` in the same folder as the script. Open the script wi
 
 You can then start the script and it will output a .txt file and an image in that same folder.
 
-# 2. Upload Party Rank
+# 3. Upload Party Rank
 
-## 2.1 Setting up Google Drive API
+## 3.1 Setting up Google Drive API
 
 *might be outdated, search on google to help you do that*
 
@@ -83,7 +98,7 @@ You can now click the `download` button, it will give you a `.json` that you wil
 
 Final step: Go back to the menu on the top left of your screen, select `API and services`, select `OAuth Consent Screen`, scroll down a little and click on `Add User`. Enter the email related to the Google Drive account you will use to store your sheets. Press save twice and you're done.
 
-## 2.2 Uploading every user custom sheet to google drive
+## 3.2 Uploading every user custom sheet to google drive
 
 - Place the script and the sheet you need to upload in the same folder.
 - Edit the first few lines to meet your PR configuration
