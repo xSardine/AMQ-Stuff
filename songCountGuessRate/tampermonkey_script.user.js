@@ -159,7 +159,7 @@ function timeAgo(time) {
 }
 
 AMQ_addScriptData({
-	name: "AMQ Song Play Count / Guess Rate",
+	name: "Song Play Count / Guess Rate",
 	author: "xSardine",
 	description: `Display the number of time a song played before and your guess rate on it in the song info window`
 });
