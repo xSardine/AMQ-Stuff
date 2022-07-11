@@ -8,6 +8,7 @@
 // @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js
 // @updateURL    https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js
 // @grant        none
+// @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqScriptInfo.js
 // ==/UserScript==
 
 /* global Listener */
@@ -156,3 +157,9 @@ function timeAgo(time) {
     }
     return time;
 }
+
+AMQ_addScriptData({
+	name: "AMQ Song Play Count / Guess Rate",
+	author: "xSardine",
+	description: `Display the number of time this song played before and your guess rate on it in the song info window`
+});
