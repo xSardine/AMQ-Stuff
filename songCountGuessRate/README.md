@@ -28,4 +28,5 @@ You should see a message that the HTTP server is listening. Make sure to keep th
 
 ### Known issue
 
-If the song name or the artist change/get fixed, it will reset the song count and guess rate as it will detect is as a whole new song. There's not much I can do about this without saving the links and other informations, which would make this script too borderline cheating to be used on AMQ.
+If the song name or the artist change/get fixed, it will reset the song count and guess rate as it will detect is as a whole new song. I could technically fix this, but I'm not sure it's worth it. So it won't be anytime soon.
+If somehow a song for which you had a lot of plays and you wish to keep your data happens to be one of the like 20 songs updated each months out of 28 000, you can work around this problem by using database editing tools to update the song name and artist directly on your local database. [SQLite Browser](https://sqlitebrowser.org/) for example would let you do that.
