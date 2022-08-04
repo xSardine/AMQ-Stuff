@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         AMQ Song Play Count / Guess Rate
+// @name         AMQ Song Play Count / Guess Rate (Local File Mode)
 // @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  Display the number of time this song played before and your guess rate on it in the song info window
+// @version      1.2
+// @description  Display the number of time this song played before and your guess rate on it in the song info window.
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
 // @downloadURL  https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js
@@ -11,15 +11,21 @@
 // @require      https://raw.githubusercontent.com/TheJoseph98/AMQ-Scripts/master/common/amqScriptInfo.js
 // ==/UserScript==
 
-/* global Listener */
+// don't load on login page
+if (document.getElementById('startPage')) return;
+
+// Wait until the LOADING... screen is hidden and load script
+let loadInterval = setInterval(() => {
+    if (document.getElementById("loadingScreen").classList.contains("hidden")) {
+        setup();
+        clearInterval(loadInterval);
+    }
+}, 500);
+
 
 const SERVER_ADDRESS = "http://localhost:8010"
 
 var infoDiv;
-
-if (window.quiz) {
-    setup()
-}
 
 function isCorrect(data) {
 
