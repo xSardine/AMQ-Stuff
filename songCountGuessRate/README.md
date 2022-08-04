@@ -2,10 +2,6 @@ mshift's S/A script that me, Minigamer42 and Husa modified to keep only the song
 
 It will display the number of time a song have appeared and your guess rate on it in the song info box.
 
-## Song Count + Guess Rate
-
-If you're one of the few people that uses the S/A script as well, do not use this as idk if they are compatible.
-
 ## Installation
 
 There are 2 version of the script:
