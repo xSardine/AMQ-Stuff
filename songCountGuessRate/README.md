@@ -1,4 +1,4 @@
-mshift's S/A script that me, Minigamer42 and Husa modified to keep only the songCounter part. The S/A script itself is not allowed to be used/shared. (That doesn't mean you'll get banned for using it as long as you stay in S/A rooms with it)
+mshift's S/A script that me, Minigamer42 and Husa modified to keep only the songCounter part. The S/A script itself is officially not allowed to be used/shared. (That doesn't mean you'll get banned for using it as long as you stay in S/A rooms with it)
 
 It will display the number of time a song have appeared and your guess rate on it in the song info box.
 
