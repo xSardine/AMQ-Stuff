@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ 1 Second Audio
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Mute the audio after 1s (can change timing by modifying delayBeforeMute variable)
 // @author       xSardine
 // @match        https://animemusicquiz.com/*
@@ -15,9 +15,8 @@
 /* Usage:
 
 Idea I got after seeing Bob's Buzzer, I modified his code to do this one.
- 
+
 Toggle ON/OFF: alt+m
-if you're not sure in which state you are and you want to know, press f12 and check console, it should tell you which state your are everytime you press alt+m
 */
 
 "use strict"
@@ -30,6 +29,11 @@ let toggled_ON = false
 
 // Delay before audio mute itself (1s = 1000)
 let delayBeforeMute = 1200
+
+function notifyAutoReady() {
+	if(quiz.gameMode === "Ranked") return;
+	gameChat.systemMessage(toggled_ON?"1s Automute is enabled. Press [ALT+M] to disable.":"1s Automute is Disabled. Press [ALT+M] to enable.");
+}
 
 function dockeyup(event) {
 	if (event.altKey && event.keyCode == 77) {
@@ -74,6 +78,7 @@ new Listener("Game Starting", (data) => {
 }).bindListener()
 
 new Listener("rejoin game", (data) => {
+    notifyAutoReady();
 	shutdownBtn();
 	setupMuteBuzzer();
 	if (data) { songStartTime = Date.now(); }
@@ -93,7 +98,7 @@ new Listener("answer results", (results) => {
 	let songNumber = parseInt($("#qpCurrentSongCount").text());
 	let message = "";
 
-	if (songMuteTime == "Unmuted") { message += "Player unmuted - disqualified" } // set unmuted message
+	if (toggled_ON && songMuteTime == "Unmuted") { message += "Player unmuted - disqualified" } // set unmuted message
 
 	// post message to chat
 	if (quiz.gameMode !== "Ranked") {
@@ -139,9 +144,15 @@ new Listener("leave game", () => {
 	shutdownBtn();
 }).bindListener()
 new Listener("Spectate Game", () => {
+    notifyAutoReady();
 	shutdownBtn();
 }).bindListener()
+new Listener("Join Game", (response) => {
+	if(response.error) return;
+	notifyAutoReady();
+}).bindListener();
 new Listener("Host Game", () => {
+    notifyAutoReady();
 	shutdownBtn();
 }).bindListener()
 document.addEventListener('keyup', dockeyup, false);
@@ -152,6 +163,5 @@ AMQ_addScriptData({
 	author: "xSardine",
 	description: `<p>Mute the audio after 1s (can change timing by modifying delayBeforeMute variable)</p>
 			<p>Toggle ON/OFF: alt+m</p>
-			<p>/!\\ Might not be toggling off completely, I'll check that asap. In the mean time, deactivate directly from the Tampermonkey window</p>
             <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js">Click this link</a> to update it.</p>`
 });
