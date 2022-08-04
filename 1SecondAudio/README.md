@@ -14,7 +14,3 @@ You can change the timing by modifying the delayBeforeMute variable
 ## What to download
 
 [Tampermonkey](https://www.tampermonkey.net/), then add the [userscript](https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js) to it
-
-## Known Issue
-
-It seems there are some problems where it still mute even when toggled off, deactivate the script when you're not using it if you experience this problem. Will try to fix soon.
