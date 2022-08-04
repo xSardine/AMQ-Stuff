@@ -31,7 +31,7 @@ You're good to go !
 
 - Download the [node_modules.zip](https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/node_modules.zip), and the [index.js script](https://raw.githubusercontent.com/xSardine/AMQ-Stuff/main/songCountGuessRate/index.js) (right click → save as) from this repository. Place them in the same directory and extract the `node_modules.zip` archive.
 
-- Add the [tampermonkey_script_local_mode](https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script_local_mode.user.js) in Tampermonkey
+- Add the [tampermonkey_script_local_mode](https://github.com/xSardine/AMQ-Stuff/raw/main/songCountGuessRate/tampermonkey_script.user.js) in Tampermonkey
 
 The preparation should be done, you can now start the local server and start playing AMQ.
 This server will be called at the end of each song and save your stats on the songs, it will then send it back to the userscript that will display the information on the song info box.
