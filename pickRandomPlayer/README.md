@@ -8,4 +8,4 @@ Type `/pickplayer x` to pick x players from the lobby (if no number specified, d
 
 ## What to download
 
-[Tampermonkey](https://www.tampermonkey.net/), then add the [userscript](https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js) to it
+[Tampermonkey](https://www.tampermonkey.net/), then add the [userscript](https://github.com/xSardine/AMQ-Stuff/raw/main/pickRandomPlayer/pickRandomPlayer.user.js) to it

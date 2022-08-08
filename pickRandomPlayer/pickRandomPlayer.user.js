@@ -39,7 +39,7 @@ function setup() {
         author: "xSardine",
         description: `<p>select randomly one or multiple players in your AMQ lobby and @ them</p>
 			<p>Type "/pickplayer x" to pick x players from the lobby (if no number specified, default to 1)</p>
-            <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/1SecondAudio/1Second_Audio.user.js">Click this link</a> to update it.</p>`
+            <p><a href="https://github.com/xSardine/AMQ-Stuff/raw/main/pickRandomPlayer/pickRandomPlayer.user.js">Click this link</a> to update it.</p>`
     });
 }
 
