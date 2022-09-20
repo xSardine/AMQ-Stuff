@@ -9,10 +9,10 @@ import matplotlib.patheffects as PathEffects
 # -------- Mandatory settings --------
 
 # ranking or rating
-SCORING_METHOD = "rating"
+SCORING_METHOD = "ranking"
 
 # the column at which players scores start appearing (first column in the sheet = 1)
-START_COLUMN_PLAYER = 5
+START_COLUMN_PLAYER = 9
 
 # the line at which players names start appearing (first line in the sheet = 1)
 START_LINE_PLAYER = 1
@@ -25,11 +25,11 @@ PARTY_RANK_NAME = ""
 
 # Necessary if you have stuff at the right of players scores grid in the sheet
 # if 0 = setting ignored and will work if nothing is on the right
-NB_PLAYERS = 24
+NB_PLAYERS = 14
 
 # Necessary if you have stuff at the bottom of players scores grid in the sheet
 # if 0 = setting ignored and will work if nothing is on the bottom
-NB_SONGS = 32
+NB_SONGS = 0
 
 
 # -------- Optional settings --------
@@ -40,7 +40,7 @@ TOP_SONGS_WEIGHT = 0
 
 # -------- Affinity Grid Style settings --------
 # Police size of affinity numbers
-AFFINITY_NUMBERS_POLICE_SIZE = 5
+AFFINITY_NUMBERS_POLICE_SIZE = 6.5
 
 # Width of the shadow outlining affinity numbers
 NUMBERS_OUTLINE_WIDTH = 0.8
@@ -61,7 +61,7 @@ def process_distance_from_average(dataframe):
     """
     topWeight = Which songs should be weighted
     topWeight = O: no weight
-    topWeight = 5: the top 5 songs of the player will be weighted more (1 being even more weighted than 5, etc...)) 
+    topWeight = 5: the top 5 songs of the player will be weighted more (1 being even more weighted than 5, etc...))
     """
 
     rankers = list(dataframe.keys())
@@ -198,9 +198,9 @@ def process_ranking_stats(dataframe):
 
     for index, song in dataframe.iterrows():
         for ranker in rankers:
-            if song[ranker] == song.max():
-                greensCounter[ranker] += 1
             if song[ranker] == song.min():
+                greensCounter[ranker] += 1
+            if song[ranker] == song.max():
                 redsCounter[ranker] += 1
 
     greensCounter = dict(
