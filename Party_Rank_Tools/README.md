@@ -27,7 +27,7 @@ python -m pip install openpyxl
 - For process_PR_stats.py:
 
 ```
-python -m pip install matplotlib pandas scipy odfpy
+python -m pip install matplotlib pandas odfpy
 ```
 
 - For upload_party.py:
