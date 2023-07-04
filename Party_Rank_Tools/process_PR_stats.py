@@ -1,7 +1,6 @@
 from pathlib import Path
 import pandas as pd
 import numpy as np
-from scipy import spatial
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as PathEffects
 
@@ -40,7 +39,7 @@ TOP_SONGS_WEIGHT = 0
 
 # -------- Affinity Grid Style settings --------
 # Police size of affinity numbers
-AFFINITY_NUMBERS_POLICE_SIZE = 6.5
+AFFINITY_NUMBERS_POLICE_SIZE = 4.5
 
 # Width of the shadow outlining affinity numbers
 NUMBERS_OUTLINE_WIDTH = 0.8
@@ -70,8 +69,8 @@ def process_distance_from_average(dataframe):
     max_len_ranker_name = 0
     for ranker in rankers:
         currentMeanDistance[ranker] = 0
-        if len(ranker) > max_len_ranker_name:
-            max_len_ranker_name = len(ranker)
+        if len(str(ranker)) > max_len_ranker_name:
+            max_len_ranker_name = len(str(ranker))
 
     for index, song in dataframe.iterrows():
         for i, ranker in enumerate(rankers):
@@ -94,7 +93,7 @@ def process_distance_from_average(dataframe):
     )
     ultimate_taste = f"Distance from Average {optional}\n"
     for ranker in currentMeanDistance:
-        ultimate_taste += f"{ranker}: {'-' * (max_len_ranker_name - len(ranker))} {round(currentMeanDistance[ranker], 2)}\n"
+        ultimate_taste += f"{ranker}: {'-' * (max_len_ranker_name - len(str(ranker)))} {round(currentMeanDistance[ranker], 2)}\n"
     ultimate_taste += "\n"
 
     return ultimate_taste
@@ -144,8 +143,34 @@ def NormalizeData(data, nb_songs):
     return (data - 0) / (nb_songs * 10 - 0)
 
 
-def process_ranking_affinity(dataframe):
+def compute_similarity(vector1, vector2):
+    if len(vector1) != len(vector2):
+        print("Similary func got two vectors of different sizes")
+        return 0
 
+    weights = np.ones(len(vector1))
+
+    simVector1 = []
+    simVector2 = []
+    for song in range(len(vector1)):
+        # weight = 10 if song < len(vector1) / 2 else 1
+        weight = 1
+
+        v1 = list(np.zeros(len(vector1)))
+        v1[int(vector1[song]) - 1] = weight
+
+        v2 = list(np.zeros(len(vector2)))
+        v2[int(vector2[song]) - 1] = weight
+
+        simVector1 += v1
+        simVector2 += v2
+
+    return 1 - np.dot(simVector1, simVector2) / (
+        np.linalg.norm(simVector1) * np.linalg.norm(simVector2)
+    )
+
+
+def process_ranking_affinity(dataframe):
     """
     Process affinity between players using cosine similarity
     """
@@ -156,7 +181,7 @@ def process_ranking_affinity(dataframe):
 
     for i, ranker in enumerate(rankers):
         for j, ranker2 in enumerate(rankers):
-            affinity[i][j] = spatial.distance.cosine(
+            affinity[i][j] = compute_similarity(
                 list(dataframe[ranker]), list(dataframe[ranker2])
             )
 
@@ -164,7 +189,6 @@ def process_ranking_affinity(dataframe):
 
 
 def process_rating_affinity(dataframe):
-
     """
     Process affinity between players using score diffences sums
     cosine should technilly also works for ratings, but I feel like it's not very good
@@ -176,7 +200,6 @@ def process_rating_affinity(dataframe):
 
     for i, ranker in enumerate(rankers):
         for j, ranker2 in enumerate(rankers):
-
             affinity[i][j] = sum(abs(dataframe[ranker] - dataframe[ranker2]))
 
     affinity = NormalizeData(affinity, dataframe.shape[0])
@@ -185,6 +208,11 @@ def process_rating_affinity(dataframe):
 
 
 def process_ranking_stats(dataframe):
+    """
+    process stats for a rating PR
+    - Players distance from average
+    - Number of Greens & Reds
+    """
 
     rankers = list(dataframe.keys())
 
@@ -193,8 +221,8 @@ def process_ranking_stats(dataframe):
     max_len_ranker_name = 0
     for ranker in rankers:
         greensCounter[ranker] = redsCounter[ranker] = 0
-        if len(ranker) > max_len_ranker_name:
-            max_len_ranker_name = len(ranker)
+        if len(str(ranker)) > max_len_ranker_name:
+            max_len_ranker_name = len(str(ranker))
 
     for index, song in dataframe.iterrows():
         for ranker in rankers:
@@ -209,61 +237,58 @@ def process_ranking_stats(dataframe):
 
     marble_string = "Greens & Reds\n"
     for ranker in greensCounter:
-        marble_string += f"{ranker}: {'-' * (max_len_ranker_name - len(ranker))} {greensCounter[ranker]} Greens & {redsCounter[ranker]} Reds\n"
+        marble_string += f"{ranker}: {'-' * (max_len_ranker_name - len(str(ranker)))} {greensCounter[ranker]} Greens & {redsCounter[ranker]} Reds\n"
     marble_string += "\n"
     return marble_string
 
 
 def process_rating_stats(dataframe):
+    """
+    process stats for a rating PR
+    - Players distance from average
+    - Number of Greens & Reds
+    - Number of 10s
+    - Average score
+    """
 
-    rankers = list(dataframe.keys())
+    rankers = list(dataframe.columns)
 
-    averageScore = {}
-    totalScore = {}
-    greensCounter = {}
-    redsCounter = {}
-    tensCounter = {}
-    max_len_ranker_name = 0
-    for ranker in rankers:
-        averageScore[ranker] = 0
-        totalScore[ranker] = 0
-        greensCounter[ranker] = 0
-        redsCounter[ranker] = 0
-        tensCounter[ranker] = 0
-        if len(ranker) > max_len_ranker_name:
-            max_len_ranker_name = len(ranker)
+    average_score = {ranker: round(dataframe[ranker].mean(), 2) for ranker in rankers}
+    total_score = {ranker: dataframe[ranker].sum() for ranker in rankers}
+    greens_counter = {ranker: 0 for ranker in rankers}
+    reds_counter = {ranker: 0 for ranker in rankers}
+    tens_counter = {ranker: 0 for ranker in rankers}
+    max_len_ranker_name = max(len(ranker) for ranker in rankers)
 
-    for index, ranker in dataframe.iteritems():
-        averageScore[ranker.name] = round(ranker.mean(), 2)
-        totalScore[ranker.name] = ranker.sum()
-
-    for index, song in dataframe.iterrows():
+    for _, song in dataframe.iterrows():
         for ranker in rankers:
             if song[ranker] == song.max():
-                greensCounter[ranker] += 1
+                greens_counter[ranker] += 1
             if song[ranker] == song.min():
-                redsCounter[ranker] += 1
+                reds_counter[ranker] += 1
             if song[ranker] == 10:
-                tensCounter[ranker] += 1
+                tens_counter[ranker] += 1
 
-    averageScore = dict(
-        sorted(averageScore.items(), key=lambda item: item[1], reverse=True)
+    sorted_average_score = dict(
+        sorted(average_score.items(), key=lambda item: item[1], reverse=True)
     )
 
     marble_string = "Averages (Totals): (Sorted by Highest to Lowest)\n"
-    for ranker in averageScore:
-        marble_string += f"{ranker}: {'-' * (max_len_ranker_name - len(ranker))} {averageScore[ranker]} ({totalScore[ranker]})\n"
+    for ranker, score in sorted_average_score.items():
+        padding = "-" * (max_len_ranker_name - len(ranker))
+        marble_string += f"{ranker}: {padding} {score} ({total_score[ranker]})\n"
     marble_string += "\n"
 
     marble_string += "Greens, Reds & 10/10s (Sorted by Averages)\n"
-    for ranker in averageScore:
-        marble_string += f"{ranker}: {'-' * (max_len_ranker_name - len(ranker))} {greensCounter[ranker]} Greens, {redsCounter[ranker]} Reds & {tensCounter[ranker]} 10/10s\n"
+    for ranker, greens in greens_counter.items():
+        padding = "-" * (max_len_ranker_name - len(ranker))
+        marble_string += f"{ranker}: {padding} {greens} Greens, {reds_counter[ranker]} Reds & {tens_counter[ranker]} 10/10s\n"
     marble_string += "\n"
+
     return marble_string
 
 
 def process_stats(dataframe, PR_name):
-
     """
     Write some stats in a text file:
     - Players distance from average
@@ -283,7 +308,6 @@ def process_stats(dataframe, PR_name):
 
 
 def cut_df_scoring_grid(dataframe):
-
     # Cut the dataframe scoring grid using START_COLUMN_PLAYER START_LINE_PLAYER NB_PLAYERS NB_SONGS coordinates settings
 
     if NB_SONGS:
@@ -310,7 +334,6 @@ if __name__ == "__main__":
 
     if len(sheet_list) > 0:
         for sheet in sheet_list:
-
             # Get the dataframe and cut the scoring grid using PR settings
             dataframe = pd.read_excel(sheet, engine="odf")
             dataframe = cut_df_scoring_grid(dataframe)

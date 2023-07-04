@@ -1,0 +1,66 @@
+Distance from Average 
+Ufo: ------ 0.79
+Pearl: ---- 0.9
+Mart: ----- 0.93
+Digdri: --- 0.95
+Segu: ----- 0.95
+Smudy: ---- 1.06
+Thanh: ---- 1.08
+Zen: ------ 1.09
+Steel: ---- 1.2
+Ruv: ------ 1.22
+Saro: ----- 1.27
+Skychael: - 1.36
+Koroshiya:  1.36
+Shiro: ---- 1.47
+Animero: -- 1.52
+jax: ------ 1.53
+cinder: --- 1.54
+Zylda: ---- 1.66
+Pile: ----- 2.29
+Shake: ---- 2.87
+
+Averages (Totals): (Sorted by Highest to Lowest)
+jax: ------ 8.56 (428.0)
+Koroshiya:  8.33 (416.5)
+Shiro: ---- 8.2 (410.0)
+cinder: --- 8.14 (407.0)
+Ufo: ------ 7.62 (381.0)
+Mart: ----- 7.45 (372.5)
+Pearl: ---- 7.4 (370.0)
+Steel: ---- 7.34 (367.0)
+Animero: -- 7.15 (357.5)
+Saro: ----- 7.12 (356.0)
+Skychael: - 7.06 (353.0)
+Digdri: --- 6.9 (345.0)
+Zen: ------ 6.82 (341.0)
+Thanh: ---- 6.8 (340)
+Segu: ----- 6.7 (335.0)
+Smudy: ---- 6.51 (325.5)
+Zylda: ---- 6.51 (325.5)
+Pile: ----- 6.21 (310.5)
+Ruv: ------ 6.14 (307)
+Shake: ---- 4.68 (234.0)
+
+Greens, Reds & 10/10s (Sorted by Averages)
+Segu: ----- 1 Greens, 0 Reds & 1 10/10s
+Zen: ------ 3 Greens, 1 Reds & 3 10/10s
+Thanh: ---- 2 Greens, 1 Reds & 2 10/10s
+Pile: ----- 11 Greens, 10 Reds & 11 10/10s
+Ufo: ------ 6 Greens, 0 Reds & 5 10/10s
+Animero: -- 13 Greens, 0 Reds & 11 10/10s
+Smudy: ---- 1 Greens, 2 Reds & 0 10/10s
+Koroshiya:  9 Greens, 0 Reds & 4 10/10s
+Pearl: ---- 5 Greens, 0 Reds & 5 10/10s
+Shake: ---- 5 Greens, 23 Reds & 5 10/10s
+cinder: --- 13 Greens, 1 Reds & 9 10/10s
+Ruv: ------ 1 Greens, 2 Reds & 1 10/10s
+Saro: ----- 3 Greens, 2 Reds & 2 10/10s
+Digdri: --- 1 Greens, 2 Reds & 1 10/10s
+Zylda: ---- 2 Greens, 8 Reds & 1 10/10s
+Steel: ---- 5 Greens, 1 Reds & 4 10/10s
+Skychael: - 4 Greens, 3 Reds & 4 10/10s
+Shiro: ---- 18 Greens, 0 Reds & 13 10/10s
+Mart: ----- 6 Greens, 0 Reds & 5 10/10s
+jax: ------ 9 Greens, 0 Reds & 3 10/10s
+
